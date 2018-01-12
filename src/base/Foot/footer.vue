@@ -20,7 +20,7 @@
       </div>
       <div class="item" style="width: 250px">
         <p class="title" style="margin-bottom: 15px;">相关链接</p>
-        <Select filterable>
+        <Select filterable placeholder="四川省自然科学博物馆">
           <Option v-for="(item,index) in options" :value="item.value" :key="index">
             <a href="/index" target="_blank">{{ item.label }}</a>
           </Option>

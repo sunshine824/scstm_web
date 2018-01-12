@@ -45,6 +45,9 @@
           line-height: 40px;
           margin-left: 10px;
           vertical-align: middle;
+          a{
+            color: #666;
+          }
         }
       }
     }
