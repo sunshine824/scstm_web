@@ -7,7 +7,7 @@
     </div>
 
     <div class="content">
-
+      <img :src="banner"/>
     </div>
 
     <div class="foot">
@@ -34,7 +34,8 @@
     },
     data() {
       return {
-        homeDate: ''
+        homeDate: '',
+        banner:'../static/images/test/banner.png'
       }
     },
     created() {
@@ -59,5 +60,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-
+  .content{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
 </style>
