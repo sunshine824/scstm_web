@@ -1,13 +1,20 @@
 <template>
-  <div class="hello">
-    <p class="txt">hello world!</p>
+  <div class="home">
+    <Header/>
+    <!--<ind-nav/>-->
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   import {getAjax} from '@/public/js/config'
+  import Header from '@/base/Head/header'
+  //import IndNav from '@/base/Head/ind_nav'
 
   export default {
+    components:{
+      Header,
+      //IndNav
+    },
     data() {
       return {
         homeDate: ''
