@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="layout clearfix">
+    <div class="layout header-con clearfix">
       <p class="notice">
         当瞬时在关人数达到5700人时，我馆将采取限流措施，请予理解配合
       </p>
@@ -29,9 +29,7 @@
     width: 100%;
     background: #fff;
     border-bottom: 1px solid #e7e7e7;
-    .layout {
-      width: 1200px;
-      margin: 0 auto;
+    .header-con {
       padding: 0 10px;
       .notice {
         float: left;

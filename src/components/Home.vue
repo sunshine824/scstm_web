@@ -1,19 +1,36 @@
 <template>
   <div class="home">
-    <Header/>
-    <!--<ind-nav/>-->
+
+    <div class="head">
+      <Header/>
+      <ind-nav/>
+    </div>
+
+    <div class="content">
+
+    </div>
+
+    <div class="foot">
+      <guide/>
+      <Footer/>
+    </div>
+
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import {getAjax} from '@/public/js/config'
   import Header from '@/base/Head/header'
-  //import IndNav from '@/base/Head/ind_nav'
+  import IndNav from '@/base/Head/ind_nav'
+  import Guide from '@/base/Foot/guide'
+  import Footer from '@/base/Foot/footer'
 
   export default {
     components:{
       Header,
-      //IndNav
+      IndNav,
+      Guide,
+      Footer,
     },
     data() {
       return {
@@ -42,12 +59,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-  .hello {
-    width: 100px;
-    height: 100px;
-    border: 1px solid #000;
-    .txt {
-      color: red;
-    }
-  }
+
 </style>
