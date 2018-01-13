@@ -7,7 +7,7 @@
     </div>
 
     <div class="content">
-      <swiper/>
+      <swiper :banners="homeDate.data.banner"></swiper>
     </div>
 
     <div class="foot">
@@ -36,11 +36,11 @@
     },
     data() {
       return {
-        homeDate: '',
+        homeDate: [],
         //banner: '../static/images/test/banner.png'
       }
     },
-    created() {
+    mounted() {
       this.getHomeDate()
     },
     methods: {
@@ -51,6 +51,7 @@
         const url = 'api/index'
         getAjax(url, {},
           (res) => {
+            //console.log(res)
             this.homeDate = res
           }, (err) => {
             console.log(err)

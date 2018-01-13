@@ -1,23 +1,17 @@
 <template>
   <div class="swiper-con">
     <swiper :options="swiperOption">
+
       <swiper-slide
-        style="background: url('http://www.kjgadmin.com:8080/Public/uploads/banner/5a54746baaeb8.jpg') no-repeat center center">
+        v-for="(item,index) in banners"
+        :key="index"
+        :style="{background: 'url('+item.banner+') no-repeat center center'}">
         <h2 class="ani top" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.2s">
           让科学流行起来</h2>
         <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.4s">
           四川科技馆全新启幕</p>
       </swiper-slide>
-      <swiper-slide :style="{background: 'url('+banner+') no-repeat center center'}">
 
-      </swiper-slide>
-      <swiper-slide
-        style="background: url('http://www.kjgadmin.com:8080/Public/uploads/banner/5a54746baaeb8.jpg') no-repeat center center">
-
-      </swiper-slide>
-      <swiper-slide :style="{background: 'url('+banner+') no-repeat center center'}">
-
-      </swiper-slide>
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
       <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div>
@@ -30,19 +24,25 @@
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
 
   export default {
+    props: {
+      banners: {
+        default: ''
+      }
+    },
     components: {
       swiper,
       swiperSlide
     },
     data() {
+      const _this = this
       return {
         swiperOption: {
           spaceBetween: 5,
           speed: 1500,
-          autoplay: {
+          /*autoplay: {
             delay: 2500,
             disableOnInteraction: false
-          },
+          },*/
           loop: true,
           pagination: {
             el: '.swiper-pagination',
@@ -50,7 +50,7 @@
             renderBullet(index, className) {
               return `<div class="silde-item ${className} ">
                         <span class="swiper-pagination-bullet-custom"></span>
-                        <p class="txt">四川科技馆全新开幕</p>
+                        <p class="txt">${_this.banners[index].note}</p>
                       </div>`
             }
           },
@@ -67,9 +67,12 @@
               swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
             }
           }
-        },
-        banner: '../static/images/test/banner.png'
+        }
       }
+    },
+
+    mounted() {
+      //console.log(this.banners)
     }
   }
 </script>
