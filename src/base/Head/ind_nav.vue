@@ -3,7 +3,7 @@
     <div class="layout clearfix nav-con">
       <div class="fl logo">
         <router-link to="/">
-          <img src="../../assets/scstm-logo.png"/>
+          <img :src="logo"/>
         </router-link>
       </div>
       <ul class="fr">
@@ -19,6 +19,12 @@
 </template>
 <script type="text/ecmascript-6">
   export default {
+    props: {
+      logo: {
+        type: String,
+        default: ''
+      }
+    },
     data() {
       return {
         navs: [
@@ -79,9 +85,9 @@
           width: 110px;
           text-align: center;
           margin-right: 10px;
-          height:100px;
+          height: 100px;
           float: left;
-          &:last-child{
+          &:last-child {
             margin-right: 0;
           }
           a {
@@ -93,9 +99,9 @@
               margin-bottom: 8px;
             }
           }
-          &:hover{
+          &:hover {
             background: url("../../../static/images/test/scstm_03.png") no-repeat;
-            a{
+            a {
               color: #fff;
             }
           }

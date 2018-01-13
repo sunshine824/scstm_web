@@ -48,34 +48,50 @@
   import {Select, Option} from 'iview'
 
   export default {
+    props: {
+      phones: {
+        type: Object,
+        default: ''
+      },
+      ewm: {
+        type: String,
+        default: ''
+      },
+      options: {
+        type: Array,
+        default: ''
+      }
+    },
     components: {
       Select,
       Option
     },
     data() {
+      const _this = this
       return {
         contacts: [
           {
             title: '服务热线',
-            phone: '028-7822817'
+            phone: _this.phones.phone_service
           },
           {
             title: '团队预约',
-            phone: '028-7822817'
+            phone: _this.phones.phone_team
           },
           {
             title: '美科星咨询电话',
-            phone: '028-7822817'
+            phone: _this.phones.phone_consulting
           },
           {
             title: '投诉电话',
-            phone: '028-7822817'
+            phone: _this.phones.phone_complaints
           }
         ],
-        options: [
+        /*options: [
           {
             value: '四川省自然科学博物馆',
-            label: '四川省自然科学博物馆'
+            label: '四川省自然科学博物馆',
+            href:''
           },
           {
             value: '四川省科技博物馆',
@@ -85,8 +101,7 @@
             value: '上海市科技博物馆',
             label: '上海市科技博物馆'
           }
-        ],
-        ewm: '../static/images/test/scstm_24.png'
+        ]*/
       }
     }
   }
@@ -178,7 +193,7 @@
         color: #fff;
       }
     }
-    .copyright{
+    .copyright {
       text-align: center;
       color: #fff;
       font-size: 14px;

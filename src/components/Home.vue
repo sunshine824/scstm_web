@@ -3,16 +3,16 @@
 
     <div class="head">
       <Header/>
-      <ind-nav/>
+      <ind-nav :logo="homeData.data.logo"/>
     </div>
 
     <div class="content">
-      <swiper :banners="homeDate.data.banner"></swiper>
+      <swiper :banners="homeData.data.banner"></swiper>
     </div>
 
     <div class="foot">
       <guide/>
-      <Footer/>
+      <Footer :phones="homeData.data.end_phone" :ewm="homeData.data.wx" :related_url="homeData.data.related_url"/>
     </div>
 
   </div>
@@ -36,7 +36,7 @@
     },
     data() {
       return {
-        homeDate: [],
+        homeData: [],
         //banner: '../static/images/test/banner.png'
       }
     },
@@ -52,7 +52,7 @@
         getAjax(url, {},
           (res) => {
             //console.log(res)
-            this.homeDate = res
+            this.homeData = res
           }, (err) => {
             console.log(err)
           }, this)
