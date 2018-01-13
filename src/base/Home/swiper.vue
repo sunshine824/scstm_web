@@ -39,10 +39,10 @@
         swiperOption: {
           spaceBetween: 5,
           speed: 1500,
-          /*autoplay: {
+          autoplay: {
             delay: 2500,
             disableOnInteraction: false
-          },*/
+          },
           loop: true,
           pagination: {
             el: '.swiper-pagination',
