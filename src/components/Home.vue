@@ -7,7 +7,7 @@
     </div>
 
     <div class="content">
-      <img :src="banner"/>
+      <swiper/>
     </div>
 
     <div class="foot">
@@ -24,18 +24,20 @@
   import IndNav from '@/base/Head/ind_nav'
   import Guide from '@/base/Foot/guide'
   import Footer from '@/base/Foot/footer'
+  import Swiper from '@/base/Home/swiper'
 
   export default {
-    components:{
+    components: {
       Header,
       IndNav,
       Guide,
       Footer,
+      Swiper
     },
     data() {
       return {
         homeDate: '',
-        banner:'../static/images/test/banner.png'
+        //banner: '../static/images/test/banner.png'
       }
     },
     created() {
@@ -60,9 +62,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-  .content{
+  .content {
     width: 100%;
-    img{
+    img {
       width: 100%;
     }
   }

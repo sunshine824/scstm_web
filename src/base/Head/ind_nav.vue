@@ -54,7 +54,7 @@
           },
           {
             icon: '../static/images/test/scstm_06.png',
-            href: '/',
+            href: '/index',
             title: '科学朋友圈'
           },
         ]
