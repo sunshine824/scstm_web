@@ -35,7 +35,7 @@
         foot: ''
       }
     },
-    mounted() {
+    created() {
       this.getLogoData()
       this.getFootInfoData()
     },

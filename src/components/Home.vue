@@ -18,7 +18,7 @@
         //banner: '../static/images/test/banner.png'
       }
     },
-    mounted() {
+    created() {
       this.getHomeDate()
     },
     methods: {

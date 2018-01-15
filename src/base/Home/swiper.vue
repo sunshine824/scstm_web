@@ -203,7 +203,7 @@
     font-size: 12px;
     color: #000;
     opacity: 1;
-    border: 1px dashed rgba(255, 255, 255, .3);
+    border: 1px dashed rgba(255, 255, 255, .6);
     background: rgba(5, 71, 97, 1);
     display: inline-block;
     border-radius: 50%;
