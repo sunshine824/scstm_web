@@ -1,37 +1,15 @@
 <template>
-  <div class="home">
-
-    <div class="head">
-      <Header/>
-      <ind-nav :logo="homeData.data.logo"/>
-    </div>
-
-    <div class="content">
-      <swiper :banners="homeData.data.banner"></swiper>
-    </div>
-
-    <div class="foot">
-      <guide/>
-      <Footer :phones="homeData.data.end_phone" :ewm="homeData.data.wx" :options="homeData.data.related_url"/>
-    </div>
-
+  <div class="content" v-if="homeData.data">
+    <swiper :banners="homeData.data.banner"></swiper>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import {getAjax} from '@/public/js/config'
-  import Header from '@/base/Head/header'
-  import IndNav from '@/base/Head/ind_nav'
-  import Guide from '@/base/Foot/guide'
-  import Footer from '@/base/Foot/footer'
   import Swiper from '@/base/Home/swiper'
 
   export default {
     components: {
-      Header,
-      IndNav,
-      Guide,
-      Footer,
       Swiper
     },
     data() {

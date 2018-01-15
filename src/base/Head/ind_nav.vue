@@ -3,7 +3,7 @@
     <div class="layout clearfix nav-con">
       <div class="fl logo">
         <router-link to="/">
-          <img :src="logo"/>
+          <img :src="logo" v-if="logo"/>
         </router-link>
       </div>
       <ul class="fr">

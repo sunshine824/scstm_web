@@ -38,14 +38,14 @@
         line-height: 40px;
         color: #666;
       }
-      .sign{
+      .sign {
         float: right;
-        li{
+        li {
           display: inline-block;
           line-height: 40px;
           margin-left: 10px;
           vertical-align: middle;
-          a{
+          a {
             color: #666;
           }
         }
