@@ -33,11 +33,9 @@
     </div>
     <div class="count">
       <p>浏览人数</p>
-      <span>0</span>
-      <span>0</span>
-      <span>2</span>
-      <span>1</span>
-      <span>1</span>
+      <span v-for="(item,index) in counts" :key="index">
+        {{item}}
+      </span>
     </div>
     <div class="copyright">
       蜀ICP备：060202226号&nbsp;&nbsp;技术支持：成都匹体科技有限公司
@@ -59,6 +57,10 @@
       },
       options: {
         type: Array,
+        default: ''
+      },
+      number: {
+        type: String,
         default: ''
       }
     },
@@ -86,22 +88,21 @@
             title: '投诉电话',
             phone: _this.phones.phone_complaints
           }
-        ],
-        /*options: [
-          {
-            value: '四川省自然科学博物馆',
-            label: '四川省自然科学博物馆',
-            href:''
-          },
-          {
-            value: '四川省科技博物馆',
-            label: '四川省科技博物馆'
-          },
-          {
-            value: '上海市科技博物馆',
-            label: '上海市科技博物馆'
-          }
-        ]*/
+        ]
+      }
+    },
+    computed: {
+      /**
+       * 浏览人数
+       * @returns {Array}
+       */
+      counts() {
+        const numArr = []
+        const num = this.number.toString()
+        for (let i = 0; i < num.length; i++) {
+          numArr.push(num.substr(i, 1))
+        }
+        return numArr
       }
     }
   }
@@ -161,6 +162,10 @@
         }
         img {
           width: 80px;
+          border: 5px solid #fff;
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          border-radius: 2px;
         }
         .ewm-txt {
           font-size: 14px;

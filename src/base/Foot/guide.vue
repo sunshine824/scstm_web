@@ -2,7 +2,10 @@
   <div class="bottom-nav">
     <div class="clearfix layout">
       <ul class="bottom-nav-con">
-        <li v-for="(item,index) in guides" :key="index" :class="item.className">
+        <li class="wow fadeInUp"
+            data-wow-duration="2.5s"
+            :data-wow-delay="(0.2 + 0.15 * index).toFixed(1)+'s'"
+            v-for="(item,index) in guides" :key="index" :class="item.className">
           <router-link :to="item.href" tag="p">{{item.title}}</router-link>
         </li>
       </ul>

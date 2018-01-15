@@ -9,7 +9,10 @@
 
     <div class="foot" v-if="foot.data">
       <guide/>
-      <Footer :phones="foot.data.end_phone" :ewm="foot.data.wx" :options="foot.data.related_url"/>
+      <Footer :phones="foot.data.end_phone"
+              :ewm="foot.data.wx"
+              :options="foot.data.related_url"
+              :number="foot.data.number"/>
     </div>
   </div>
 </template>
