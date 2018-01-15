@@ -3,22 +3,21 @@
     <swiper :options="swiperOption">
 
       <swiper-slide
-        class="swiper-lazy"
         v-for="(item,index) in banners"
         :key="index"
-        :style="{background: 'url('+item.banner+') no-repeat center center'}">
-        <h2 class="ani top" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.2s">
-          让科学流行起来</h2>
-        <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.4s">
-          四川科技馆全新启幕</p>
-        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+        :style="{background: 'url('+item.banner+') no-repeat center'}">
+        <!-- <h2 class="ani top" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.2s">
+           让科学流行起来</h2>
+         <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.4s">
+           四川科技馆全新启幕</p>-->
       </swiper-slide>
 
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
 
       <Icon type="ios-arrow-right" class="swiper-icon swiper-next" slot="button-next"></Icon>
       <Icon type="ios-arrow-left" class="swiper-icon swiper-prev" slot="button-prev"></Icon>
-      <div class="mask"  slot="button-prev"></div>
+      <div class="mask" slot="button-prev"></div>
+
     </swiper>
   </div>
 </template>
@@ -44,12 +43,12 @@
       return {
         swiperOption: {
           spaceBetween: 5,
-          speed: 1500,
-          lazy: true,
-          /*autoplay: {
-            delay: 2500,
+          speed: 600,
+          effect: 'fade',
+          autoplay: {
+            delay: 3000,
             disableOnInteraction: false
-          },*/
+          },
           loop: true,
           pagination: {
             el: '.swiper-pagination',
@@ -103,19 +102,19 @@
     .swiper-prev {
       left: 15px;
     }
-    .mask{
+    .mask {
       position: absolute;
       bottom: 0;
       width: 100%;
       height: 230px;
       background: #000;
       z-index: 10;
-      background: -moz-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
-      background: -webkit-gradient(linear,left top,left bottom,color-stop(0,rgba(27,32,41,0)),color-stop(55%,rgba(27,32,41,.85)),color-stop(100%,rgba(27,32,41,.85)));
-      background: -webkit-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
-      background: -o-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
-      background: -ms-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
-      background: linear-gradient(to bottom,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
+      background: -moz-linear-gradient(top, rgba(27, 32, 41, 0) 0, rgba(27, 32, 41, .85) 55%, rgba(27, 32, 41, .85) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(27, 32, 41, 0)), color-stop(55%, rgba(27, 32, 41, .85)), color-stop(100%, rgba(27, 32, 41, .85)));
+      background: -webkit-linear-gradient(top, rgba(27, 32, 41, 0) 0, rgba(27, 32, 41, .85) 55%, rgba(27, 32, 41, .85) 100%);
+      background: -o-linear-gradient(top, rgba(27, 32, 41, 0) 0, rgba(27, 32, 41, .85) 55%, rgba(27, 32, 41, .85) 100%);
+      background: -ms-linear-gradient(top, rgba(27, 32, 41, 0) 0, rgba(27, 32, 41, .85) 55%, rgba(27, 32, 41, .85) 100%);
+      background: linear-gradient(to bottom, rgba(27, 32, 41, 0) 0, rgba(27, 32, 41, .85) 55%, rgba(27, 32, 41, .85) 100%);
     }
   }
 
@@ -147,14 +146,14 @@
     &:after {
       content: '';
       position: absolute;
-      border: 1px dashed rgba(255,255,255,.3);
+      border: 1px dashed rgba(255, 255, 255, .3);
       bottom: 35px;
       width: 100%;
       left: 0;
       z-index: -1;
     }
     .silde-item {
-      width: 230px;
+      width: 150px;
       display: inline-block;
       .txt {
         color: #fff;
@@ -181,7 +180,7 @@
         opacity: 1;
         background: none;
       }
-      &:hover{
+      &:hover {
         .swiper-pagination-bullet-custom {
           color: #fff;
           background: #29bcff;
@@ -204,7 +203,7 @@
     font-size: 12px;
     color: #000;
     opacity: 1;
-    border: 1px dashed rgba(255,255,255,.3);
+    border: 1px dashed rgba(255, 255, 255, .3);
     background: rgba(5, 71, 97, 1);
     display: inline-block;
     border-radius: 50%;
