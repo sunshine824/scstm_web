@@ -12,7 +12,7 @@
 
     <div class="foot">
       <guide/>
-      <Footer :phones="homeData.data.end_phone" :ewm="homeData.data.wx" :related_url="homeData.data.related_url"/>
+      <Footer :phones="homeData.data.end_phone" :ewm="homeData.data.wx" :options="homeData.data.related_url"/>
     </div>
 
   </div>

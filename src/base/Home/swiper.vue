@@ -3,6 +3,7 @@
     <swiper :options="swiperOption">
 
       <swiper-slide
+        class="swiper-lazy"
         v-for="(item,index) in banners"
         :key="index"
         :style="{background: 'url('+item.banner+') no-repeat center center'}">
@@ -10,11 +11,14 @@
           让科学流行起来</h2>
         <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.4s">
           四川科技馆全新启幕</p>
+        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
       </swiper-slide>
 
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
-      <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>
+
+      <Icon type="ios-arrow-right" class="swiper-icon swiper-next" slot="button-next"></Icon>
+      <Icon type="ios-arrow-left" class="swiper-icon swiper-prev" slot="button-prev"></Icon>
+      <div class="mask"  slot="button-prev"></div>
     </swiper>
   </div>
 </template>
@@ -22,6 +26,7 @@
   import 'swiper/dist/css/swiper.css'
   import '@/public/css/animate.min.css'
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
+  import {Icon} from 'iview'
 
   export default {
     props: {
@@ -31,7 +36,8 @@
     },
     components: {
       swiper,
-      swiperSlide
+      swiperSlide,
+      Icon
     },
     data() {
       const _this = this
@@ -39,10 +45,11 @@
         swiperOption: {
           spaceBetween: 5,
           speed: 1500,
-          autoplay: {
+          lazy: true,
+          /*autoplay: {
             delay: 2500,
             disableOnInteraction: false
-          },
+          },*/
           loop: true,
           pagination: {
             el: '.swiper-pagination',
@@ -55,8 +62,8 @@
             }
           },
           navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
+            nextEl: '.swiper-next',
+            prevEl: '.swiper-prev'
           },
           on: {
             init: function () {
@@ -80,6 +87,36 @@
   .swiper-con {
     width: 100%;
     height: 850px;
+    position: relative;
+    .swiper-icon {
+      position: absolute;
+      bottom: 41px;
+      display: block;
+      color: #fff;
+      z-index: 100;
+      cursor: pointer;
+      font-size: 50px;
+    }
+    .swiper-next {
+      right: 15px;
+    }
+    .swiper-prev {
+      left: 15px;
+    }
+    .mask{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 230px;
+      background: #000;
+      z-index: 10;
+      background: -moz-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
+      background: -webkit-gradient(linear,left top,left bottom,color-stop(0,rgba(27,32,41,0)),color-stop(55%,rgba(27,32,41,.85)),color-stop(100%,rgba(27,32,41,.85)));
+      background: -webkit-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
+      background: -o-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
+      background: -ms-linear-gradient(top,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
+      background: linear-gradient(to bottom,rgba(27,32,41,0) 0,rgba(27,32,41,.85) 55%,rgba(27,32,41,.85) 100%);
+    }
   }
 
   .swiper-container {
@@ -106,11 +143,12 @@
 
   .swiper-pagination {
     bottom: 30px !important;
+    z-index: 100;
     &:after {
       content: '';
       position: absolute;
-      border: 1px dotted rgba(255, 255, 255, .7);
-      bottom: 29px;
+      border: 1px dashed rgba(255,255,255,.3);
+      bottom: 35px;
       width: 100%;
       left: 0;
       z-index: -1;
@@ -121,7 +159,10 @@
       .txt {
         color: #fff;
         margin-top: 5px;
-        transition: all .2s linear;
+        //transition: all .2s linear;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       &.swiper-pagination-bullet-active {
         background: none;
@@ -129,8 +170,8 @@
           color: #fff;
           background: #29bcff;
           border: 1px solid #fff;
-          width: 15px;
-          height: 15px;
+          width: 20px;
+          height: 20px;
         }
         .txt {
           color: #29bcff;
@@ -140,21 +181,33 @@
         opacity: 1;
         background: none;
       }
+      &:hover{
+        .swiper-pagination-bullet-custom {
+          color: #fff;
+          background: #29bcff;
+          border: 1px solid #fff;
+          width: 20px;
+          height: 20px;
+        }
+        .txt {
+          color: #29bcff;
+        }
+      }
     }
   }
 
   .swiper-pagination-bullet-custom {
-    width: 12px;
-    height: 12px;
+    width: 19px;
+    height: 19px;
     text-align: center;
     line-height: 20px;
     font-size: 12px;
     color: #000;
     opacity: 1;
-    border: 1px solid rgba(255, 255, 255, .4);
+    border: 1px dashed rgba(255,255,255,.3);
     background: rgba(5, 71, 97, 1);
     display: inline-block;
     border-radius: 50%;
-    transition: all .5s linear;
+    //transition: all .2s linear;
   }
 </style>
