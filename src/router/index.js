@@ -6,9 +6,15 @@ Vue.use(Router)
 const Home = r => require.ensure([], () => r(require('@/components/Home')), 'Home');
 const SignIn = r => require.ensure([], () => r(require('@/components/SignIn')), 'SignIn');
 const SignUp = r => require.ensure([], () => r(require('@/components/SignUp')), 'SignUp');
+
 const Exhibit = r => require.ensure([], () => r(require('@/components/Exhibit')), 'Exhibit');
 const Survey = r => require.ensure([], () => r(require('@/components/exhibit/survey')), 'Survey');
 const Guide = r => require.ensure([], () => r(require('@/components/exhibit/guide')), 'Guide');
+const Round = r => require.ensure([], () => r(require('@/components/exhibit/round')), 'Round');
+const Theater = r => require.ensure([], () => r(require('@/components/exhibit/theater')), 'Theater');
+const TheaterDetail = r => require.ensure([], () => r(require('@/components/exhibit/theater_detail')), 'TheaterDetail');
+const Succinct = r => require.ensure([], () => r(require('@/components/exhibit/succinct')), 'Succinct');
+
 const Patch_exhibt = r => require.ensure([], () => r(require('@/components/Patch_exhibt')), 'Patch_exhibt');
 const Edu_activity = r => require.ensure([], () => r(require('@/components/Edu_activity')), 'Edu_activity');
 const Mkx_school = r => require.ensure([], () => r(require('@/components/Mkx_school')), 'Mkx_school');
@@ -50,7 +56,26 @@ export default new Router({
           path: 'guide',
           component: Guide,
           meta: [],
-        }
+        },
+        {
+          path: 'round',
+          component: Round,
+          meta: [],
+        },
+        {
+          path: 'theater',
+          component: Theater,
+          meta: [],
+        },
+        {
+          path: 'theater/:id',
+          component: TheaterDetail
+        },
+        {
+          path: 'succinct',
+          component: Succinct,
+          meta: [],
+        },
       ]
     },
     {

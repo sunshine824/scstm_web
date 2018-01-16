@@ -16,5 +16,7 @@
   }
 </script>
 <style lang="less" scoped>
-
+  .exhibit{
+    position: relative;
+  }
 </style>

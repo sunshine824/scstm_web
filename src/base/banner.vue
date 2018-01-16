@@ -76,7 +76,7 @@
     width: 100%;
     height: 560px;
     position: relative;
-    background: #000;
+    overflow: hidden;
     .banner-img {
       background-size: cover !important;
       width: 100%;
@@ -84,6 +84,7 @@
     }
     .filter {
       -webkit-filter: blur(10px);
+      transform: scale(1.2);
     }
     .navs {
       width: 100%;
