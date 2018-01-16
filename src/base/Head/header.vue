@@ -47,6 +47,9 @@
           vertical-align: middle;
           a {
             color: #666;
+            &:hover{
+              color: #279ee4;
+            }
           }
         }
       }

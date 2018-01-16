@@ -9,7 +9,8 @@
       <ul class="fr">
         <li v-for="(item,index) in navs" :key="index">
           <router-link :to="item.href">
-            <img :src="item.icon"/>
+            <!--<img :src="item.icon"/>-->
+            <span class="icon-img" :class="item.className" :style="{background: 'url('+item.icon+') no-repeat center'}"></span>
             <p>{{item.title}}</p>
           </router-link>
         </li>
@@ -31,37 +32,44 @@
           {
             icon: '../static/images/test/scstm_06.png',
             href: '/',
-            title: '首页'
+            title: '首页',
+            className:'home'
           },
           {
             icon: '../static/images/test/scstm_09.png',
-            href: '/',
-            title: '常设展览'
+            href: '/exhibit',
+            title: '常设展览',
+            className:'exhibit'
           },
           {
             icon: '../static/images/test/scstm_11.png',
-            href: '/',
-            title: '临展信息'
+            href: '/patch_exhibt',
+            title: '临展信息',
+            className:'patch'
           },
           {
             icon: '../static/images/test/scstm_13.png',
-            href: '/',
-            title: '教育活动'
+            href: '/edu_activity',
+            title: '教育活动',
+            className:'edu'
           },
           {
             icon: '../static/images/test/scstm_15.png',
-            href: '/',
-            title: '美科星未来学院'
+            href: '/mkx_school',
+            title: '美科星未来学院',
+            className:'mkx'
           },
           {
             icon: '../static/images/test/scstm_11.png',
-            href: '/',
-            title: '参观服务'
+            href: '/visit_serve',
+            title: '参观服务',
+            className:'visit'
           },
           {
             icon: '../static/images/test/scstm_06.png',
-            href: '/index',
-            title: '科学朋友圈'
+            href: '/friends',
+            title: '科学朋友圈',
+            className:'friends'
           },
         ]
       }
@@ -98,11 +106,20 @@
             img {
               margin-bottom: 8px;
             }
+            .icon-img{
+              width: 32px;
+              background-size: 32px 100%;
+              display: inline-block;
+              height: 32px;
+            }
           }
           &:hover {
             background: url("../../../static/images/test/scstm_03.png") no-repeat;
             a {
               color: #fff;
+              .home{
+                background: url("../../../static/images/test/guide.png") !important;
+              }
             }
           }
         }

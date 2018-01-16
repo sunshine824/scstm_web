@@ -1,5 +1,7 @@
 <template>
   <div id="app" v-cloak>
+    <router-view name="sign"></router-view>
+
     <div class="head">
       <Header/>
       <ind-nav :logo="logo"/>

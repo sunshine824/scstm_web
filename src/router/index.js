@@ -3,42 +3,80 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+const Home = r => require.ensure([], () => r(require('@/components/Home')), 'Home');
+const SignIn = r => require.ensure([], () => r(require('@/components/SignIn')), 'SignIn');
+const SignUp = r => require.ensure([], () => r(require('@/components/SignUp')), 'SignUp');
+const Exhibit = r => require.ensure([], () => r(require('@/components/Exhibit')), 'Exhibit');
+const Survey = r => require.ensure([], () => r(require('@/components/exhibit/survey')), 'Survey');
+const Guide = r => require.ensure([], () => r(require('@/components/exhibit/guide')), 'Guide');
+const Patch_exhibt = r => require.ensure([], () => r(require('@/components/Patch_exhibt')), 'Patch_exhibt');
+const Edu_activity = r => require.ensure([], () => r(require('@/components/Edu_activity')), 'Edu_activity');
+const Mkx_school = r => require.ensure([], () => r(require('@/components/Mkx_school')), 'Mkx_school');
+const Visit_serve = r => require.ensure([], () => r(require('@/components/Visit_serve')), 'Visit_serve');
+const Friends = r => require.ensure([], () => r(require('@/components/Friends')), 'Friends');
+
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: resolve => require(['@/components/Home'], resolve)
+      component: Home
+    },
+    {
+      path: '/signIn',
+      name: 'signIn',
+      components: {
+        'sign': SignIn
+      }
+    },
+    {
+      path: '/signUp',
+      name: 'signUp',
+      components: {
+        'sign': SignUp
+      }
     },
     {
       path: '/exhibit',
-      name: 'exhibit',
-      component: resolve => require(['@/components/Exhibit'], resolve)
+      name: '',
+      component: Exhibit,
+      children: [
+        {
+          path: 'survey',
+          component: Survey,
+          meta: [],
+        },
+        {
+          path: 'guide',
+          component: Guide,
+          meta: [],
+        }
+      ]
     },
     {
       path: '/patch_exhibt',
       name: 'patch',
-      component: resolve => require(['@/components/Patch_exhibt'], resolve)
+      component: Patch_exhibt
     },
     {
       path: '/edu_activity',
       name: 'Edu',
-      component: resolve => require(['@/components/Edu_activity'], resolve)
+      component: Edu_activity
     },
     {
       path: '/mkx_school',
       name: 'mkx',
-      component: resolve => require(['@/components/Mkx_school'], resolve)
+      component: Mkx_school
     },
     {
       path: '/visit_serve',
       name: 'visit',
-      component: resolve => require(['@/components/Visit_serve'], resolve)
+      component: Visit_serve
     },
     {
       path: '/friends',
       name: 'friends',
-      component: resolve => require(['@/components/Friends'], resolve)
+      component: Friends
     }
   ]
 })
