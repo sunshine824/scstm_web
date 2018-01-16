@@ -15,7 +15,9 @@
         </ul>
       </div>
     </div>
-    <div class="banner-img" :style="{background: 'url('+banner+') no-repeat center'}"></div>
+    <div class="banner-img"
+         :style="{background: 'url('+banner+') no-repeat center'}"
+         :class="{filter:mold==='movie_detail'}"></div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -24,6 +26,10 @@
       banner: {
         type: String,
         default: '../static/images/test/movie_banner.jpg'
+      },
+      mold: {
+        type: String,
+        default: 'movie_detail'
       }
     },
     data() {
@@ -72,10 +78,12 @@
     position: relative;
     background: #000;
     .banner-img {
-      -webkit-filter: blur(10px);
       background-size: cover !important;
       width: 100%;
       height: 560px;
+    }
+    .filter {
+      -webkit-filter: blur(10px);
     }
     .navs {
       width: 100%;
