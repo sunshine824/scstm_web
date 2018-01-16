@@ -4,13 +4,13 @@
       <swiper-slide v-for="slide in swiperSlides" :key="slide">
         <img src="../assets/clips_03.png"/>
       </swiper-slide>
-      <p class="next" slot="button-next">
-        <Icon type="ios-arrow-right" class="swiper-icon"></Icon>
-      </p>
-      <p class="prev" slot="button-prev">
-        <Icon type="ios-arrow-left" class="swiper-icon"></Icon>
-      </p>
     </swiper>
+    <p class="next" slot="button-next">
+      <Icon type="ios-arrow-right" class="swiper-icon"></Icon>
+    </p>
+    <p class="prev" slot="button-prev">
+      <Icon type="ios-arrow-left" class="swiper-icon"></Icon>
+    </p>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -29,7 +29,7 @@
         swiperOption: {
           slidesPerView: 3,
           centeredSlides: false,
-          spaceBetween: 12,
+          spaceBetween: 13,
           navigation: {
             nextEl: '.next',
             prevEl: '.prev'
@@ -43,8 +43,9 @@
 <style lang="less" scoped>
   .clips{
     width: 100%;
+    position: relative;
     .swiper-slide{
-      width: 288px !important;
+      width: 290px !important;
       height: 192px;
       text-align: center;
       line-height: 190px;
@@ -61,7 +62,7 @@
       position: absolute;
       top:50%;
       margin-top: -35px;
-      right: 0;
+      right: -50px;
       text-align: center;
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
@@ -75,7 +76,7 @@
       position: absolute;
       top:50%;
       margin-top: -35px;
-      left: 0;
+      left: -50px;
       text-align: center;
       cursor: pointer;
       border-top-left-radius: 4px;
