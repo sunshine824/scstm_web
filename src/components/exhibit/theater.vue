@@ -7,19 +7,19 @@
         <movie-item></movie-item>
         <movie-item></movie-item>
       </div>
-      <Page :total="100" @on-change="handleChange"></Page>
+      <Pagination :total="total" @handleChange="handlePage"></Pagination>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import MovieItem from '@/base/exhibit/movie_item'
-  import {Page} from 'iview'
+  import Pagination from '@/base/pagination'
   import NavBar from '@/base/navBar'
 
   export default {
     components:{
       MovieItem,
-      Page,
+      Pagination,
       NavBar
     },
     data() {
@@ -28,11 +28,12 @@
           {title:'正在上映',id:1},
           {title:'即将上映',id:2},
           {title:'往期回归',id:3},
-        ]
+        ],
+        total: 100
       }
     },
     methods:{
-      handleChange(page){
+      handlePage(page) {
         console.log(page)
       }
     }
@@ -44,21 +45,6 @@
     .list-con {
       width: 1200px;
       margin: 0 auto;
-      .ivu-page{
-        margin-top: 40px;
-        text-align: center;
-        margin-bottom: 80px;
-        .ivu-page-item-active{
-          background-color: #28bbff;
-          border-color: #28bbff;
-        }
-        .ivu-page-item:hover{
-          border-color: #28bbff;
-        }
-        .ivu-page-next:hover, .ivu-page-prev:hover{
-          border-color: #28bbff;
-        }
-      }
     }
   }
 </style>

@@ -21,6 +21,9 @@ const Flow_science = r => require.ensure([], () => r(require('@/components/patch
 
 
 const Edu_activity = r => require.ensure([], () => r(require('@/components/Edu_activity')), 'Edu_activity');
+const All_course = r => require.ensure([], () => r(require('@/components/edu_activity/all_course')), 'All_course');
+
+
 const Mkx_school = r => require.ensure([], () => r(require('@/components/Mkx_school')), 'Mkx_school');
 const Visit_serve = r => require.ensure([], () => r(require('@/components/Visit_serve')), 'Visit_serve');
 const Friends = r => require.ensure([], () => r(require('@/components/Friends')), 'Friends');
@@ -101,8 +104,15 @@ export default new Router({
     },
     {
       path: '/edu_activity',
-      name: 'Edu',
-      component: Edu_activity
+      name: '',
+      component: Edu_activity,
+      children: [
+        {
+          path: 'all_course',
+          component: All_course,
+          meta: []
+        }
+      ]
     },
     {
       path: '/mkx_school',
