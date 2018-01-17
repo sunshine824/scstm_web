@@ -44,10 +44,8 @@
         mold: ''
       }
     },
-    watch: {
-      "$route"(to, from) {
-        console.log(to)
-      }
+    mounted(){
+      console.log(this.$route)
     }
   }
 </script>

@@ -7,10 +7,16 @@
         </router-link>
       </div>
       <ul class="fr">
-        <li v-for="(item,index) in navs" :key="index">
+        <li v-for="(item,index) in navs"
+            :key="index"
+            :class="title===item.title ? 'active' : ''"
+            @click="toggle">
           <router-link :to="item.href">
             <!--<img :src="item.icon"/>-->
-            <span class="icon-img" :class="item.className" :style="{background: 'url('+item.icon+') no-repeat center'}"></span>
+            <span class="icon-img"
+                  :class="item.className"
+                  :style="{background: 'url('+item.icon+') no-repeat center'}">
+            </span>
             <p>{{item.title}}</p>
           </router-link>
         </li>
@@ -33,45 +39,54 @@
             icon: '../static/images/test/scstm_06.png',
             href: '/',
             title: '首页',
-            className:'home'
+            className: 'home'
           },
           {
             icon: '../static/images/test/scstm_09.png',
             href: '/exhibit/survey',
             title: '常设展览',
-            className:'exhibit'
+            className: 'exhibit'
           },
           {
             icon: '../static/images/test/scstm_11.png',
             href: '/patch/patch_info',
             title: '临展信息',
-            className:'patch'
+            className: 'patch'
           },
           {
             icon: '../static/images/test/scstm_13.png',
             href: '/edu_activity/all_course',
             title: '教育活动',
-            className:'edu'
+            className: 'edu'
           },
           {
             icon: '../static/images/test/scstm_15.png',
             href: '/mkx_school',
             title: '美科星未来学院',
-            className:'mkx'
+            className: 'mkx'
           },
           {
             icon: '../static/images/test/scstm_11.png',
             href: '/visit_serve',
             title: '参观服务',
-            className:'visit'
+            className: 'visit'
           },
           {
             icon: '../static/images/test/scstm_06.png',
             href: '/friends',
             title: '科学朋友圈',
-            className:'friends'
+            className: 'friends'
           },
-        ]
+        ],
+        title: '首页'
+      }
+    },
+    created(){
+      console.log(this.$route)
+    },
+    methods: {
+      toggle(index) {
+        this.current = this.$route.name
       }
     }
   }
@@ -106,7 +121,7 @@
             img {
               margin-bottom: 8px;
             }
-            .icon-img{
+            .icon-img {
               width: 32px;
               background-size: 32px 100%;
               display: inline-block;
@@ -117,7 +132,16 @@
             background: url("../../../static/images/test/scstm_03.png") no-repeat;
             a {
               color: #fff;
-              .home{
+              .home {
+                background: url("../../../static/images/test/guide.png") !important;
+              }
+            }
+          }
+          &.active {
+            background: url("../../../static/images/test/scstm_03.png") no-repeat;
+            a {
+              color: #fff;
+              .home {
                 background: url("../../../static/images/test/guide.png") !important;
               }
             }

@@ -72,6 +72,11 @@
             console.log(err)
           }, this)
       }
+    },
+    watch: {
+      "$route"(to, from) {
+        //console.log(to)
+      }
     }
   }
 </script>
