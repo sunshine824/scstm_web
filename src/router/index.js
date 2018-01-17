@@ -16,6 +16,10 @@ const TheaterDetail = r => require.ensure([], () => r(require('@/components/exhi
 const Succinct = r => require.ensure([], () => r(require('@/components/exhibit/succinct')), 'Succinct');
 
 const Patch_exhibt = r => require.ensure([], () => r(require('@/components/Patch_exhibt')), 'Patch_exhibt');
+const Patch_info = r => require.ensure([], () => r(require('@/components/patch_exhibit/patch_info')), 'Patch_info');
+const Flow_science = r => require.ensure([], () => r(require('@/components/patch_exhibit/flow_science')), 'Flow_science');
+
+
 const Edu_activity = r => require.ensure([], () => r(require('@/components/Edu_activity')), 'Edu_activity');
 const Mkx_school = r => require.ensure([], () => r(require('@/components/Mkx_school')), 'Mkx_school');
 const Visit_serve = r => require.ensure([], () => r(require('@/components/Visit_serve')), 'Visit_serve');
@@ -79,9 +83,21 @@ export default new Router({
       ]
     },
     {
-      path: '/patch_exhibt',
-      name: 'patch',
-      component: Patch_exhibt
+      path: '/patch',
+      name: '',
+      component: Patch_exhibt,
+      children: [
+        {
+          path: 'patch_info',
+          component: Patch_info,
+          meta: [],
+        },
+        {
+          path: 'flow_science',
+          component: Flow_science,
+          meta: []
+        }
+      ]
     },
     {
       path: '/edu_activity',

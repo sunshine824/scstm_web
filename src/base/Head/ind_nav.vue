@@ -43,7 +43,7 @@
           },
           {
             icon: '../static/images/test/scstm_11.png',
-            href: '/patch_exhibt',
+            href: '/patch',
             title: '临展信息',
             className:'patch'
           },

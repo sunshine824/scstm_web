@@ -1,6 +1,6 @@
 <template>
   <div class="exhibit">
-    <banner :mold="mold"/>
+    <banner :mold="mold" :navs="navs" :title="title"/>
     <router-view></router-view>
   </div>
 </template>
@@ -13,6 +13,34 @@
     },
     data() {
       return {
+        title:'常设展览',
+        navs: [
+          {
+            href: '/exhibit/survey',
+            title: '展馆概况',
+            id: 1
+          },
+          {
+            href: '/exhibit/guide',
+            title: '楼层导览',
+            id: 2
+          },
+          {
+            href: '/exhibit/round',
+            title: '全景环游',
+            id: 3
+          },
+          {
+            href: '/exhibit/theater',
+            title: '影院剧场',
+            id: 4
+          },
+          {
+            href: '/exhibit/succinct',
+            title: '藏品精粹',
+            id: 5
+          }
+        ],
         mold: ''
       }
     },
