@@ -37,19 +37,19 @@
           },
           {
             icon: '../static/images/test/scstm_09.png',
-            href: '/exhibit',
+            href: '/exhibit/survey',
             title: '常设展览',
             className:'exhibit'
           },
           {
             icon: '../static/images/test/scstm_11.png',
-            href: '/patch',
+            href: '/patch/patch_info',
             title: '临展信息',
             className:'patch'
           },
           {
             icon: '../static/images/test/scstm_13.png',
-            href: '/edu_activity',
+            href: '/edu_activity/all_course',
             title: '教育活动',
             className:'edu'
           },
