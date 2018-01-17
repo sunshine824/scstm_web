@@ -4,7 +4,7 @@
       <img src="../../assets/patch_03.png"/>
     </router-link>
     <div class="m-txt">
-      <h2 class="m-title"><router-link to="/exhibit/theater/1">特种保镖 <span class="mold">4D</span></router-link></h2>
+      <h2 class="m-title"><router-link to="/exhibit/theater/1">特种保镖</router-link></h2>
       <p class="m-time">
         <Icon type="ios-calendar-outline" class="time"></Icon>
         2017年12月22日 - 2018年1月22日

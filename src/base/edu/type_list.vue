@@ -2,8 +2,12 @@
   <div class="item-list clearfix">
     <p>{{title}}：</p>
     <ul class="list clearfix">
-      <li>全部</li>
-      <li v-for="(item,index) in type_list" :key="index">
+      <li :class="{active:current===''}"
+          @click="toggle('','')">全部
+      </li>
+      <li v-for="(item,index) in type_list"
+          :key="index"
+          :class="{active:index===current}" @click="toggle(index,item.id)">
         {{item.classname}}
       </li>
     </ul>
@@ -23,6 +27,13 @@
     },
     data() {
       return {
+        current: ''
+      }
+    },
+    methods: {
+      toggle(index, id) {
+        this.current = index
+        this.$emit('toggle', id)
       }
     }
   }
@@ -70,7 +81,7 @@
         }
       }
     }
-    &:last-child{
+    &:last-child {
       border-bottom: none;
     }
   }
