@@ -4,7 +4,7 @@
 
     <div class="head">
       <Header/>
-      <ind-nav :logo="logo"/>
+      <ind-nav :logo="logo" :pathname="pathname"/>
     </div>
 
     <router-view/>
@@ -37,7 +37,8 @@
     data() {
       return {
         logo: '',
-        foot: ''
+        foot: '',
+        pathname:''
       }
     },
     created() {
@@ -75,7 +76,7 @@
     },
     watch: {
       "$route"(to, from) {
-        //console.log(to)
+        this.pathname=to.meta[0]
       }
     }
   }

@@ -9,8 +9,7 @@
       <ul class="fr">
         <li v-for="(item,index) in navs"
             :key="index"
-            :class="title===item.title ? 'active' : ''"
-            @click="toggle">
+            :class="pathname===item.title ? 'active' : ''">
           <router-link :to="item.href">
             <!--<img :src="item.icon"/>-->
             <span class="icon-img"
@@ -30,6 +29,10 @@
       logo: {
         type: String,
         default: ''
+      },
+      pathname:{
+        type:String,
+        default:''
       }
     },
     data() {
@@ -81,13 +84,10 @@
         title: '首页'
       }
     },
-    created(){
-      console.log(this.$route)
-    },
     methods: {
-      toggle(index) {
+      /*toggle(index) {
         this.current = this.$route.name
-      }
+      }*/
     }
   }
 </script>

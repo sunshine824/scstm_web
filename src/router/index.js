@@ -76,30 +76,31 @@ export default new Router({
           path: 'guide',
           name:'楼层导览',
           component: Guide,
-          meta: [],
+          meta: ['常设展览','楼层导览'],
         },
         {
           path: 'round',
           name:'全景环游',
           component: Round,
-          meta: [],
+          meta: ['常设展览','全景环游'],
         },
         {
           path: 'theater',
           name:'影院剧场',
           component: Theater,
-          meta: [],
+          meta: ['常设展览','影院剧场'],
         },
         {
           path: 'theater/:id',
           name:'影院剧场',
-          component: TheaterDetail
+          component: TheaterDetail,
+          meta: ['常设展览','影院剧场'],
         },
         {
           path: 'succinct',
           name:'藏品精粹',
           component: Succinct,
-          meta: [],
+          meta: ['常设展览','藏品精粹'],
         },
       ]
     },

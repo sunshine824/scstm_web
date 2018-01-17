@@ -5,10 +5,9 @@
         <p class="title">{{title}}</p>
         <ul class="guides">
           <li v-for="(item,index) in navs"
-              :key="index"
-              @click="toggle(index)">
+              :key="index">
             <router-link :to="item.href"
-                         :class="{active:index === num}">
+                         :class="pathname===item.title ? 'active' : ''">
               {{item.title}}
             </router-link>
           </li>
@@ -42,12 +41,21 @@
     },
     data() {
       return {
-        num: 0
+        num: 0,
+        pathname:''
       }
     },
+    mounted(){
+      this.pathname=this.$route.meta[1]
+    },
     methods: {
-      toggle(index) {
+      /*toggle(index) {
         this.num = index
+      }*/
+    },
+    watch: {
+      "$route"(to, from) {
+        this.pathname=to.meta[1]
       }
     }
   }
