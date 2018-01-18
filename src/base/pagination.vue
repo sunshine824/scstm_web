@@ -1,5 +1,5 @@
 <template>
-  <Page :total="total" @on-change="handleChange"></Page>
+  <Page :total="total" @on-change="handleChange" :current="page"></Page>
 </template>
 <script type="text/ecmascript-6">
   import {Page} from 'iview'
@@ -9,6 +9,10 @@
       total: {
         type: Number,
         default: ''
+      },
+      page: {
+        type:Number,
+        default: 1
       }
     },
     components: {

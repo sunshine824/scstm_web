@@ -2,17 +2,22 @@
   <div class="activity">
     <div class="act-con">
       <div class="type_list">
-        <type-list :type_list="crowds" title="面向人群" @toggle="handleCrowds"></type-list>
-        <type-list :type_list="activities" title="活动类型" @toggle="handleAct"></type-list>
-        <type-list :type_list="floor" title="楼层筛选" @toggle="handleFloor"></type-list>
-        <type-list :type_list="act_status" title="活动状态" @toggle="handleStatus"></type-list>
+        <type-list :type_list="crowds" title="面向人群" :isCheckBox="true" @toggle="handleCrowds"></type-list>
+        <type-list :type_list="activities" title="活动类型" :isCheckBox="true" @toggle="handleAct"></type-list>
+        <type-list :type_list="floor" title="楼层筛选" :isCheckBox="true" @toggle="handleFloor"></type-list>
+        <type-list :type_list="act_status" title="活动状态" :isCheckBox="false" @toggle="handleStatus"></type-list>
       </div>
       <div class="list">
-        <patch-item></patch-item>
-        <patch-item></patch-item>
-        <patch-item></patch-item>
+        <patch-item v-for="(item,index) in courseList.data"
+                    :key="index"
+                    :data="item">
+        </patch-item>
       </div>
-      <Pagination :total="total" @handleChange="handlePage"></Pagination>
+      <Pagination v-if="courseList.total"
+                  :total="courseList.total*10"
+                  :page="page"
+                  @handleChange="handlePage">
+      </Pagination>
     </div>
   </div>
 </template>
@@ -20,6 +25,7 @@
   import TypeList from '@/base/edu/type_list'
   import PatchItem from '@/base/patch/patch_item'
   import Pagination from '@/base/pagination'
+  import {getAjax} from '@/public/js/config'
 
   export default {
     components: {
@@ -29,50 +35,8 @@
     },
     data() {
       return {
-        crowds: [
-          {
-            classname: '幼儿园',
-            id: 1
-          },
-          {
-            classname: '1-3年级小学生',
-            id: 2
-          },
-          {
-            classname: '初中生',
-            id: 3
-          },
-          {
-            classname: '高中生',
-            id: 4
-          },
-          {
-            classname: '亲子',
-            id: 5
-          },
-          {
-            classname: '成人',
-            id: 6
-          }
-        ],
-        activities: [
-          {
-            classname: '讲解导游',
-            id: 1
-          },
-          {
-            classname: '探索者联盟',
-            id: 2
-          },
-          {
-            classname: '小小博物馆',
-            id: 3
-          },
-          {
-            classname: '触碰大自然',
-            id: 4
-          }
-        ],
+        crowds: [],
+        activities: [],
         act_status: [
           {
             classname: '无需预约',
@@ -89,20 +53,71 @@
           {classname: '3F', id: 3},
           {classname: '4F', id: 4},
         ],
-        crowdId: '',  //面向人群id
-        actId: '',    //活动类型id
-        floorId: '',  //楼层筛选id
+        crowdId: [],  //面向人群id
+        actId: [],    //活动类型id
+        floorId: [],  //楼层筛选id
         statusId: '',  //活动状态id
-        total: 100
+        total: 100,
+        page: 1,
+        courseList: ''
       }
     },
+    created() {
+      this.getCrowdList()
+      this.getActList()
+      this.getCourseList()
+    },
     methods: {
+      /**
+       * 获取面向人群列表
+       */
+      getCrowdList() {
+        const url = 'api/listscourseclasp'
+        getAjax(url, {},
+          res => {
+            this.crowds = res.data
+          }, err => {
+            console.log(err)
+          }, this)
+      },
+      /**
+       * 获取活动类型列表
+       */
+      getActList() {
+        const url = 'api/listscourseclash'
+        getAjax(url, {},
+          res => {
+            this.activities = res.data
+          }, err => {
+            console.log(err)
+          }, this)
+      },
+      /**
+       * 获取全部课程列表
+       */
+      getCourseList() {
+        const url = 'api/educationlists'
+        getAjax(url, {
+            page: this.page,
+            clas_p: this.crowdId,
+            clas_h: this.actId,
+            floor: this.floorId
+          },
+          res => {
+            console.log(res)
+            this.courseList = res.data
+          }, err => {
+            console.log(err)
+          }, this)
+      },
+
       /**
        * 获取子组件页码
        * @param page
        */
       handlePage(page) {
-        console.log(page)
+        this.page = page
+        this.getCourseList()
       },
 
       /**
@@ -112,6 +127,8 @@
       handleCrowds(id) {
         console.log('面向人群id: ' + id)
         this.crowdId = id
+        this.page = 1
+        this.getCourseList()
       },
       /**
        * 获取子组件活动id
@@ -120,6 +137,8 @@
       handleAct(id) {
         console.log('活动类型id: ' + id)
         this.actId = id
+        this.page = 1
+        this.getCourseList()
       },
       /**
        * 获取子组件楼层id
@@ -128,6 +147,8 @@
       handleFloor(id) {
         console.log('楼层筛选id: ' + id)
         this.floorId = id
+        this.page = 1
+        this.getCourseList()
       },
       /**
        * 获取子组件状态id
@@ -136,6 +157,12 @@
       handleStatus(id) {
         console.log('活动状态id: ' + id)
         this.statusId = id
+        this.page = 1
+        if (id[0] === 2) { //需预约清空数据（暂无预约功能）
+          this.courseList = []
+        } else {
+          this.getCourseList()
+        }
       }
     }
   }

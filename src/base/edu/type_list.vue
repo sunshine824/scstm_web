@@ -1,13 +1,13 @@
 <template>
   <div class="item-list clearfix">
     <p>{{title}}：</p>
-    <ul class="list clearfix">
-      <li :class="{active:current===''}"
-          @click="toggle('','')">全部
+    <ul class="lists clearfix">
+      <li :class="{active:!current.length}"
+          @click="toggle('')">全部
       </li>
       <li v-for="(item,index) in type_list"
           :key="index"
-          :class="{active:index===current}" @click="toggle(index,item.id)">
+          :class="{active:current.includes(item.id)}" @click="toggle(item.id)">
         {{item.classname}}
       </li>
     </ul>
@@ -23,17 +23,37 @@
       type_list: {
         type: Array,
         default: ''
+      },
+      isCheckBox: {
+        type: Boolean,
+        default: true
       }
     },
     data() {
       return {
-        current: ''
+        current: []
       }
     },
     methods: {
-      toggle(index, id) {
-        this.current = index
-        this.$emit('toggle', id)
+      toggle(id) {
+        if (this.isCheckBox) {  //多选
+          const index = this.current.indexOf(id)
+          if (id === '') {
+            this.current = []
+          } else if (index !== -1) {
+            this.current.splice(index, 1)
+          } else {
+            this.current.push(id)
+          }
+          if (this.current.length === this.type_list.length) {
+            this.current = []
+          }
+        } else {  //单选
+          this.current = []
+          this.current.push(id)
+          if (id === '') this.current = []
+        }
+        this.$emit('toggle', this.current)
       }
     }
   }
@@ -41,17 +61,17 @@
 <style lang="less" scoped>
   .item-list {
     padding-top: 8px;
-    padding-bottom: 8px;
+    padding-bottom: 3px;
     border-bottom: 1px dashed #e4e4e4;
     p {
       color: #a3a3a3;
       font-size: 14px;
-      display: inline-block;
-      vertical-align: middle;
+      float: left;
+      margin-top: 6px;
     }
-    .list {
-      display: inline-block;
-      vertical-align: middle;
+    .lists {
+      float: left;
+      width: 1100px;
       li {
         color: #6c6c6c;
         font-size: 14px;
@@ -63,12 +83,9 @@
         border-radius: 2px;
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 5px;
         &:hover {
-          background-image: -webkit-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: -moz-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: -o-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: -ms-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: linear-gradient(135deg, #00d0fb, #00acf6);
+          background: #d4d4d4;
           color: #fff;
         }
         &.active {

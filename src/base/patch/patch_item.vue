@@ -18,11 +18,11 @@
       <p class="intr">
         {{data.introduce}}
       </p>
-      <!--<div class="keywords">
-        <span>高中生</span>
-        <span>探索者联盟</span>
-        <span>需预约</span>
-      </div>-->
+      <div class="keywords" v-if="data.courseclass">
+        <span v-for="(item,index) in data.courseclass" :key="index">
+          {{item}}
+        </span>
+      </div>
       <!--<p class="btn-book">立即预定</p>-->
     </div>
   </div>

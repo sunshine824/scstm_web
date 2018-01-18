@@ -11,8 +11,9 @@
                     :data="item">
         </patch-item>
       </div>
-      <Pagination v-if="patchData"
+      <Pagination v-if="patchData.total"
                   :total="patchData.total*10"
+                  :page="page"
                   @handleChange="handlePage">
       </Pagination>
     </div>
@@ -52,6 +53,7 @@
       },
       handleTypeClick(typeId) {
         this.type = typeId
+        this.page = 1
         this.getPatchList()
       },
       /**
@@ -64,7 +66,6 @@
             type: this.type
           },
           (res) => {
-            console.log(res)
             this.patchData = res.data
           }, (err) => {
             console.log(err)
