@@ -40,7 +40,7 @@
       cursor: pointer;
       &.active {
         color: #1bb6ef;
-        font-size: 22px;
+        font-size: 30px;
       }
     }
   }

@@ -61,7 +61,7 @@
       width: 700px;
       text-align: justify;
       .m-title {
-        font-size: 30px;
+        font-size: 28px;
         color: #333;
         margin-bottom: 15px;
         a {
@@ -121,7 +121,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
       }
       .btn-book {

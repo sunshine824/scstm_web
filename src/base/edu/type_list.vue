@@ -38,9 +38,9 @@
       toggle(id) {
         if (this.isCheckBox) {  //多选
           const index = this.current.indexOf(id)
-          if (id === '') {
+          if (id === '') {  //点击全部清空
             this.current = []
-          } else if (index !== -1) {
+          } else if (index !== -1) {  //去重
             this.current.splice(index, 1)
           } else {
             this.current.push(id)

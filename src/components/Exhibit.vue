@@ -1,11 +1,16 @@
 <template>
   <div class="exhibit">
-    <banner :mold="mold" :navs="navs" :title="title"/>
+    <banner
+      :mold="mold"
+      :navs="navs"
+      :banner="banner"
+      :title="title"/>
     <router-view></router-view>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import Banner from '@/base/banner'
+  import {getAjax} from '@/public/js/config'
 
   export default {
     components: {
@@ -41,7 +46,26 @@
             id: 5
           }
         ],
-        mold: ''
+        mold: '',
+        banner: ''
+      }
+    },
+    created() {
+      this.getBanner()
+    },
+    methods: {
+      /**
+       * 获取临展信息banner
+       * @param id  分类id
+       */
+      getBanner(id = 1) {
+        const url = 'api/tembanner'
+        getAjax(url, {type: id},
+          (res) => {
+            this.banner = res.data.banner
+          }, (err) => {
+            console.log(err)
+          }, this)
       }
     }
   }

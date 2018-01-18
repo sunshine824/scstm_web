@@ -17,7 +17,9 @@
     </div>
     <div class="banner-img"
          :style="{background: 'url('+banner+') no-repeat center'}"
-         :class="{filter:mold==='movie_detail'}"></div>
+         :class="{filter:mold==='movie_detail'}">
+    </div>
+    <loading v-if="isLoading"></loading>
   </div>
 </template>
 <script type="text/ecmascript-6">
