@@ -7,7 +7,8 @@
           <li v-for="(item,index) in navs"
               :key="index">
             <router-link :to="item.href"
-                         :class="pathname===item.title ? 'active' : ''">
+                         :class="pathname===item.title ? 'active' : ''"
+                         @click.native="handleClick(item.id)">
               {{item.title}}
             </router-link>
           </li>
@@ -28,7 +29,7 @@
       },
       banner: {
         type: String,
-        default: '../static/images/test/movie_banner.jpg'
+        default: ''
       },
       mold: {
         type: String,
@@ -42,20 +43,20 @@
     data() {
       return {
         num: 0,
-        pathname:''
+        pathname: ''
       }
     },
-    mounted(){
-      this.pathname=this.$route.meta[1]
+    mounted() {
+      this.pathname = this.$route.meta[1]
     },
     methods: {
-      /*toggle(index) {
-        this.num = index
-      }*/
+      handleClick(id) {
+        this.$emit('handleClick', id)
+      }
     },
     watch: {
       "$route"(to, from) {
-        this.pathname=to.meta[1]
+        this.pathname = to.meta[1]
       }
     }
   }

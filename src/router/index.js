@@ -50,6 +50,7 @@ export default new Router({
     {
       path: '/signIn',
       name: '登录',
+      meta: ['登录'],
       components: {
         'sign': SignIn
       }
@@ -57,6 +58,7 @@ export default new Router({
     {
       path: '/signUp',
       name: '注册',
+      meta: ['注册'],
       components: {
         'sign': SignUp
       }
@@ -106,47 +108,50 @@ export default new Router({
     },
     {
       path: '/patch',
-      name: '',
+      name: '临展信息',
       component: Patch_exhibt,
       children: [
         {
           path: 'patch_info',
           component: Patch_info,
-          meta: [],
+          meta: ['临展信息','临时展览'],
         },
         {
           path: 'flow_science',
           component: Flow_science,
-          meta: []
+          meta: ['临展信息','流动科技馆']
         }
       ]
     },
     {
       path: '/edu_activity',
-      name: '',
+      name: '教育活动',
       component: Edu_activity,
       children: [
         {
           path: 'all_course',
           component: All_course,
-          meta: []
+          meta: ['教育活动','全部课程']
         }
       ]
     },
     {
       path: '/mkx_school',
-      name: 'mkx',
-      component: Mkx_school
+      name: '美科星未来学院',
+      component: Mkx_school,
+      meta:['美科星未来学院']
     },
     {
       path: '/visit_serve',
-      name: 'visit',
-      component: Visit_serve
+      name: '参观服务',
+      component: Visit_serve,
+      meta:['参观服务']
     },
     {
       path: '/friends',
-      name: 'friends',
-      component: Friends
+      name: '科学朋友圈',
+      component: Friends,
+      meta: ['科学朋友圈'],
     }
   ]
 })

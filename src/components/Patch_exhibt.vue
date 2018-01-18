@@ -1,23 +1,31 @@
 <template>
   <div class="patch">
-    <banner :mold="mold" :navs="navs" :title="title"/>
+    <banner
+      :mold="mold"
+      :navs="navs"
+      :title="title"
+      :banner="banner"
+      @handleClick="getBanner"/>
+
     <router-view></router-view>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import Banner from '@/base/banner'
+  import {getBannerMixin} from '@/public/js/mixin'
 
   export default {
-    components:{
+    mixins: [getBannerMixin],
+    components: {
       Banner,
     },
     data() {
       return {
-        title:'临展信息',
-        navs:[
+        title: '临展信息',
+        navs: [
           {
             href: '/patch/patch_info',
-            title: '临展信息',
+            title: '临时展览',
             id: 1
           },
           {
@@ -26,8 +34,11 @@
             id: 2
           },
         ],
-        mold:''
+        mold: ''
       }
+    },
+    methods: {
+
     }
   }
 </script>

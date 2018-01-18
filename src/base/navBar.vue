@@ -2,7 +2,7 @@
   <ul class="m-type clearfix">
     <li v-for="(item,index) in navBar"
         :key="index"
-        @click="toggle(index)"
+        @click="handleClick(index,item.id)"
         :class="{active:index===current}">
       {{item.title}}
     </li>
@@ -22,8 +22,9 @@
       }
     },
     methods: {
-      toggle(index) {
+      handleClick(index, id) {
         this.current = index
+        this.$emit('handleClick', id)
       }
     }
   }

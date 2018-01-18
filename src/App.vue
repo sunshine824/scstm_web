@@ -1,20 +1,23 @@
 <template>
   <div id="app" v-cloak>
+
     <router-view name="sign"></router-view>
 
-    <div class="head">
-      <Header/>
-      <ind-nav :logo="logo" :pathname="pathname"/>
-    </div>
+    <div class="containers" v-if="pathname!=='登录' && pathname!=='注册'">
+      <div class="head">
+        <Header/>
+        <ind-nav :logo="logo" :pathname="pathname"/>
+      </div>
 
-    <router-view/>
+      <router-view/>
 
-    <div class="foot" v-if="foot.data">
-      <guide/>
-      <Footer :phones="foot.data.end_phone"
-              :ewm="foot.data.wx"
-              :options="foot.data.related_url"
-              :number="foot.data.number"/>
+      <div class="foot" v-if="foot.data">
+        <guide/>
+        <Footer :phones="foot.data.end_phone"
+                :ewm="foot.data.wx"
+                :options="foot.data.related_url"
+                :number="foot.data.number"/>
+      </div>
     </div>
   </div>
 </template>
@@ -38,7 +41,7 @@
       return {
         logo: '',
         foot: '',
-        pathname:''
+        pathname: ''
       }
     },
     created() {
@@ -76,7 +79,7 @@
     },
     watch: {
       "$route"(to, from) {
-        this.pathname=to.meta[0]
+        this.pathname = to.meta[0]
       }
     }
   }

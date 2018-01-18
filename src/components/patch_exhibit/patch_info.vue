@@ -1,13 +1,20 @@
 <template>
   <div class="patch-list">
     <div class="info-con">
-      <nav-bar :navBar="navBar"></nav-bar>
+      <nav-bar :navBar="navBar"
+               @handleClick="handleTypeClick">
+      </nav-bar>
       <div class="list">
-        <patch-item></patch-item>
-        <patch-item></patch-item>
-        <patch-item></patch-item>
+        <patch-item v-if="patchData"
+                    v-for="(item,index) in patchData.data"
+                    :key="index"
+                    :data="item">
+        </patch-item>
       </div>
-      <Pagination :total="total" @handleChange="handlePage"></Pagination>
+      <Pagination v-if="patchData"
+                  :total="patchData.total*10"
+                  @handleChange="handlePage">
+      </Pagination>
     </div>
   </div>
 </template>
@@ -15,6 +22,7 @@
   import NavBar from '@/base/navBar'
   import PatchItem from '@/base/patch/patch_item'
   import Pagination from '@/base/pagination'
+  import {getAjax} from '@/public/js/config'
 
   export default {
     components: {
@@ -29,12 +37,38 @@
           {title: '即将展览', id: 2},
           {title: '展览回归', id: 3},
         ],
-        total: 100
+        patchData: '',
+        page: 1,  //页码
+        type: 1   //查询条件
       }
+    },
+    created() {
+      this.getPatchList()
     },
     methods: {
       handlePage(page) {
-        console.log(page)
+        this.page = page
+        this.getPatchList()
+      },
+      handleTypeClick(typeId) {
+        this.type = typeId
+        this.getPatchList()
+      },
+      /**
+       * 获取临展信息列表
+       */
+      getPatchList() {
+        const url = 'api/showlists'
+        getAjax(url, {
+            page: this.page,
+            type: this.type
+          },
+          (res) => {
+            console.log(res)
+            this.patchData = res.data
+          }, (err) => {
+            console.log(err)
+          }, this)
       }
     }
   }
