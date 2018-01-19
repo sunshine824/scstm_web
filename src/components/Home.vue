@@ -1,7 +1,7 @@
 <template>
   <div class="content" v-if="homeData.data">
     <swiper :banners="homeData.data.banner"></swiper>
-    <div class="wrap">
+    <div class="wrap clearfix">
       <div class="wrap-left">
         <div class="l-top">
           <img src="../assets/home_03.png"/>
@@ -72,23 +72,77 @@
       <div class="wrap-right">
         <div class="r-top">
           <ul class="clearfix">
-            <li class="l1">
-              <router-link to="/">
+            <li v-for="(item,index) in gudies" :key="index" :style="{background:'url('+item.bg+')'}">
+              <router-link :to="item.href">
                 <div class="bg">
-                  <img src="http://img.dpm.org.cn/Uploads/Picture/2016/11/23/s5835a34f91d4b.png"/>
+                  <img :src="item.rotateBg"/>
                 </div>
                 <div class="ico">
-                  <img src="http://img.dpm.org.cn/Uploads/Picture/2017/01/10/s587455ac6f6fd.png"/>
+                  <img :src="item.icon"/>
                 </div>
                 <div class="cont">
-                  <h3>在线预约</h3>
-                  <p>贴心的票务服务，让您省时省力更省心</p>
+                  <h3>{{item.title}}</h3>
+                  <p>{{item.intr}}</p>
                 </div>
               </router-link>
             </li>
           </ul>
         </div>
-        <div class="r-bottom"></div>
+        <div class="r-bottom">
+          <p class="t-title">开闭馆时间</p>
+          <div class="time-group">
+            <p class="time-item">
+              <span class="time">08:30</span>
+              <span class="txt">开始售票</span>
+            </p>
+            <p class="and">~</p>
+            <p class="time-item">
+              <span class="time">18:00</span>
+              <span class="txt">闭馆时间</span>
+            </p>
+          </div>
+          <div class="notice">
+            <div class="title clearfix">
+              <h2>公告</h2>
+              <router-link to='/'>
+                <span>
+                  <Icon type="ios-arrow-right"></Icon>
+                </span>
+              </router-link>
+            </div>
+            <ul class="clearfix">
+              <li>
+                <router-link to="/">
+                  关于临时闭馆的公告
+                </router-link>
+                <span>2017.10.12</span>
+              </li>
+              <li>
+                <router-link to="/">
+                  关于临时闭馆的公告
+                </router-link>
+                <span>2017.10.12</span>
+              </li>
+              <li>
+                <router-link to="/">
+                  关于临时闭馆的公告
+                </router-link>
+                <span>2017.10.12</span>
+              </li><li>
+              <router-link to="/">
+                关于临时闭馆的公告
+              </router-link>
+              <span>2017.10.12</span>
+            </li>
+              <li>
+                <router-link to="/">
+                  关于临时闭馆的公告
+                </router-link>
+                <span>2017.10.12</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -107,7 +161,32 @@
     data() {
       return {
         homeData: [],
-        //banner: '../static/images/test/banner.png'
+        gudies: [
+          {
+            bg: 'http://img.dpm.org.cn/Public/static/themes/image/home_block1_box3_bg1.jpg',
+            rotateBg: 'http://img.dpm.org.cn/Uploads/Picture/2016/11/23/s5835a34f91d4b.png',
+            icon: 'http://img.dpm.org.cn/Uploads/Picture/2017/01/10/s587455ac6f6fd.png',
+            href: '/',
+            title: '在线预约',
+            intr: '贴心的票务服务，让您省时省力更省心'
+          },
+          {
+            bg: 'http://img.dpm.org.cn/Public/static/themes/image/home_block1_box3_bg2.jpg',
+            rotateBg: 'http://img.dpm.org.cn/Uploads/Picture/2016/11/23/s5835a37a3ba85.png',
+            icon: 'http://img.dpm.org.cn/Uploads/Picture/2017/01/10/s587455ac6f6fd.png',
+            href: '/',
+            title: '参观服务',
+            intr: '从科技馆开始，感受宇宙魅力'
+          },
+          {
+            bg: 'http://img.dpm.org.cn/Public/static/themes/image/home_block1_box3_bg3.jpg',
+            rotateBg: 'http://img.dpm.org.cn/Uploads/Picture/2016/11/23/s5835a3934e72b.png',
+            icon: 'http://img.dpm.org.cn/Uploads/Picture/2017/01/10/s587455ac6f6fd.png',
+            href: '/',
+            title: '在线预约',
+            intr: '随时随地，为您提供身临其境的游览体验'
+          },
+        ]
       }
     },
     created() {
@@ -136,13 +215,32 @@
   .content {
     width: 100%;
     .wrap {
-      width: 1200px;
+      width: 1300px;
       margin: 40px auto 0 auto;
-      padding-bottom: 100px;
-      height: 794px;
+      padding-bottom: 50px;
+      .title {
+        color: #fff;
+        padding-top: 30px;
+        a {
+          float: right;
+          color: #fff;
+          width: 26px;
+          height: 26px;
+          border-radius: 4px;
+          border: 1px solid #fff;
+          font-size: 18px;
+          line-height: 26px;
+          text-align: center;
+          margin-top: 6px;
+        }
+        h2 {
+          float: left;
+          font-size: 24px;
+        }
+      }
       .wrap-left {
         float: left;
-        width: 700px;
+        width: 755px;
         .l-top {
           width: 100%;
           position: relative;
@@ -180,69 +278,50 @@
             }
           }
           .news {
-            padding: 30px 15px 20px 15px;
+            padding: 0 20px 20px 20px;
             overflow: hidden;
             color: #fff;
-            .title {
-              color: #fff;
-              a {
-                float: right;
-                color: #fff;
-                width: 26px;
-                height: 26px;
-                border-radius: 4px;
-                border: 1px solid #fff;
-                font-size: 18px;
-                line-height: 26px;
-                text-align: center;
-                margin-top: 6px;
-              }
-              h2 {
-                float: left;
-                font-size: 24px;
-              }
-            }
             .news-list {
               padding-top: 10px;
               ul {
                 li {
                   padding: 10px 0 15px 0;
-                  border-bottom:1px dashed rgba(255,255,255,.8);
+                  border-bottom: 1px dashed rgba(255, 255, 255, .8);
                   color: #fff;
                   .date {
                     display: inline-block;
                     vertical-align: middle;
                     width: 60px;
-                    text-align: center;
+                    text-align: left;
                     margin-right: 8px;
                     .day {
                       font-size: 32px;
                       display: block;
                     }
-                    .month{
+                    .month {
                       font-size: 12px;
                       display: block;
                     }
                   }
-                  .info{
+                  .info {
                     display: inline-block;
                     vertical-align: bottom;
                     color: #fff;
-                    width: 200px;
+                    width: 250px;
                     overflow: hidden;
-                    text-overflow:ellipsis;
+                    text-overflow: ellipsis;
                     white-space: nowrap;
-                    .info-title{
+                    .info-title {
                       font-size: 22px;
                       display: block;
                       margin-bottom: 5px;
                     }
-                    .intr{
+                    .intr {
                       font-size: 15px;
-                      color: rgba(255,255,255,.9);
+                      color: rgba(255, 255, 255, .9);
                     }
                   }
-                  &:last-child{
+                  &:last-child {
                     border-bottom: none;
                   }
                 }
@@ -253,95 +332,169 @@
       }
       .wrap-right {
         float: right;
-        width: 474px;
+        width: 520px;
         .r-top {
           width: 100%;
           height: 247px;
           margin-bottom: 26px;
-          ul{
-            li{
+          ul {
+            li {
               float: left;
               width: 173px;
               height: 247px;
               position: relative;
               overflow: hidden;
-              .bg{
+              .bg {
                 position: absolute;
                 left: 50%;
                 top: 50%;
                 margin-top: -126px;
                 width: 240px;
                 height: 252px;
-                img{
+                img {
                   animation: swinging 30s linear 0s infinite;
                 }
               }
-              .ico{
+              .ico {
                 width: 90px;
                 padding-top: 26px;
                 margin: auto;
                 position: relative;
-                img{
+                img {
                   text-align: center;
                   width: 100%;
                 }
               }
-              .cont{
+              .cont {
                 padding: 0 20px;
                 color: #fff;
                 position: relative;
                 z-index: 2;
                 text-align: center;
-                h3{
+                h3 {
                   font-size: 22px;
                   line-height: 1.2;
                   color: #fff;
                   margin-top: 20px;
                   margin-bottom: 18px;
                 }
-                p{
+                p {
                   line-height: 22px;
                   color: #fff;
                   font-size: 14px;
                 }
               }
             }
-            .l1{
-              background: url("http://img.dpm.org.cn/Public/static/themes/image/home_block1_box3_bg1.jpg");
-            }
           }
         }
         .r-bottom {
           width: 100%;
-          background: yellowgreen;
-          height: 481px;
+          height: 506px;
           margin-bottom: 26px;
+          padding: 30px 40px 20px 40px;
+          background: #51cbfc;
+          .t-title{
+            font-size: 24px;
+            color: #fff;
+          }
+          .time-group{
+            margin-top: 25px;
+            .time-item{
+              background: rgba(255,255,255,.3);
+              border:1px solid #fff;
+              padding: 9px 50px;
+              -webkit-border-radius: 4px;
+              -moz-border-radius: 4px;
+              border-radius: 4px;
+              color: #fff;
+              display: inline-block;
+              vertical-align: middle;
+              text-align: center;
+              .time{
+                font-size: 30px;
+                font-weight: bold;
+                display: block;
+              }
+              .txt{
+                font-size: 14px;
+              }
+            }
+            .and{
+              display: inline-block;
+              vertical-align: middle;
+              color: #fff;
+              font-size: 40px;
+              margin: 0 10px;
+            }
+          }
+          .notice{
+            ul{
+              margin-top: 5px;
+              li{
+                padding: 15px 0;
+                border-bottom: 1px dashed rgba(255,255,255,.8);
+                color: #fff;
+                span{
+                  float: right;
+                  font-size: 14px;
+                }
+                a{
+                  color: #fff;
+                  font-size: 14px;
+                  width: 330px;
+                  display: inline-block;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+                &:last-child{
+                  border-bottom: none;
+                }
+              }
+            }
+          }
         }
       }
     }
   }
+
   @-moz-keyframes swinging {
-    0% { transform: rotate(0); }
+    0% {
+      transform: rotate(0);
+    }
 
-
-    100% { transform: rotate(360deg); }
+    100% {
+      transform: rotate(360deg);
+    }
   }
+
   @-o-keyframes swinging {
-    0% { transform: rotate(0); }
+    0% {
+      transform: rotate(0);
+    }
 
-
-    100% { transform: rotate(360deg); }
+    100% {
+      transform: rotate(360deg);
+    }
   }
-  @-webkit-keyframes swinging{
-    0% { transform: rotate(0); }
 
+  @-webkit-keyframes swinging {
+    0% {
+      transform: rotate(0);
+    }
 
-    100% { transform: rotate(360deg); }
+    100% {
+      transform: rotate(360deg);
+    }
   }
-  @keyframes swinging{
-    0% { transform: rotate(0); }
 
+  @keyframes swinging {
+    0% {
+      transform: rotate(0);
+    }
 
-    100% { transform: rotate(360deg); }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>
