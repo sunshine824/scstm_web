@@ -1,42 +1,61 @@
 <template>
-  <div class="movie-detail">
+  <div class="movie-detail" v-if="theaterDetail.status===0">
     <div class="m-info clearfix">
-      <img src="../../assets/test.jpg"/>
+      <img :src="theaterDetail.data.img"/>
       <div class="m-txt">
-        <h2 class="m-title">特种保镖 <span class="mold">4D</span></h2>
+        <h2 class="m-title">{{theaterDetail.data.title}} <span class="mold">{{theaterDetail.data.type}}</span></h2>
         <p class="address">
           <Icon type="ios-location-outline" class="location"></Icon>
-          四川科技馆二楼展厅
+          {{theaterDetail.data.address}}
         </p>
         <p class="m-time">
           <Icon type="ios-timer-outline" class="time"></Icon>
-          120分钟
+          {{theaterDetail.data.length}}
         </p>
         <p class="intr">
-          身为特战队员的张天择在一次缉毒任务“驱魔行动”中误伤了自己的战友，陷入深深自责的张天择选择离开特战队。
-          机缘巧合成为了富豪千金小雅的贴身保镖，两人渐渐成为了忘年交。但好景不长，曾经的犯罪团伙余孽绑架了小雅，并要挟张天择二十四小时内必须将毒品红粉骷髅的配方磁盘找到并交出来。
-          张天择能不能找到红粉骷髅磁盘？能不能成功解决小雅？一场特战风暴即将拉开序幕
+          {{theaterDetail.data.introduce}}
         </p>
         <!--<p class="btn-book">立即预定</p>-->
       </div>
     </div>
     <div class="movie-clips clearfix">
       <p class="title">片花 / 剧照</p>
-      <clips-roll></clips-roll>
+      <clips-roll :data="theaterDetail.data.cinema_img"></clips-roll>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import {Icon} from 'iview'
+  import Banner from '@/base/banner'
   import ClipsRoll from '@/base/clips_roll.vue'
+  import {getAjax} from '@/public/js/config'
 
   export default {
     components: {
       Icon,
-      ClipsRoll
+      ClipsRoll,
+      Banner
     },
     data() {
-      return {}
+      return {
+        theaterDetail: ''
+      }
+    },
+    created() {
+      this.getDetailData()
+    },
+    methods: {
+      getDetailData() {
+        const url = 'api/cinemadeta'
+        getAjax(url, {
+          id: this.$route.query.id
+        }, (res) => {
+          console.log(res)
+          this.theaterDetail = res
+        }, (err) => {
+          console.log(err)
+        }, this)
+      }
     }
   }
 </script>
@@ -133,10 +152,10 @@
         }
       }
     }
-    .movie-clips{
+    .movie-clips {
       margin-top: 30px;
       margin-bottom: 50px;
-      .title{
+      .title {
         font-size: 25px;
         color: #333;
         margin-bottom: 20px;

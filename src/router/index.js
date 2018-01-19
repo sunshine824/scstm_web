@@ -93,8 +93,8 @@ export default new Router({
           meta: ['常设展览','影院剧场'],
         },
         {
-          path: 'theater/:id',
-          name:'影院剧场',
+          path: 'theater-detail',
+          name:'电影详情',
           component: TheaterDetail,
           meta: ['常设展览','影院剧场'],
         },

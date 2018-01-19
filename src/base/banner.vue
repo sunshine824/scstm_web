@@ -16,10 +16,9 @@
       </div>
     </div>
     <div class="banner-img"
-         :style="{background: 'url('+banner+') no-repeat center'}"
-         :class="{filter:mold==='movie_detail'}">
+         :style="{background: 'url('+($route.query.img ? $route.query.img : banner)+') no-repeat center'}"
+         :class="{filter:isDetail==='电影详情'}">
     </div>
-    <loading v-if="isLoading"></loading>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -45,10 +44,12 @@
     data() {
       return {
         num: 0,
-        pathname: ''
+        pathname: '',
+        isDetail: ''
       }
     },
     mounted() {
+      this.isDetail=this.$route.name
       this.pathname = this.$route.meta[1]
     },
     methods: {
@@ -58,6 +59,7 @@
     },
     watch: {
       "$route"(to, from) {
+        this.isDetail = to.name
         this.pathname = to.meta[1]
       }
     }

@@ -4,7 +4,7 @@
       <nav-bar :navBar="navBar"
                @handleClick="handleTypeClick">
       </nav-bar>
-      <div class="list">
+      <div class="lists">
         <patch-item v-if="patchData"
                     v-for="(item,index) in patchData.data"
                     :key="index"

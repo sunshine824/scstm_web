@@ -1,8 +1,8 @@
 <template>
   <div class="clips">
     <swiper :options="swiperOption">
-      <swiper-slide v-for="slide in swiperSlides" :key="slide">
-        <img src="../assets/clips_03.png"/>
+      <swiper-slide v-for="(item,index) in data" :key="index">
+        <img :src="item.img"/>
       </swiper-slide>
     </swiper>
     <p class="next" slot="button-next">
@@ -19,6 +19,12 @@
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
 
   export default {
+    props: {
+      data:{
+        type: Array,
+        default: ''
+      }
+    },
     components: {
       swiper,
       swiperSlide,
@@ -34,33 +40,33 @@
             nextEl: '.next',
             prevEl: '.prev'
           }
-        },
-        swiperSlides: [1, 2, 3, 4, 5]
+        }
       }
     }
   }
 </script>
 <style lang="less" scoped>
-  .clips{
+  .clips {
     width: 100%;
     position: relative;
-    .swiper-slide{
+    .swiper-slide {
       width: 290px !important;
       height: 192px;
       text-align: center;
       line-height: 190px;
-      img{
+      img {
+        width: 100%;
         -webkit-border-radius: 2px;
         -moz-border-radius: 2px;
         border-radius: 2px;
       }
     }
-    .next{
+    .next {
       width: 35px;
       height: 70px;
       background: #bfbfbf;
       position: absolute;
-      top:50%;
+      top: 50%;
       margin-top: -35px;
       right: -50px;
       text-align: center;
@@ -69,12 +75,12 @@
       cursor: pointer;
       z-index: 111;
     }
-    .prev{
+    .prev {
       width: 35px;
       height: 70px;
       background: #bfbfbf;
       position: absolute;
-      top:50%;
+      top: 50%;
       margin-top: -35px;
       left: -50px;
       text-align: center;

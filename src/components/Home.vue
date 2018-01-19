@@ -24,44 +24,14 @@
             </div>
             <div class="news-list">
               <ul>
-                <li>
+                <li v-for="(item,index) in homeData.data.education" :key="index">
                   <p class="date">
                     <span class="day">30</span>
                     <span class="month">2017.10</span>
                   </p>
                   <router-link to="/" class="info">
-                    <span class="info-title">神器的电路</span>
-                    <span class="intr">电路的集成需要导线和怨气组件</span>
-                  </router-link>
-                </li>
-                <li>
-                  <p class="date">
-                    <span class="day">30</span>
-                    <span class="month">2017.10</span>
-                  </p>
-                  <router-link to="/" class="info">
-                    <span class="info-title">神器的电路</span>
-                    <span class="intr">电路的集成需要导线和怨气组件</span>
-                  </router-link>
-                </li>
-                <li>
-                  <p class="date">
-                    <span class="day">30</span>
-                    <span class="month">2017.10</span>
-                  </p>
-                  <router-link to="/" class="info">
-                    <span class="info-title">神器的电路</span>
-                    <span class="intr">电路的集成需要导线和怨气组件</span>
-                  </router-link>
-                </li>
-                <li>
-                  <p class="date">
-                    <span class="day">30</span>
-                    <span class="month">2017.10</span>
-                  </p>
-                  <router-link to="/" class="info">
-                    <span class="info-title">神器的电路</span>
-                    <span class="intr">电路的集成需要导线和怨气组件</span>
+                    <span class="info-title">{{item.title}}</span>
+                    <span class="intr">{{item.introduce}}</span>
                   </router-link>
                 </li>
               </ul>
@@ -92,12 +62,12 @@
           <p class="t-title">开闭馆时间</p>
           <div class="time-group">
             <p class="time-item">
-              <span class="time">08:30</span>
+              <span class="time">{{homeData.data.time.time_sta}}</span>
               <span class="txt">开始售票</span>
             </p>
             <p class="and">~</p>
             <p class="time-item">
-              <span class="time">18:00</span>
+              <span class="time">{{homeData.data.time.time_end}}</span>
               <span class="txt">闭馆时间</span>
             </p>
           </div>
@@ -111,34 +81,11 @@
               </router-link>
             </div>
             <ul class="clearfix">
-              <li>
+              <li v-for="(item,index) in homeData.data.inform" :key="index">
                 <router-link to="/">
-                  关于临时闭馆的公告
+                  {{item.title}}
                 </router-link>
-                <span>2017.10.12</span>
-              </li>
-              <li>
-                <router-link to="/">
-                  关于临时闭馆的公告
-                </router-link>
-                <span>2017.10.12</span>
-              </li>
-              <li>
-                <router-link to="/">
-                  关于临时闭馆的公告
-                </router-link>
-                <span>2017.10.12</span>
-              </li><li>
-              <router-link to="/">
-                关于临时闭馆的公告
-              </router-link>
-              <span>2017.10.12</span>
-            </li>
-              <li>
-                <router-link to="/">
-                  关于临时闭馆的公告
-                </router-link>
-                <span>2017.10.12</span>
+                <span>{{item.addtime}}</span>
               </li>
             </ul>
           </div>
@@ -200,7 +147,6 @@
         const url = 'api/index'
         getAjax(url, {},
           (res) => {
-            //console.log(res)
             this.homeData = res
           }, (err) => {
             console.log(err)
@@ -393,15 +339,15 @@
           margin-bottom: 26px;
           padding: 30px 40px 20px 40px;
           background: #51cbfc;
-          .t-title{
+          .t-title {
             font-size: 24px;
             color: #fff;
           }
-          .time-group{
+          .time-group {
             margin-top: 25px;
-            .time-item{
-              background: rgba(255,255,255,.3);
-              border:1px solid #fff;
+            .time-item {
+              background: rgba(255, 255, 255, .3);
+              border: 1px solid #fff;
               padding: 9px 50px;
               -webkit-border-radius: 4px;
               -moz-border-radius: 4px;
@@ -410,16 +356,16 @@
               display: inline-block;
               vertical-align: middle;
               text-align: center;
-              .time{
+              .time {
                 font-size: 30px;
                 font-weight: bold;
                 display: block;
               }
-              .txt{
+              .txt {
                 font-size: 14px;
               }
             }
-            .and{
+            .and {
               display: inline-block;
               vertical-align: middle;
               color: #fff;
@@ -427,18 +373,18 @@
               margin: 0 10px;
             }
           }
-          .notice{
-            ul{
+          .notice {
+            ul {
               margin-top: 5px;
-              li{
+              li {
                 padding: 15px 0;
-                border-bottom: 1px dashed rgba(255,255,255,.8);
+                border-bottom: 1px dashed rgba(255, 255, 255, .8);
                 color: #fff;
-                span{
+                span {
                   float: right;
                   font-size: 14px;
                 }
-                a{
+                a {
                   color: #fff;
                   font-size: 14px;
                   width: 330px;
@@ -447,7 +393,7 @@
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-                &:last-child{
+                &:last-child {
                   border-bottom: none;
                 }
               }
