@@ -153,7 +153,7 @@
       }
     }
     .movie-clips {
-      margin-top: 30px;
+      margin-top: 80px;
       margin-bottom: 50px;
       .title {
         font-size: 25px;

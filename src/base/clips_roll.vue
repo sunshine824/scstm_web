@@ -2,7 +2,7 @@
   <div class="clips">
     <swiper :options="swiperOption">
       <swiper-slide v-for="(item,index) in data" :key="index">
-        <img :src="item.img"/>
+        <img :src="item.img" @click="chooseImg(item.img)"/>
       </swiper-slide>
     </swiper>
     <p class="next" slot="button-next">
@@ -11,6 +11,18 @@
     <p class="prev" slot="button-prev">
       <Icon type="ios-arrow-left" class="swiper-icon"></Icon>
     </p>
+    <div class="mask" @click="close" v-if="isChoose">
+      <div class="img-box">
+        <div class="box">
+          <div class="img-item" :class="{active:isChoose}">
+            <img :src="img"/>
+            <!--<span @click="close" class="close">-->
+               <!--<Icon type="ios-close"></Icon>-->
+            <!--</span>-->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -20,7 +32,7 @@
 
   export default {
     props: {
-      data:{
+      data: {
         type: Array,
         default: ''
       }
@@ -40,7 +52,18 @@
             nextEl: '.next',
             prevEl: '.prev'
           }
-        }
+        },
+        img: '',
+        isChoose: false
+      }
+    },
+    methods: {
+      chooseImg(img) {
+        this.isChoose = !this.isChoose
+        this.img = img
+      },
+      close(){
+        this.isChoose = !this.isChoose
       }
     }
   }
@@ -59,6 +82,7 @@
         -webkit-border-radius: 2px;
         -moz-border-radius: 2px;
         border-radius: 2px;
+        cursor: pointer;
       }
     }
     .next {
@@ -95,6 +119,49 @@
       font-size: 30px;
       text-align: center;
       line-height: 70px;
+    }
+    .mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .3);
+      z-index: 111;
+      .img-box {
+        width: 100%;
+        height: 100%;
+        display: table;
+        .box {
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          .img-item {
+            width: 0;
+            border: 6px solid #fff;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            margin: auto;
+            position: relative;
+            transition: all 1s ease 0s;
+            &.active{
+              width: 650px;
+            }
+            img {
+              width: 100%;
+            }
+            .close {
+              position: absolute;
+              font-size: 30px;
+              top: -20px;
+              right: -17px;
+              color: #666;
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
   }
 </style>

@@ -38,7 +38,7 @@
         navBar: [
           {title: '正在上映', id: 1},
           {title: '即将上映', id: 2},
-          {title: '往期回归', id: 3},
+          {title: '往期回顾', id: 3},
         ],
         theaterData: '',
         page: 1,  //页码
