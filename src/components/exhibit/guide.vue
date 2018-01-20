@@ -1,13 +1,180 @@
 <template>
-  <div>楼层导览</div>
+  <div class="guide-con">
+    <banner
+      :navs="navs"
+      :banner="banner"
+      :title="title"
+      @handleClick="getBanner"/>
+    <div class="floor" v-if="floorList">
+      <div class="floor-con">
+        <nav-bar :navBar="navBar"
+                 @handleClick="handleTypeClick">
+        </nav-bar>
+        <div class="guide-img">
+          <img :src="floorList.floor_img"/>
+        </div>
+        <ul class="guide-list clearfix">
+          <guide-item
+            v-for="(item,index) in floorList.data"
+            :key="index"
+            :data="item">
+          </guide-item>
+          <p v-if="!floorList.data">暂无数据</p>
+        </ul>
+        <Pagination
+          :total="floorList.total*10"
+          :page="page"
+          @handleChange="handlePage">
+        </Pagination>
+      </div>
+    </div>
+  </div>
 </template>
 <script type="text/ecmascript-6">
+  import Banner from '@/base/banner'
+  import {getBannerMixin} from '@/public/js/mixin'
+  import NavBar from '@/base/navBar'
+  import {getAjax} from '@/public/js/config'
+  import GuideItem from '@/base/exhibit/guide_item'
+  import Pagination from '@/base/pagination'
+
   export default {
+    mixins: [getBannerMixin],
+    components: {
+      Banner,
+      NavBar,
+      GuideItem,
+      Pagination
+    },
     data() {
-      return {}
+      return {
+        navs: [
+          {
+            href: '/exhibit/survey',
+            title: '展馆概况',
+            id: ''
+          },
+          {
+            href: '/exhibit/guide',
+            title: '楼层导览',
+            id: 1
+          },
+          {
+            href: '/exhibit/round',
+            title: '全景环游',
+            id: ''
+          },
+          {
+            href: '/exhibit/theater',
+            title: '影院剧场',
+            id: 2
+          },
+          {
+            href: '/exhibit/succinct',
+            title: '藏品精粹',
+            id: 3
+          }
+        ],
+        title: '常设展览',
+        navBar: [
+          {title: '1F', id: 1},
+          {title: '2F', id: 2},
+          {title: '3F', id: 3},
+          {title: '4F', id: 4},
+        ],
+        type: 1,
+        page: 1,
+        floorList: ''
+      }
+    },
+    created() {
+      this.getBanner()
+      this.getFloorName()
+      this.getFloorList()
+    },
+    methods: {
+      /**
+       * 获取楼层导览banner
+       * @param id  分类id
+       */
+      getBanner(id = 1) {
+        this.getBannerData({id: id, url: 'api/oftenbanner'})
+      },
+
+      /**
+       * 楼层id
+       * @param typeId
+       */
+      handleTypeClick(typeId) {
+        this.type = typeId
+        this.page = 1
+        this.getFloorList()
+      },
+
+      /**
+       * 获取页码
+       * @param page
+       */
+      handlePage(page) {
+        this.page = page
+        this.getFloorList()
+      },
+
+      /**
+       * 获取楼层列表
+       */
+      getFloorList() {
+        const url = 'api/floorlists'
+        getAjax(url, {
+          page: this.page,
+          floor_id: this.type
+        }, (res) => {
+          this.floorList = res.data
+        }, (err) => {
+          console.log(err)
+        }, this)
+      },
+
+      /**
+       * 获取楼层名称
+       */
+      getFloorName(){
+        const url = 'api/floors'
+        getAjax(url, {},
+          (res) => {
+          this.navBar = res.data
+        }, (err) => {
+          console.log(err)
+        }, this)
+      }
     }
   }
 </script>
 <style scoped lang="less">
-
+  .floor {
+    width: 100%;
+    padding-top: 50px;
+    background: #f6f6f6;
+    .floor-con {
+      width: 1200px;
+      margin: 0 auto;
+      .guide-img {
+        height: 450px;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      .guide-list {
+        width: 100%;
+        padding-bottom: 50px;
+      }
+    }
+  }
 </style>

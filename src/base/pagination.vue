@@ -30,9 +30,9 @@
 </script>
 <style lang="less">
   .ivu-page {
-    margin-top: 60px;
+    padding-top: 60px;
     text-align: center;
-    margin-bottom: 100px;
+    padding-bottom: 100px;
     .ivu-page-item-active {
       background-color: #28bbff;
       border-color: #28bbff;
