@@ -8,7 +8,7 @@
     <div class="type-con">
       <ul class="type_list clearfix">
         <li>
-          <img src="../../assets/guide_07.jpg"/>
+          <img src="../../assets/guide_07.png"/>
         </li>
       </ul>
     </div>
@@ -82,6 +82,12 @@
           margin-right: 30px;
           margin-bottom: 30px;
           float: left;
+          width: 400px;
+          height: 550px;
+          overflow: hidden;
+          img{
+            width: 100%;
+          }
         }
       }
     }
