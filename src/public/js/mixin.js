@@ -7,16 +7,16 @@ export const getBannerMixin = {
     }
   },
   created() {
-    this.getBanner()
+    //this.getBanner()
   },
   methods: {
     /**
      * 获取临展信息banner
-     * @param id  分类id
+     * @param obj  接收参数
      */
-    getBanner(id = 1) {
-      const url = 'api/tembanner'
-      getAjax(url, {type: id},
+    getBannerData(obj) {
+      const url = obj.url
+      getAjax(url, {type: obj.id},
         (res) => {
           this.banner = res.data.banner
         }, (err) => {

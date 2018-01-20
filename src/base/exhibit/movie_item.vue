@@ -1,11 +1,11 @@
 <template>
   <div class="m-info clearfix">
-    <router-link :to="{path:'/exhibit/theater-detail',query:{id:data.id,img:data.img}}">
+    <router-link :to="{path:'/exhibit/theater-detail',query:{id:data.id}}">
       <img :src="data.img"/>
     </router-link>
     <div class="m-txt">
       <h2 class="m-title">
-        <router-link :to="{path:'/exhibit/theater-detail',query:{id:data.id,img:data.img}}">
+        <router-link :to="{path:'/exhibit/theater-detail',query:{id:data.id}}">
           {{data.title}}
           <span class="mold">{{data.type}}</span>
         </router-link>

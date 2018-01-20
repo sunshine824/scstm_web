@@ -1,36 +1,45 @@
 <template>
-  <div class="movie-detail" v-if="theaterDetail.status===0">
-    <div class="m-info clearfix">
-      <img :src="theaterDetail.data.img"/>
-      <div class="m-txt">
-        <h2 class="m-title">{{theaterDetail.data.title}} <span class="mold">{{theaterDetail.data.type}}</span></h2>
-        <p class="address">
-          <Icon type="ios-location-outline" class="location"></Icon>
-          {{theaterDetail.data.address}}
-        </p>
-        <p class="m-time">
-          <Icon type="ios-timer-outline" class="time"></Icon>
-          {{theaterDetail.data.length}}
-        </p>
-        <p class="intr">
-          {{theaterDetail.data.introduce}}
-        </p>
-        <!--<p class="btn-book">立即预定</p>-->
+  <div class="th_detail-con">
+    <banner
+      v-if="theaterDetail.status===0"
+      :navs="navs"
+      :banner="theaterDetail.data.img"
+      :title="title"/>
+    <div class="movie-detail" v-if="theaterDetail.status===0">
+      <div class="m-info clearfix">
+        <img :src="theaterDetail.data.img"/>
+        <div class="m-txt">
+          <h2 class="m-title">{{theaterDetail.data.title}} <span class="mold">{{theaterDetail.data.type}}</span></h2>
+          <p class="address">
+            <Icon type="ios-location-outline" class="location"></Icon>
+            {{theaterDetail.data.address}}
+          </p>
+          <p class="m-time">
+            <Icon type="ios-timer-outline" class="time"></Icon>
+            {{theaterDetail.data.length}}
+          </p>
+          <p class="intr">
+            {{theaterDetail.data.introduce}}
+          </p>
+          <!--<p class="btn-book">立即预定</p>-->
+        </div>
       </div>
-    </div>
-    <div class="movie-clips clearfix">
-      <p class="title">片花 / 剧照</p>
-      <clips-roll :data="theaterDetail.data.cinema_img"></clips-roll>
+      <div class="movie-clips clearfix">
+        <p class="title">片花 / 剧照</p>
+        <clips-roll :data="theaterDetail.data.cinema_img"></clips-roll>
+      </div>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import {Icon} from 'iview'
   import Banner from '@/base/banner'
+  import {getBannerMixin} from '@/public/js/mixin'
   import ClipsRoll from '@/base/clips_roll.vue'
   import {getAjax} from '@/public/js/config'
 
   export default {
+    mixins: [getBannerMixin],
     components: {
       Icon,
       ClipsRoll,
@@ -38,7 +47,35 @@
     },
     data() {
       return {
-        theaterDetail: ''
+        theaterDetail: '',
+        navs: [
+          {
+            href: '/exhibit/survey',
+            title: '展馆概况',
+            id: ''
+          },
+          {
+            href: '/exhibit/guide',
+            title: '楼层导览',
+            id: 1
+          },
+          {
+            href: '/exhibit/round',
+            title: '全景环游',
+            id: ''
+          },
+          {
+            href: '/exhibit/theater',
+            title: '影院剧场',
+            id: 2
+          },
+          {
+            href: '/exhibit/succinct',
+            title: '藏品精粹',
+            id: 3
+          }
+        ],
+        title: '常设展览',
       }
     },
     created() {
