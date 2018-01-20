@@ -1,23 +1,32 @@
 <template>
-  <div class="activity">
-    <div class="act-con">
-      <div class="type_list">
-        <type-list :type_list="crowds" title="面向人群" :isCheckBox="true" @toggle="handleCrowds"></type-list>
-        <type-list :type_list="activities" title="活动类型" :isCheckBox="true" @toggle="handleAct"></type-list>
-        <type-list :type_list="floor" title="楼层筛选" :isCheckBox="true" @toggle="handleFloor"></type-list>
-        <type-list :type_list="act_status" title="活动状态" :isCheckBox="false" @toggle="handleStatus"></type-list>
+  <div class="course-con">
+    <banner
+      :navs="navs"
+      :banner="banner"
+      :title="title"
+      @handleClick="getBanner"/>
+    <div class="activity">
+      <div class="act-con">
+        <div class="type_list">
+          <type-list :type_list="crowds" title="面向人群" :isCheckBox="true" @toggle="handleCrowds"></type-list>
+          <type-list :type_list="activities" title="活动类型" :isCheckBox="true" @toggle="handleAct"></type-list>
+          <type-list :type_list="floor" title="楼层筛选" :isCheckBox="true" @toggle="handleFloor"></type-list>
+          <type-list :type_list="act_status" title="活动状态" :isCheckBox="false" @toggle="handleStatus"></type-list>
+        </div>
+        <div class="lists">
+          <patch-item v-if="courseList"
+                      v-for="(item,index) in courseList.data"
+                      :key="index"
+                      :data="item">
+          </patch-item>
+          <p v-if="courseList.length===0">暂无数据</p>
+        </div>
+        <Pagination v-if="courseList"
+                    :total="courseList.total*10"
+                    :page="page"
+                    @handleChange="handlePage">
+        </Pagination>
       </div>
-      <div class="list">
-        <patch-item v-for="(item,index) in courseList.data"
-                    :key="index"
-                    :data="item">
-        </patch-item>
-      </div>
-      <Pagination v-if="courseList.total"
-                  :total="courseList.total*10"
-                  :page="page"
-                  @handleChange="handlePage">
-      </Pagination>
     </div>
   </div>
 </template>
@@ -26,11 +35,15 @@
   import PatchItem from '@/base/patch/patch_item'
   import Pagination from '@/base/pagination'
   import {getAjax} from '@/public/js/config'
+  import Banner from '@/base/banner'
+  import {getBannerMixin} from '@/public/js/mixin'
 
   export default {
+    mixins: [getBannerMixin],
     components: {
       TypeList,
       PatchItem,
+      Banner,
       Pagination
     },
     data() {
@@ -59,10 +72,19 @@
         statusId: '',  //活动状态id
         total: 100,
         page: 1,
-        courseList: ''
+        courseList: '',
+        navs: [
+          {
+            href: '/edu_activity/all_course',
+            title: '全部课程',
+            id: 1
+          }
+        ],
+        title: '教育活动',
       }
     },
     created() {
+      this.getBanner()
       this.getCrowdList()
       this.getActList()
       this.getCourseList()
@@ -159,10 +181,17 @@
         this.statusId = id
         this.page = 1
         if (id[0] === 2) { //需预约清空数据（暂无预约功能）
-          this.courseList = []
+          this.courseList = ''
         } else {
           this.getCourseList()
         }
+      },
+      /**
+       * 获取全部课程banner
+       * @param id  分类id
+       */
+      getBanner(id = 1) {
+        this.getBannerData({id: id, url: 'api/educationbanner'})
       }
     }
   }

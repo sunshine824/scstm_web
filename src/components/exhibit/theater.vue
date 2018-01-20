@@ -1,7 +1,6 @@
 <template>
   <div class="theater-con">
     <banner
-      v-if="theaterData.status===0"
       :navs="navs"
       :banner="banner"
       :title="title"
@@ -12,16 +11,16 @@
                  @handleClick="handleTypeClick">
         </nav-bar>
         <div class="lists">
-          <movie-item v-if="theaterData.status===0"
-                      v-for="(item,index) in theaterData.data.data"
+          <movie-item v-if="theaterData"
+                      v-for="(item,index) in theaterData.data"
                       :key="index"
                       :data="item">
           </movie-item>
-          <p v-if="theaterData.status===2">暂无数据</p>
+          <p v-if="theaterData.length===0">暂无数据</p>
         </div>
         <Pagination
-          v-if="theaterData.status===0"
-          :total="theaterData.data.total*10"
+          v-if="theaterData"
+          :total="theaterData.total*10"
           :page="page"
           @handleChange="handlePage">
         </Pagination>
@@ -109,7 +108,7 @@
             type: this.type
           },
           (res) => {
-            this.theaterData = res
+            this.theaterData = res.data
           }, (err) => {
             console.log(err)
           }, this)

@@ -1,21 +1,29 @@
 <template>
-  <div class="patch-list">
-    <div class="info-con">
-      <nav-bar :navBar="navBar"
-               @handleClick="handleTypeClick">
-      </nav-bar>
-      <div class="lists">
-        <patch-item v-if="patchData"
-                    v-for="(item,index) in patchData.data"
-                    :key="index"
-                    :data="item">
-        </patch-item>
+  <div class="patch-con">
+    <banner
+      :navs="navs"
+      :banner="banner"
+      :title="title"
+      @handleClick="getBanner"/>
+    <div class="patch-list">
+      <div class="info-con">
+        <nav-bar :navBar="navBar"
+                 @handleClick="handleTypeClick">
+        </nav-bar>
+        <div class="lists">
+          <patch-item v-if="patchData"
+                      v-for="(item,index) in patchData.data"
+                      :key="index"
+                      :data="item">
+          </patch-item>
+          <p v-if="patchData.length===0">暂无数据</p>
+        </div>
+        <Pagination v-if="patchData"
+                    :total="patchData.total*10"
+                    :page="page"
+                    @handleChange="handlePage">
+        </Pagination>
       </div>
-      <Pagination v-if="patchData.total"
-                  :total="patchData.total*10"
-                  :page="page"
-                  @handleChange="handlePage">
-      </Pagination>
     </div>
   </div>
 </template>
@@ -24,26 +32,44 @@
   import PatchItem from '@/base/patch/patch_item'
   import Pagination from '@/base/pagination'
   import {getAjax} from '@/public/js/config'
+  import Banner from '@/base/banner'
+  import {getBannerMixin} from '@/public/js/mixin'
 
   export default {
+    mixins: [getBannerMixin],
     components: {
       NavBar,
       PatchItem,
-      Pagination
+      Pagination,
+      Banner
     },
     data() {
       return {
         navBar: [
           {title: '正在展览', id: 1},
           {title: '即将展览', id: 2},
-          {title: '展览回归', id: 3},
+          {title: '展览回顾', id: 3},
         ],
         patchData: '',
         page: 1,  //页码
-        type: 1   //查询条件
+        type: 1,   //查询条件
+        title: '临展信息',
+        navs: [
+          {
+            href: '/patch/patch_info',
+            title: '临时展览',
+            id: 1
+          },
+          {
+            href: '/patch/flow_science',
+            title: '流动科技馆',
+            id: 2
+          },
+        ],
       }
     },
     created() {
+      this.getBanner()
       this.getPatchList()
     },
     methods: {
@@ -70,6 +96,13 @@
           }, (err) => {
             console.log(err)
           }, this)
+      },
+      /**
+       * 获取临时展览banner
+       * @param id  分类id
+       */
+      getBanner(id = 1) {
+        this.getBannerData({id: id, url: 'api/tembanner'})
       }
     }
   }
