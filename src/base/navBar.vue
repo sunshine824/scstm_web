@@ -33,7 +33,7 @@
   .m-type {
     margin-bottom: 30px;
     height: 40px;
-    background: #f2f2f2;
+    background: #f7f7f7;
     line-height: 40px;
     border-radius: 6px;
     overflow: hidden;

@@ -1,11 +1,11 @@
 <template>
   <li>
     <div class="item-img">
-      <img :src="data.img"/>
+      <img v-lazy="data.img"/>
       <div class="mask">
         <div class="mask-con">
           <p class="mask-txt">
-            <router-link :to="{path:'/exhibit/succinc-detail',query:{id:data.id}}">查看详情</router-link>
+            <router-link :to="{path:'/exhibit/succinct-detail',query:{id:data.id}}">查看详情</router-link>
           </p>
         </div>
       </div>

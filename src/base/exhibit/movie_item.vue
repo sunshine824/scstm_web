@@ -1,7 +1,7 @@
 <template>
   <div class="m-info clearfix">
     <router-link :to="{path:'/exhibit/theater-detail',query:{id:data.id}}">
-      <img :src="data.img"/>
+      <img v-lazy="data.img"/>
     </router-link>
     <div class="m-txt">
       <h2 class="m-title">

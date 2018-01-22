@@ -1,10 +1,10 @@
 <template>
-  <div class="su_detail-con">
+  <div class="su_type-con">
     <banner
       :navs="navs"
       banner="http://www.kjgadmin.com:8080/Public/uploads/banner/5a63025d31854.jpg"
       :title="title"/>
-    <div class="su-detail">
+    <bg class="su-detail">
       <div class="detail-con">
         <p class="title">飞行类<span></span></p>
         <ul class="detail-list clearfix">
@@ -16,13 +16,13 @@
           <p v-if="!succinctDetail.data">暂无数据</p>
         </ul>
         <Pagination
-          v-if="succinctDetail"
+          v-if="succinctDetail.data"
           :total="succinctDetail.total*10"
           :page="page"
           @handleChange="handlePage">
         </Pagination>
       </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -31,13 +31,15 @@
   import {getAjax} from '@/public/js/config'
   import SuccinctItem from '@/base/exhibit/succinct_item'
   import Pagination from '@/base/pagination'
+  import Bg from '@/base/bg'
 
   export default {
     mixins: [getBannerMixin],
     components: {
       Banner,
       SuccinctItem,
-      Pagination
+      Pagination,
+      Bg
     },
     data() {
       return {

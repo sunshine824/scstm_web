@@ -5,7 +5,7 @@
       :banner="banner"
       :title="title"
       @handleClick="getBanner"/>
-    <div class="movie-list">
+    <bg class="movie-list">
       <div class="list-con">
         <nav-bar :navBar="navBar"
                  @handleClick="handleTypeClick">
@@ -25,7 +25,7 @@
           @handleChange="handlePage">
         </Pagination>
       </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -35,6 +35,7 @@
   import Pagination from '@/base/pagination'
   import NavBar from '@/base/navBar'
   import {getAjax} from '@/public/js/config'
+  import Bg from '@/base/bg'
 
   export default {
     mixins: [getBannerMixin],
@@ -42,7 +43,8 @@
       MovieItem,
       Pagination,
       NavBar,
-      Banner
+      Banner,
+      Bg
     },
     data() {
       return {
@@ -125,7 +127,7 @@
 </script>
 <style lang="less">
   .movie-list {
-    margin-top: 50px;
+    padding-top: 50px;
     .list-con {
       width: 1200px;
       margin: 0 auto;

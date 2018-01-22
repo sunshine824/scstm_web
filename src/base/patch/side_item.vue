@@ -1,5 +1,5 @@
 <template>
-  <div class="m-item clearfix">
+  <li class="exhibit-item">
     <router-link to="/exhibit/theater/1">
       <img v-lazy="data.img"/>
     </router-link>
@@ -18,16 +18,10 @@
       <p class="intr">
         {{data.introduce}}
       </p>
-      <div class="keywords" v-if="data.courseclass">
-        <span v-for="(item,index) in data.courseclass" :key="index">
-          {{item}}
-        </span>
-      </div>
-      <!--<p class="btn-book">立即预定</p>-->
     </div>
-  </div>
+  </li>
 </template>
-<script type="text/ecmascript-6">
+<script>
   import {Icon} from 'iview'
 
   export default {
@@ -38,30 +32,29 @@
       }
     },
     components: {
-      Icon,
+      Icon
     },
     data() {
       return {}
     }
   }
 </script>
-<style scoped lang="less">
-  .m-item {
-    margin-bottom: 25px;
-    background: #fff;
+<style lang="less">
+  li.exhibit-item {
+    margin-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #d4d4d4;
     img {
-      width: 450px;
-      height: 320px;
-      float: left;
+      width: 300px;
+      height: 200px;
+      border-radius: 4px;
     }
     .m-txt {
-      float: left;
-      margin-top: 40px;
-      margin-left: 40px;
-      width: 700px;
+      margin-top: 20px;
       text-align: justify;
+      width: 100%;
       .m-title {
-        font-size: 28px;
+        font-size: 24px;
         color: #333;
         margin-bottom: 15px;
         a {
@@ -121,7 +114,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
       .btn-book {
@@ -154,6 +147,9 @@
           border-radius: 4px;
         }
       }
+    }
+    &:last-child {
+      border-bottom: none;
     }
   }
 </style>

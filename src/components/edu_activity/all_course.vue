@@ -5,7 +5,7 @@
       :banner="banner"
       :title="title"
       @handleClick="getBanner"/>
-    <div class="activity">
+    <bg class="activity">
       <div class="act-con">
         <div class="type_list">
           <type-list :type_list="crowds" title="面向人群" :isCheckBox="true" @toggle="handleCrowds"></type-list>
@@ -27,7 +27,7 @@
                     @handleChange="handlePage">
         </Pagination>
       </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -37,6 +37,7 @@
   import {getAjax} from '@/public/js/config'
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
+  import Bg from '@/base/bg'
 
   export default {
     mixins: [getBannerMixin],
@@ -44,7 +45,8 @@
       TypeList,
       PatchItem,
       Banner,
-      Pagination
+      Pagination,
+      Bg
     },
     data() {
       return {
@@ -199,7 +201,7 @@
 <style lang="less">
   .activity {
     width: 100%;
-    margin-top: 50px;
+    padding-top: 50px;
     .act-con {
       width: 1200px;
       margin: 0 auto;

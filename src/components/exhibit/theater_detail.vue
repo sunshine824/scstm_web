@@ -5,30 +5,32 @@
       :navs="navs"
       :banner="theaterDetail.data.img"
       :title="title"/>
-    <div class="movie-detail" v-if="theaterDetail.status===0">
-      <div class="m-info clearfix">
-        <img :src="theaterDetail.data.img"/>
-        <div class="m-txt">
-          <h2 class="m-title">{{theaterDetail.data.title}} <span class="mold">{{theaterDetail.data.type}}</span></h2>
-          <p class="address">
-            <Icon type="ios-location-outline" class="location"></Icon>
-            {{theaterDetail.data.address}}
-          </p>
-          <p class="m-time">
-            <Icon type="ios-timer-outline" class="time"></Icon>
-            {{theaterDetail.data.length}}
-          </p>
-          <p class="intr">
-            {{theaterDetail.data.introduce}}
-          </p>
-          <!--<p class="btn-book">立即预定</p>-->
+    <bg>
+      <div class="movie-detail" v-if="theaterDetail.status===0">
+        <div class="m-info clearfix">
+          <img :src="theaterDetail.data.img"/>
+          <div class="m-txt">
+            <h2 class="m-title">{{theaterDetail.data.title}} <span class="mold">{{theaterDetail.data.type}}</span></h2>
+            <p class="address">
+              <Icon type="ios-location-outline" class="location"></Icon>
+              {{theaterDetail.data.address}}
+            </p>
+            <p class="m-time">
+              <Icon type="ios-timer-outline" class="time"></Icon>
+              {{theaterDetail.data.length}}
+            </p>
+            <p class="intr">
+              {{theaterDetail.data.introduce}}
+            </p>
+            <!--<p class="btn-book">立即预定</p>-->
+          </div>
+        </div>
+        <div class="movie-clips clearfix">
+          <p class="title">片花 / 剧照</p>
+          <clips-roll :data="theaterDetail.data.cinema_img"></clips-roll>
         </div>
       </div>
-      <div class="movie-clips clearfix">
-        <p class="title">片花 / 剧照</p>
-        <clips-roll :data="theaterDetail.data.cinema_img"></clips-roll>
-      </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -37,13 +39,15 @@
   import {getBannerMixin} from '@/public/js/mixin'
   import ClipsRoll from '@/base/clips_roll.vue'
   import {getAjax} from '@/public/js/config'
+  import Bg from '@/base/bg'
 
   export default {
     mixins: [getBannerMixin],
     components: {
       Icon,
       ClipsRoll,
-      Banner
+      Banner,
+      Bg
     },
     data() {
       return {
@@ -189,8 +193,8 @@
       }
     }
     .movie-clips {
-      margin-top: 80px;
-      margin-bottom: 50px;
+      padding-top: 80px;
+      padding-bottom: 50px;
       .title {
         font-size: 25px;
         color: #333;

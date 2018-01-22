@@ -10,7 +10,7 @@
         <li v-for="(item,index) in typeList"
             :key="index">
           <router-link :to="{path:'/exhibit/type-detail',query:{id:item.id}}">
-            <img :src="item.img"/>
+            <img v-lazy="item.img"/>
           </router-link>
         </li>
       </ul>
@@ -94,7 +94,8 @@
     .type-con {
       width: 100%;
       padding-top: 50px;
-      background: #f6f6f6;
+      background: #f6f6f6 url("../../assets/bg.png") no-repeat;
+      background-size: 100%;
       .type_list {
         width: 1200px;
         margin: 0 auto;

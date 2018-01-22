@@ -5,7 +5,7 @@
       :banner="banner"
       :title="title"
       @handleClick="getBanner"/>
-    <div class="patch-list">
+    <bg class="patch-list">
       <div class="info-con">
         <nav-bar :navBar="navBar"
                  @handleClick="handleTypeClick">
@@ -24,7 +24,7 @@
                     @handleChange="handlePage">
         </Pagination>
       </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -34,6 +34,7 @@
   import {getAjax} from '@/public/js/config'
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
+  import Bg from '@/base/bg'
 
   export default {
     mixins: [getBannerMixin],
@@ -41,7 +42,8 @@
       NavBar,
       PatchItem,
       Pagination,
-      Banner
+      Banner,
+      Bg
     },
     data() {
       return {
@@ -109,7 +111,7 @@
 </script>
 <style scoped lang="less">
   .patch-list {
-    margin-top: 50px;
+    padding-top: 50px;
     .info-con {
       width: 1200px;
       margin: 0 auto;

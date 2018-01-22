@@ -5,8 +5,8 @@
       :banner="banner"
       :title="title"
       @handleClick="getBanner"/>
-    <div class="floor" v-if="floorList">
-      <div class="floor-con">
+    <bg class="floor">
+      <div class="floor-con" v-if="floorList">
         <nav-bar :navBar="navBar"
                  @handleClick="handleTypeClick">
         </nav-bar>
@@ -27,7 +27,7 @@
           @handleChange="handlePage">
         </Pagination>
       </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -37,6 +37,7 @@
   import {getAjax} from '@/public/js/config'
   import GuideItem from '@/base/exhibit/guide_item'
   import Pagination from '@/base/pagination'
+  import Bg from '@/base/bg'
 
   export default {
     mixins: [getBannerMixin],
@@ -44,7 +45,8 @@
       Banner,
       NavBar,
       GuideItem,
-      Pagination
+      Pagination,
+      Bg
     },
     data() {
       return {
@@ -152,17 +154,15 @@
 </script>
 <style scoped lang="less">
   .floor {
-    width: 100%;
     padding-top: 50px;
-    background: #f6f6f6;
     .floor-con {
       width: 1200px;
       margin: 0 auto;
       .guide-img {
         height: 450px;
         width: 100%;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 40px;
+        margin-bottom: 40px;
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         border-radius: 4px;

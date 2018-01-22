@@ -1,97 +1,99 @@
 <template>
   <div class="content" v-if="homeData.data">
     <swiper :banners="homeData.data.banner"></swiper>
-    <div class="wrap clearfix">
-      <div class="wrap-left">
-        <div class="l-top">
-          <img src="../assets/home_03.png"/>
-          <p class="t-name">美科星学院</p>
-        </div>
-        <div class="l-bottom">
-          <div class="img">
-            <router-link to="/">
-              <img src="http://img.dpm.org.cn/Uploads/Picture/2018/01/08/s5a52d85fd14a6.jpg"/>
-            </router-link>
+    <bg>
+      <div class="wrap clearfix">
+        <div class="wrap-left">
+          <div class="l-top">
+            <img src="../assets/home_03.png"/>
+            <p class="t-name">美科星学院</p>
           </div>
-          <div class="news">
-            <div class="title clearfix">
-              <h2>教育活动</h2>
-              <router-link to='/'>
+          <div class="l-bottom">
+            <div class="img">
+              <router-link to="/">
+                <img src="http://img.dpm.org.cn/Uploads/Picture/2018/01/08/s5a52d85fd14a6.jpg"/>
+              </router-link>
+            </div>
+            <div class="news">
+              <div class="title clearfix">
+                <h2>教育活动</h2>
+                <router-link to='/'>
                 <span>
                   <Icon type="ios-arrow-right"></Icon>
                 </span>
-              </router-link>
+                </router-link>
+              </div>
+              <div class="news-list">
+                <ul>
+                  <li v-for="(item,index) in homeData.data.education" :key="index">
+                    <p class="date">
+                      <span class="day">30</span>
+                      <span class="month">2017.10</span>
+                    </p>
+                    <router-link to="/" class="info">
+                      <span class="info-title">{{item.title}}</span>
+                      <span class="intr">{{item.introduce}}</span>
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="news-list">
-              <ul>
-                <li v-for="(item,index) in homeData.data.education" :key="index">
-                  <p class="date">
-                    <span class="day">30</span>
-                    <span class="month">2017.10</span>
-                  </p>
-                  <router-link to="/" class="info">
-                    <span class="info-title">{{item.title}}</span>
-                    <span class="intr">{{item.introduce}}</span>
+          </div>
+        </div>
+        <div class="wrap-right">
+          <div class="r-top">
+            <ul class="clearfix">
+              <li v-for="(item,index) in gudies" :key="index" :style="{background:'url('+item.bg+')'}">
+                <router-link :to="item.href">
+                  <div class="bg">
+                    <img :src="item.rotateBg"/>
+                  </div>
+                  <div class="ico">
+                    <img :src="item.icon"/>
+                  </div>
+                  <div class="cont">
+                    <h3>{{item.title}}</h3>
+                    <p>{{item.intr}}</p>
+                  </div>
+                </router-link>
+              </li>
+            </ul>
+          </div>
+          <div class="r-bottom">
+            <p class="t-title">开闭馆时间</p>
+            <div class="time-group">
+              <p class="time-item">
+                <span class="time">{{homeData.data.time.time_sta}}</span>
+                <span class="txt">开始售票</span>
+              </p>
+              <p class="and">~</p>
+              <p class="time-item">
+                <span class="time">{{homeData.data.time.time_end}}</span>
+                <span class="txt">闭馆时间</span>
+              </p>
+            </div>
+            <div class="notice">
+              <div class="title clearfix">
+                <h2>公告</h2>
+                <router-link to='/'>
+                <span>
+                  <Icon type="ios-arrow-right"></Icon>
+                </span>
+                </router-link>
+              </div>
+              <ul class="clearfix">
+                <li v-for="(item,index) in homeData.data.inform" :key="index">
+                  <router-link to="/">
+                    {{item.title}}
                   </router-link>
+                  <span>{{item.addtime}}</span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div class="wrap-right">
-        <div class="r-top">
-          <ul class="clearfix">
-            <li v-for="(item,index) in gudies" :key="index" :style="{background:'url('+item.bg+')'}">
-              <router-link :to="item.href">
-                <div class="bg">
-                  <img :src="item.rotateBg"/>
-                </div>
-                <div class="ico">
-                  <img :src="item.icon"/>
-                </div>
-                <div class="cont">
-                  <h3>{{item.title}}</h3>
-                  <p>{{item.intr}}</p>
-                </div>
-              </router-link>
-            </li>
-          </ul>
-        </div>
-        <div class="r-bottom">
-          <p class="t-title">开闭馆时间</p>
-          <div class="time-group">
-            <p class="time-item">
-              <span class="time">{{homeData.data.time.time_sta}}</span>
-              <span class="txt">开始售票</span>
-            </p>
-            <p class="and">~</p>
-            <p class="time-item">
-              <span class="time">{{homeData.data.time.time_end}}</span>
-              <span class="txt">闭馆时间</span>
-            </p>
-          </div>
-          <div class="notice">
-            <div class="title clearfix">
-              <h2>公告</h2>
-              <router-link to='/'>
-                <span>
-                  <Icon type="ios-arrow-right"></Icon>
-                </span>
-              </router-link>
-            </div>
-            <ul class="clearfix">
-              <li v-for="(item,index) in homeData.data.inform" :key="index">
-                <router-link to="/">
-                  {{item.title}}
-                </router-link>
-                <span>{{item.addtime}}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    </bg>
   </div>
 </template>
 
@@ -99,11 +101,13 @@
   import {getAjax} from '@/public/js/config'
   import Swiper from '@/base/Home/swiper'
   import {Icon} from 'iview'
+  import Bg from '@/base/bg'
 
   export default {
     components: {
       Swiper,
-      Icon
+      Icon,
+      Bg
     },
     data() {
       return {
@@ -162,7 +166,8 @@
     width: 100%;
     .wrap {
       width: 1300px;
-      margin: 40px auto 0 auto;
+      margin: 0 auto;
+      padding-top: 50px;
       padding-bottom: 50px;
       .title {
         color: #fff;
