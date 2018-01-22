@@ -71,7 +71,7 @@
           },
           {
             href: '/exhibit/succinct',
-            title: '藏品精粹',
+            title: '展品精粹',
             id: 3
           }
         ],
@@ -87,7 +87,6 @@
         getAjax(url, {
           id: this.$route.query.id
         }, (res) => {
-          console.log(res)
           this.theaterDetail = res
         }, (err) => {
           console.log(err)

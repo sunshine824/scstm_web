@@ -74,7 +74,7 @@
           },
           {
             href: '/exhibit/succinct',
-            title: '藏品精粹',
+            title: '展品精粹',
             id: 3
           }
         ],

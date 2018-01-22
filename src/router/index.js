@@ -20,6 +20,8 @@ const Round = r => require.ensure([], () => r(require('@/components/exhibit/roun
 const Theater = r => require.ensure([], () => r(require('@/components/exhibit/theater')), 'Theater');
 const TheaterDetail = r => require.ensure([], () => r(require('@/components/exhibit/theater_detail')), 'TheaterDetail');
 const Succinct = r => require.ensure([], () => r(require('@/components/exhibit/succinct')), 'Succinct');
+const TypeDetail = r => require.ensure([], () => r(require('@/components/exhibit/su_type_detail')), 'TypeDetail');
+const SuccinctDetail = r => require.ensure([], () => r(require('@/components/exhibit/succinct_detail')), 'SuccinctDetail');
 
 //临展信息
 const Patch_exhibt = r => require.ensure([], () => r(require('@/components/Patch_exhibt')), 'Patch_exhibt');
@@ -100,9 +102,21 @@ export default new Router({
         },
         {
           path: 'succinct',
-          name:'藏品精粹',
+          name:'展品精粹',
           component: Succinct,
-          meta: ['常设展览','藏品精粹'],
+          meta: ['常设展览','展品精粹'],
+        },
+        {
+          path: 'type-detail',
+          name:'展品精粹',
+          component: TypeDetail,
+          meta: ['常设展览','展品精粹'],
+        },
+        {
+          path: 'succinct-detail',
+          name:'展品精粹',
+          component: SuccinctDetail,
+          meta: ['常设展览','展品精粹'],
         },
       ]
     },
