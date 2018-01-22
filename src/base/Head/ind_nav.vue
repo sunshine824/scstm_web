@@ -64,7 +64,7 @@
           },
           {
             icon: '../static/images/test/scstm_15.png',
-            href: '/mkx_school',
+            href: '/mkx_school/school_course',
             title: '美科星未来学院',
             className: 'mkx'
           },

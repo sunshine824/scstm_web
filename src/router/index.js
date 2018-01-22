@@ -34,6 +34,7 @@ const All_course = r => require.ensure([], () => r(require('@/components/edu_act
 
 //美科星
 const Mkx_school = r => require.ensure([], () => r(require('@/components/Mkx_school')), 'Mkx_school');
+const School_course = r => require.ensure([], () => r(require('@/components/mkx_school/school_course')), 'School_course');
 
 //参观服务
 const Visit_serve = r => require.ensure([], () => r(require('@/components/Visit_serve')), 'Visit_serve');
@@ -153,7 +154,14 @@ export default new Router({
       path: '/mkx_school',
       name: '美科星未来学院',
       component: Mkx_school,
-      meta:['美科星未来学院']
+      meta:['美科星未来学院'],
+      children: [
+        {
+          path: 'school_course',
+          component: School_course,
+          meta: ['美科星未来学院','学院课程']
+        }
+      ]
     },
     {
       path: '/visit_serve',

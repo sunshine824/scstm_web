@@ -9,9 +9,7 @@
       <div class="act-con">
         <div class="type_list">
           <type-list :type_list="crowds" title="面向人群" :isCheckBox="true" @toggle="handleCrowds"></type-list>
-          <type-list :type_list="activities" title="活动类型" :isCheckBox="true" @toggle="handleAct"></type-list>
-          <type-list :type_list="floor" title="楼层筛选" :isCheckBox="true" @toggle="handleFloor"></type-list>
-          <type-list :type_list="act_status" title="活动状态" :isCheckBox="false" @toggle="handleStatus"></type-list>
+          <type-list :type_list="activities" title="精选学院" :isCheckBox="true" @toggle="handleAct"></type-list>
         </div>
         <div class="lists">
           <patch-item v-if="courseList"
@@ -52,37 +50,18 @@
       return {
         crowds: [],
         activities: [],
-        act_status: [
-          {
-            classname: '无需预约',
-            id: 1
-          },
-          {
-            classname: '需预约',
-            id: 2
-          }
-        ],
-        floor: [
-          {classname: '1F', id: 1},
-          {classname: '2F', id: 2},
-          {classname: '3F', id: 3},
-          {classname: '4F', id: 4},
-        ],
         crowdId: [],  //面向人群id
         actId: [],    //活动类型id
-        floorId: [],  //楼层筛选id
-        statusId: '',  //活动状态id
-        total: 100,
         page: 1,
         courseList: '',
         navs: [
           {
-            href: '/edu_activity/all_course',
-            title: '全部课程',
+            href: '/mkx_school/school_course',
+            title: '学院课程',
             id: 1
           }
         ],
-        title: '教育活动',
+        title: '美科星未来学院',
       }
     },
     created() {
@@ -96,7 +75,7 @@
        * 获取面向人群列表
        */
       getCrowdList() {
-        const url = 'api/listscourseclasp'
+        const url = 'api/listfutureclasp'
         getAjax(url, {},
           res => {
             this.crowds = res.data
@@ -105,10 +84,10 @@
           }, this)
       },
       /**
-       * 获取活动类型列表
+       * 获取精选学院列表
        */
       getActList() {
-        const url = 'api/listscourseclash'
+        const url = 'api/listfutureclash'
         getAjax(url, {},
           res => {
             this.activities = res.data
@@ -117,15 +96,14 @@
           }, this)
       },
       /**
-       * 获取全部课程列表
+       * 获取学院课程列表
        */
       getCourseList() {
-        const url = 'api/educationlists'
+        const url = 'api/futurelists'
         getAjax(url, {
             page: this.page,
             clas_p: this.crowdId,
             clas_h: this.actId,
-            floor: this.floorId
           },
           res => {
             this.courseList = res.data
@@ -162,33 +140,11 @@
         this.getCourseList()
       },
       /**
-       * 获取子组件楼层id
-       * @param id
-       */
-      handleFloor(id) {
-        this.floorId = id
-        this.page = 1
-        this.getCourseList()
-      },
-      /**
-       * 获取子组件状态id
-       * @param id
-       */
-      handleStatus(id) {
-        this.statusId = id
-        this.page = 1
-        if (id[0] === 2) { //需预约清空数据（暂无预约功能）
-          this.courseList = ''
-        } else {
-          this.getCourseList()
-        }
-      },
-      /**
        * 获取全部课程banner
        * @param id  分类id
        */
       getBanner(id = 1) {
-        this.getBannerData({id: id, url: 'api/educationbanner'})
+        this.getBannerData({id: id, url: 'api/futurebanner'})
       }
     }
   }
