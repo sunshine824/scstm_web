@@ -70,7 +70,7 @@
           },
           {
             icon: '../static/images/test/scstm_11.png',
-            href: '/visit_serve',
+            href: '/visit_serve/strategy',
             title: '参观服务',
             className: 'visit'
           },

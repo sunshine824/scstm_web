@@ -38,6 +38,11 @@ const School_course = r => require.ensure([], () => r(require('@/components/mkx_
 
 //参观服务
 const Visit_serve = r => require.ensure([], () => r(require('@/components/Visit_serve')), 'Visit_serve');
+const Strategy = r => require.ensure([], () => r(require('@/components/visit_serve/strategy')), 'Strategy');
+const Act_calendar = r => require.ensure([], () => r(require('@/components/visit_serve/act_calendar')), 'Act_calendar');
+const SE = r => require.ensure([], () => r(require('@/components/visit_serve/SE')), 'SE');
+const Consult = r => require.ensure([], () => r(require('@/components/visit_serve/consult')), 'Consult');
+const Notice = r => require.ensure([], () => r(require('@/components/visit_serve/notice')), 'Notice');
 
 //科学朋友圈
 const Friends = r => require.ensure([], () => r(require('@/components/Friends')), 'Friends');
@@ -75,49 +80,49 @@ export default new Router({
           path: 'survey',
           name: '展馆概况',
           component: Survey,
-          meta: ['常设展览','展馆概况'],
+          meta: ['常设展览', '展馆概况'],
         },
         {
           path: 'guide',
-          name:'楼层导览',
+          name: '楼层导览',
           component: Guide,
-          meta: ['常设展览','楼层导览'],
+          meta: ['常设展览', '楼层导览'],
         },
         {
           path: 'round',
-          name:'全景环游',
+          name: '全景环游',
           component: Round,
-          meta: ['常设展览','全景环游'],
+          meta: ['常设展览', '全景环游'],
         },
         {
           path: 'theater',
-          name:'影院剧场',
+          name: '影院剧场',
           component: Theater,
-          meta: ['常设展览','影院剧场'],
+          meta: ['常设展览', '影院剧场'],
         },
         {
           path: 'theater-detail',
-          name:'电影详情',
+          name: '电影详情',
           component: TheaterDetail,
-          meta: ['常设展览','影院剧场'],
+          meta: ['常设展览', '影院剧场'],
         },
         {
           path: 'succinct',
-          name:'展品精粹',
+          name: '展品精粹',
           component: Succinct,
-          meta: ['常设展览','展品精粹'],
+          meta: ['常设展览', '展品精粹'],
         },
         {
           path: 'type-detail',
-          name:'展品精粹',
+          name: '展品精粹',
           component: TypeDetail,
-          meta: ['常设展览','展品精粹'],
+          meta: ['常设展览', '展品精粹'],
         },
         {
           path: 'succinct-detail',
-          name:'展品精粹',
+          name: '展品精粹',
           component: SuccinctDetail,
-          meta: ['常设展览','展品精粹'],
+          meta: ['常设展览', '展品精粹'],
         },
       ]
     },
@@ -129,12 +134,12 @@ export default new Router({
         {
           path: 'patch_info',
           component: Patch_info,
-          meta: ['临展信息','临时展览'],
+          meta: ['临展信息', '临时展览'],
         },
         {
           path: 'flow_science',
           component: Flow_science,
-          meta: ['临展信息','流动科技馆']
+          meta: ['临展信息', '流动科技馆']
         }
       ]
     },
@@ -146,7 +151,7 @@ export default new Router({
         {
           path: 'all_course',
           component: All_course,
-          meta: ['教育活动','全部课程']
+          meta: ['教育活动', '全部课程']
         }
       ]
     },
@@ -154,12 +159,12 @@ export default new Router({
       path: '/mkx_school',
       name: '美科星未来学院',
       component: Mkx_school,
-      meta:['美科星未来学院'],
+      meta: ['美科星未来学院'],
       children: [
         {
           path: 'school_course',
           component: School_course,
-          meta: ['美科星未来学院','学院课程']
+          meta: ['美科星未来学院', '学院课程']
         }
       ]
     },
@@ -167,7 +172,39 @@ export default new Router({
       path: '/visit_serve',
       name: '参观服务',
       component: Visit_serve,
-      meta:['参观服务']
+      children: [
+        {
+          path: 'strategy',
+          name: '参观攻略',
+          component: Strategy,
+          meta: ['参观服务', '参观攻略'],
+        },
+        {
+          path: 'act_calendar',
+          name: '活动日历',
+          component: Act_calendar,
+          meta: ['参观服务', '活动日历'],
+        },
+        {
+          path: 'SE',
+          name: 'SE餐厅',
+          component: SE,
+          meta: ['参观服务', 'SE餐厅'],
+        },
+        {
+          path: 'consult',
+          name: '参观咨询',
+          component: Consult,
+          meta: ['参观服务', '参观咨询'],
+        },
+        {
+          path: 'notice',
+          name: '新闻公告',
+          component: Notice,
+          meta: ['参观服务', '新闻公告'],
+        }
+      ]
+
     },
     {
       path: '/friends',
