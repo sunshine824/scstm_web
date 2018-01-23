@@ -4,7 +4,12 @@
         :key="index"
         @click="handleClick(index,item.id)"
         :class="{active:index===current}">
-      {{item.title}}
+      <a v-if="item.href" :href="item.href" target="_blank">
+        {{item.title}}
+      </a>
+      <p v-else>
+        {{item.title}}
+      </p>
     </li>
   </ul>
 </template>
@@ -39,12 +44,16 @@
     overflow: hidden;
     li {
       display: inline-block;
-      color: #555555;
       font-size: 16px;
       cursor: pointer;
       width: 140px;
+      color: #555555;
       text-align: center;
       border-right: 1px solid #fff;
+      a{
+        color: #555555;
+        display: block;
+      }
       &.active {
         background-image: -webkit-linear-gradient(135deg, #00d0fb, #00acf6);
         background-image: -moz-linear-gradient(135deg, #00d0fb, #00acf6);
@@ -52,6 +61,9 @@
         background-image: -ms-linear-gradient(135deg, #00d0fb, #00acf6);
         background-image: linear-gradient(135deg, #00d0fb, #00acf6);
         color: #fff;
+        a{
+          color: #fff;
+        }
       }
     }
   }
