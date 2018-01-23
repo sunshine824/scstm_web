@@ -2,7 +2,7 @@
   <div class="clips">
     <swiper :options="swiperOption">
       <swiper-slide v-for="(item,index) in data" :key="index">
-        <img :src="item.img" @click="chooseImg(item.img)"/>
+        <img :src="item" @click="chooseImg(item)"/>
       </swiper-slide>
     </swiper>
     <p class="next" slot="button-next">

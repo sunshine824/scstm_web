@@ -169,6 +169,7 @@
         .lists-con {
           padding: 0 40px;
           background: #fff;
+          box-shadow: 0 3px 36px 0 #EDEDED;
         }
       }
       .now-exhibit {
@@ -179,6 +180,7 @@
         -moz-border-radius: 2px;
         border-radius: 2px;
         padding: 32px 38px;
+        box-shadow: 0 3px 36px 0 #EDEDED;
         .title {
           font-size: 18px;
           color: #333;

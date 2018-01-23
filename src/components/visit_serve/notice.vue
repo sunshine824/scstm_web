@@ -1,5 +1,5 @@
 <template>
-  <div class="flow_science">
+  <div class="serve-notice">
     <banner
       :navs="navs"
       :banner="banner"
@@ -146,7 +146,7 @@
   }
 </script>
 <style lang="less">
-  .flow_science {
+  .serve-notice {
     .flow-con {
       width: 1200px;
       margin: 0 auto;
@@ -166,6 +166,7 @@
         .lists-con {
           padding: 0 40px;
           background: #fff;
+          box-shadow: 0 3px 36px 0 #EDEDED;
         }
       }
       .now-exhibit {
@@ -176,6 +177,8 @@
         -moz-border-radius: 2px;
         border-radius: 2px;
         padding: 32px 38px;
+        margin-top: 50px;
+        box-shadow: 0 3px 36px 0 #EDEDED;
         .title {
           font-size: 18px;
           color: #333;

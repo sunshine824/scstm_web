@@ -42,6 +42,7 @@
     line-height: 40px;
     border-radius: 6px;
     overflow: hidden;
+    box-shadow: 0 3px 36px 0 #f7f7f7;
     li {
       display: inline-block;
       font-size: 16px;

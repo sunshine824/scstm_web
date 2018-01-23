@@ -26,10 +26,10 @@
               <div class="news-list">
                 <ul>
                   <li v-for="(item,index) in homeData.data.education" :key="index">
-                    <p class="date">
+                    <!--<p class="date">
                       <span class="day">30</span>
                       <span class="month">2017.10</span>
-                    </p>
+                    </p>-->
                     <router-link to="/" class="info">
                       <span class="info-title">{{item.title}}</span>
                       <span class="intr">{{item.introduce}}</span>

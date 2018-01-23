@@ -1,35 +1,35 @@
 <template>
   <div class="th_detail-con">
     <banner
-      v-if="theaterDetail.status===0"
+      v-if="patchDetail.status===0"
       :navs="navs"
-      :banner="theaterDetail.data.img"
+      :banner="patchDetail.data.img"
       :title="title"/>
     <bg>
-      <div class="movie-detail" v-if="theaterDetail.status===0">
+      <div class="movie-detail" v-if="patchDetail.status===0">
         <div class="m-info clearfix">
           <div class="de-img">
-            <img :src="theaterDetail.data.img"/>
+            <img :src="patchDetail.data.img"/>
           </div>
           <div class="m-txt">
-            <h2 class="m-title">{{theaterDetail.data.title}} <span class="mold">{{theaterDetail.data.type}}</span></h2>
+            <h2 class="m-title">{{patchDetail.data.title}}</h2>
             <p class="address">
               <Icon type="ios-location-outline" class="location"></Icon>
-              {{theaterDetail.data.address}}
+              {{patchDetail.data.address}}
             </p>
             <p class="m-time">
               <Icon type="ios-timer-outline" class="time"></Icon>
-              {{theaterDetail.data.length}}
+              {{patchDetail.data.time}}
             </p>
             <p class="intr">
-              {{theaterDetail.data.introduce}}
+              {{patchDetail.data.introduce}}
             </p>
             <!--<p class="btn-book">立即预定</p>-->
           </div>
         </div>
         <div class="movie-clips clearfix">
           <p class="title">片花 / 剧照</p>
-          <clips-roll :data="theaterDetail.data.cinema_img"></clips-roll>
+          <clips-roll :data="patchDetail.data.show_img"></clips-roll>
         </div>
       </div>
     </bg>
@@ -53,35 +53,20 @@
     },
     data() {
       return {
-        theaterDetail: '',
+        patchDetail: '',
+        title: '临展信息',
         navs: [
           {
-            href: '/exhibit/survey',
-            title: '展馆概况',
-            id: ''
-          },
-          {
-            href: '/exhibit/guide',
-            title: '楼层导览',
+            href: '/patch/patch_info',
+            title: '临时展览',
             id: 1
           },
           {
-            href: '/exhibit/round',
-            title: '全景环游',
-            id: ''
-          },
-          {
-            href: '/exhibit/theater',
-            title: '影院剧场',
+            href: '/patch/flow_science',
+            title: '流动科技馆',
             id: 2
           },
-          {
-            href: '/exhibit/succinct',
-            title: '展品精粹',
-            id: 3
-          }
         ],
-        title: '常设展览',
       }
     },
     created() {
@@ -89,11 +74,12 @@
     },
     methods: {
       getDetailData() {
-        const url = 'api/cinemadeta'
+        const url = 'api/showdeta'
         getAjax(url, {
           id: this.$route.query.id
         }, (res) => {
-          this.theaterDetail = res
+          console.log(res)
+          this.patchDetail = res
         }, (err) => {
           console.log(err)
         }, this)
@@ -123,7 +109,7 @@
       }
       .m-txt {
         float: left;
-        margin-top: 60px;
+        margin-top: 40px;
         margin-left: 40px;
         width: 810px;
         text-align: justify;

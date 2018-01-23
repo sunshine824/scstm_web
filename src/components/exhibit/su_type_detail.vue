@@ -6,7 +6,7 @@
       :title="title"/>
     <bg class="su-detail">
       <div class="detail-con">
-        <p class="title">飞行类<span></span></p>
+        <p class="title">{{succinctDetail.classname}}<span></span></p>
         <ul class="detail-list clearfix">
           <succinct-item
             v-for="(item,index) in succinctDetail.data"

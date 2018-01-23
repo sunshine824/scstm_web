@@ -80,7 +80,6 @@
         const url = 'api/collectionclass'
         getAjax(url, {},
           (res) => {
-            console.log(res)
             this.typeList = res.data
           }, (err) => {
             console.log(err)

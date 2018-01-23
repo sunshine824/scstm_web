@@ -26,6 +26,7 @@ const SuccinctDetail = r => require.ensure([], () => r(require('@/components/exh
 //临展信息
 const Patch_exhibt = r => require.ensure([], () => r(require('@/components/Patch_exhibt')), 'Patch_exhibt');
 const Patch_info = r => require.ensure([], () => r(require('@/components/patch_exhibit/patch_info')), 'Patch_info');
+const Patch_detail = r => require.ensure([], () => r(require('@/components/patch_exhibit/patch_detail')), 'Patch_detail');
 const Flow_science = r => require.ensure([], () => r(require('@/components/patch_exhibit/flow_science')), 'Flow_science');
 
 //教育活动
@@ -102,7 +103,7 @@ export default new Router({
         },
         {
           path: 'theater-detail',
-          name: '电影详情',
+          name: '详情',
           component: TheaterDetail,
           meta: ['常设展览', '影院剧场'],
         },
@@ -134,6 +135,12 @@ export default new Router({
         {
           path: 'patch_info',
           component: Patch_info,
+          meta: ['临展信息', '临时展览'],
+        },
+        {
+          path:'patch-detail',
+          component:Patch_detail,
+          name:'详情',
           meta: ['临展信息', '临时展览'],
         },
         {

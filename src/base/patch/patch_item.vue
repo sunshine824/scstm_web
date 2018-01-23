@@ -1,11 +1,11 @@
 <template>
   <div class="m-item clearfix">
-    <router-link to="/exhibit/theater/1">
+    <router-link :to="{path:'/patch/patch-detail',query:{id:data.id}}">
       <img v-lazy="data.img"/>
     </router-link>
     <div class="m-txt">
       <h2 class="m-title">
-        <router-link to="/exhibit/theater/1">{{data.title}}</router-link>
+        <router-link :to="{path:'/patch/patch-detail',query:{id:data.id}}">{{data.title}}</router-link>
       </h2>
       <p class="m-time">
         <Icon type="ios-calendar-outline" class="time"></Icon>
@@ -49,6 +49,7 @@
   .m-item {
     margin-bottom: 25px;
     background: #fff;
+    box-shadow: 0 3px 36px 0 #EDEDED;
     img {
       width: 450px;
       height: 320px;

@@ -17,7 +17,7 @@
     </div>
     <div class="banner-img"
          :style="{background: 'url('+($route.query.img ? $route.query.img : banner)+') no-repeat center'}"
-         :class="{filter:isDetail==='电影详情'}">
+         :class="{filter:isDetail==='详情'}">
     </div>
   </div>
 </template>
