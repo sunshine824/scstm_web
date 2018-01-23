@@ -7,7 +7,7 @@
     <router-link to="/" class="info">
       <span class="info-title">{{data.title}}</span>
       <span
-        class="intr">混合 (mixins) 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混合对象可以包含任意组件选项。当组件使用混合对象时，所有混合对象的选项将被混入该组件本身的选项。</span>
+        class="intr">{{data.introduce}}</span>
     </router-link>
   </li>
 </template>

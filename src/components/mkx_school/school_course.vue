@@ -12,11 +12,11 @@
           <type-list :type_list="activities" title="精选学院" :isCheckBox="true" @toggle="handleAct"></type-list>
         </div>
         <div class="lists">
-          <patch-item v-if="courseList"
+          <mkx-item v-if="courseList"
                       v-for="(item,index) in courseList.data"
                       :key="index"
                       :data="item">
-          </patch-item>
+          </mkx-item>
           <p v-if="courseList.length===0">暂无数据</p>
         </div>
         <Pagination v-if="courseList"
@@ -30,7 +30,7 @@
 </template>
 <script type="text/ecmascript-6">
   import TypeList from '@/base/edu/type_list'
-  import PatchItem from '@/base/patch/patch_item'
+  import MkxItem from '@/base/mkx/mkx_item'
   import Pagination from '@/base/pagination'
   import {getAjax} from '@/public/js/config'
   import Banner from '@/base/banner'
@@ -41,7 +41,7 @@
     mixins: [getBannerMixin],
     components: {
       TypeList,
-      PatchItem,
+      MkxItem,
       Banner,
       Pagination,
       Bg

@@ -1,36 +1,36 @@
 <template>
   <div class="th_detail-con">
     <banner
-      v-if="patchDetail.status===0"
+      v-if="mkxDetail.status===0"
       :navs="navs"
-      :banner="patchDetail.data.img"
+      :banner="mkxDetail.data.img"
       :title="title"/>
     <bg>
-      <div class="movie-detail" v-if="patchDetail.status===0">
+      <div class="movie-detail" v-if="mkxDetail.status===0">
         <div class="m-info clearfix">
           <div class="de-img">
-            <img :src="patchDetail.data.img"/>
+            <img :src="mkxDetail.data.img"/>
           </div>
           <div class="m-txt">
-            <h2 class="m-title">{{patchDetail.data.title}}</h2>
+            <h2 class="m-title">{{mkxDetail.data.title}}</h2>
             <p class="address">
               <Icon type="ios-location-outline" class="location"></Icon>
-              {{patchDetail.data.address}}
+              {{mkxDetail.data.address}}
             </p>
             <p class="m-time">
               <Icon type="ios-timer-outline" class="time"></Icon>
-              {{patchDetail.data.time}}
+              {{mkxDetail.data.time}}
             </p>
             <p class="intr">
-              {{patchDetail.data.introduce}}
+              {{mkxDetail.data.introduce}}
             </p>
             <!--<p class="btn-book">立即预定</p>-->
           </div>
         </div>
-        <div class="movie-clips clearfix">
+        <!--<div class="movie-clips clearfix">
           <p class="title">片花 / 剧照</p>
           <clips-roll :data="patchDetail.data.show_img"></clips-roll>
-        </div>
+        </div>-->
       </div>
     </bg>
   </div>
@@ -53,20 +53,15 @@
     },
     data() {
       return {
-        patchDetail: '',
-        title: '临展信息',
+        mkxDetail: '',
         navs: [
           {
-            href: '/patch/patch_info',
-            title: '临时展览',
+            href: '/mkx_school/school_course',
+            title: '学院课程',
             id: 1
-          },
-          {
-            href: '/patch/flow_science',
-            title: '流动科技馆',
-            id: 2
-          },
+          }
         ],
+        title: '美科星未来学院',
       }
     },
     created() {
@@ -74,11 +69,11 @@
     },
     methods: {
       getDetailData() {
-        const url = 'api/showdeta'
+        const url = 'api/futuredeta'
         getAjax(url, {
           id: this.$route.query.id
         }, (res) => {
-          this.patchDetail = res
+          this.mkxDetail = res
         }, (err) => {
           console.log(err)
         }, this)

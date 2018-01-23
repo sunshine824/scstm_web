@@ -73,7 +73,6 @@
         getAjax(url, {
           id: this.$route.query.id
         }, (res) => {
-          console.log(res)
           this.courseDetail = res
         }, (err) => {
           console.log(err)

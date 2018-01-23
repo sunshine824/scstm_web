@@ -14,11 +14,11 @@
           <type-list :type_list="act_status" title="活动状态" :isCheckBox="false" @toggle="handleStatus"></type-list>
         </div>
         <div class="lists">
-          <exhibit-item v-if="courseList"
+          <edu-item v-if="courseList"
                       v-for="(item,index) in courseList.data"
                       :key="index"
                       :data="item">
-          </exhibit-item>
+          </edu-item>
           <p v-if="courseList.length===0">暂无数据</p>
         </div>
         <Pagination v-if="courseList"
@@ -32,7 +32,7 @@
 </template>
 <script type="text/ecmascript-6">
   import TypeList from '@/base/edu/type_list'
-  import ExhibitItem from '@/base/exhibit/exhibit_item'
+  import EduItem from '@/base/edu/edu_item'
   import Pagination from '@/base/pagination'
   import {getAjax} from '@/public/js/config'
   import Banner from '@/base/banner'
@@ -43,7 +43,7 @@
     mixins: [getBannerMixin],
     components: {
       TypeList,
-      ExhibitItem,
+      EduItem,
       Banner,
       Pagination,
       Bg
