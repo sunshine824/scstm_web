@@ -32,6 +32,7 @@ const Flow_science = r => require.ensure([], () => r(require('@/components/patch
 //教育活动
 const Edu_activity = r => require.ensure([], () => r(require('@/components/Edu_activity')), 'Edu_activity');
 const All_course = r => require.ensure([], () => r(require('@/components/edu_activity/all_course')), 'All_course');
+const Course_detail = r => require.ensure([], () => r(require('@/components/edu_activity/course_detail')), 'Course_detail');
 
 //美科星
 const Mkx_school = r => require.ensure([], () => r(require('@/components/Mkx_school')), 'Mkx_school');
@@ -158,6 +159,12 @@ export default new Router({
         {
           path: 'all_course',
           component: All_course,
+          meta: ['教育活动', '全部课程']
+        },
+        {
+          path:'course_detail',
+          component:Course_detail,
+          name:'详情',
           meta: ['教育活动', '全部课程']
         }
       ]
