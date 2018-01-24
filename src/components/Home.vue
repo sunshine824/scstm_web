@@ -6,15 +6,34 @@
         <div class="wrap-left">
           <div class="l-top">
             <img src="../assets/home_03.png"/>
-            <p class="t-name">美科星学院</p>
+            <div class="news mkx-news">
+              <div class="title clearfix">
+                <h2>美科星学院</h2>
+                <router-link to='/'>
+                <span>
+                  <Icon type="ios-arrow-right"></Icon>
+                </span>
+                </router-link>
+              </div>
+              <div class="news-list">
+                <ul>
+                  <li v-for="(item,index) in homeData.data.future" :key="index">
+                    <!--<p class="date">
+                      <span class="day">30</span>
+                      <span class="month">2017.10</span>
+                    </p>-->
+                    <router-link to="/" class="info">
+                      <span class="info-title">{{item.title}}</span>
+                      <span class="intr">{{item.introduce}}</span>
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div class="l-bottom">
-            <div class="img">
-              <router-link to="/">
-                <img src="http://img.dpm.org.cn/Uploads/Picture/2018/01/08/s5a52d85fd14a6.jpg"/>
-              </router-link>
-            </div>
-            <div class="news">
+            <img src="../assets/home_03.png"/>
+            <div class="news edu-news">
               <div class="title clearfix">
                 <h2>教育活动</h2>
                 <router-link to='/'>
@@ -165,10 +184,11 @@
   .content {
     width: 100%;
     .wrap {
-      width: 1300px;
+      width: 1400px;
       margin: 0 auto;
       padding-top: 50px;
       padding-bottom: 50px;
+      position: relative;
       .title {
         color: #fff;
         padding-top: 30px;
@@ -191,20 +211,80 @@
       }
       .wrap-left {
         float: left;
-        width: 755px;
+        width: 854px;
         .l-top {
           width: 100%;
+          height:410px;
           position: relative;
           margin-bottom: 26px;
+          overflow: hidden;
           img {
             width: 100%;
+            min-height: 410px;
+            transform: scale3d(1, 1, 1);
+            transition: opacity 0.35s ease 0s, transform 0.35s ease 0s;
+            &:hover {
+              transform: scale3d(1.15, 1.15, 1);
+            }
           }
-          .t-name {
+          .mkx-news{
             position: absolute;
-            left: 30px;
-            top: 26px;
-            font-size: 24px;
-            color: #fff;
+            width: 362px;
+            right: 0;
+            top:0;
+            bottom: 0;
+            background: #24bfd7;
+          }
+        }
+        .news {
+          padding: 0 20px 20px 20px;
+          overflow: hidden;
+          color: #fff;
+          .news-list {
+            padding-top: 10px;
+            ul {
+              li {
+                padding: 10px 0 15px 0;
+                border-bottom: 1px dashed rgba(255, 255, 255, .8);
+                color: #fff;
+                .date {
+                  display: inline-block;
+                  vertical-align: middle;
+                  width: 60px;
+                  text-align: left;
+                  margin-right: 8px;
+                  .day {
+                    font-size: 32px;
+                    display: block;
+                  }
+                  .month {
+                    font-size: 12px;
+                    display: block;
+                  }
+                }
+                .info {
+                  display: inline-block;
+                  vertical-align: bottom;
+                  color: #fff;
+                  width: 250px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  .info-title {
+                    font-size: 22px;
+                    display: block;
+                    margin-bottom: 5px;
+                  }
+                  .intr {
+                    font-size: 15px;
+                    color: rgba(255, 255, 255, .9);
+                  }
+                }
+                &:last-child {
+                  border-bottom: none;
+                }
+              }
+            }
           }
         }
         .l-bottom {
@@ -212,72 +292,25 @@
           width: 100%;
           margin-bottom: 26px;
           overflow: hidden;
-          background: #51cbfc;
-          .img {
+          position: relative;
+          img {
             float: right;
             overflow: hidden;
-            width: 393px;
+            width: 100%;
             height: 410px;
-            img {
-              transform: scale3d(1, 1, 1);
-              transition: opacity 0.35s ease 0s, transform 0.35s ease 0s;
-            }
+            transform: scale3d(1, 1, 1);
+            transition: opacity 0.35s ease 0s, transform 0.35s ease 0s;
             &:hover {
-              img {
-                transform: scale3d(1.15, 1.15, 1);
-              }
+              transform: scale3d(1.15, 1.15, 1);
             }
           }
-          .news {
-            padding: 0 20px 20px 20px;
-            overflow: hidden;
-            color: #fff;
-            .news-list {
-              padding-top: 10px;
-              ul {
-                li {
-                  padding: 10px 0 15px 0;
-                  border-bottom: 1px dashed rgba(255, 255, 255, .8);
-                  color: #fff;
-                  .date {
-                    display: inline-block;
-                    vertical-align: middle;
-                    width: 60px;
-                    text-align: left;
-                    margin-right: 8px;
-                    .day {
-                      font-size: 32px;
-                      display: block;
-                    }
-                    .month {
-                      font-size: 12px;
-                      display: block;
-                    }
-                  }
-                  .info {
-                    display: inline-block;
-                    vertical-align: bottom;
-                    color: #fff;
-                    width: 250px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    .info-title {
-                      font-size: 22px;
-                      display: block;
-                      margin-bottom: 5px;
-                    }
-                    .intr {
-                      font-size: 15px;
-                      color: rgba(255, 255, 255, .9);
-                    }
-                  }
-                  &:last-child {
-                    border-bottom: none;
-                  }
-                }
-              }
-            }
+          .edu-news{
+            position: absolute;
+            top:0;
+            left: 0;
+            background: #51cbfc;
+            bottom: 0;
+            width: 362px;
           }
         }
       }
@@ -286,13 +319,13 @@
         width: 520px;
         .r-top {
           width: 100%;
-          height: 247px;
+          height: 300px;
           margin-bottom: 26px;
           ul {
             li {
               float: left;
               width: 173px;
-              height: 247px;
+              height: 300px;
               position: relative;
               overflow: hidden;
               .bg {
@@ -340,7 +373,7 @@
         }
         .r-bottom {
           width: 100%;
-          height: 506px;
+          height: 520px;
           margin-bottom: 26px;
           padding: 30px 40px 20px 40px;
           background: #51cbfc;
