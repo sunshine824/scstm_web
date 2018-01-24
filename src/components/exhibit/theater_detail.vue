@@ -110,15 +110,14 @@
     .m-info {
       .de-img{
         width: 340px;
-        height: 460px;
         float: left;
         overflow: hidden;
+        border: 8px solid #fff;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
         img {
-          width: 100%;
-          border: 8px solid #fff;
-          -webkit-border-radius: 2px;
-          -moz-border-radius: 2px;
-          border-radius: 2px;
+          height:460px;
         }
       }
       .m-txt {

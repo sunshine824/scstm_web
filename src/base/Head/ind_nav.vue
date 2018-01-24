@@ -39,31 +39,31 @@
       return {
         navs: [
           {
-            icon: '../static/images/test/scstm_06.png',
+            icon: '../static/images/header/icon_home.png',
             href: '/',
             title: '首页',
             className: 'home'
           },
           {
-            icon: '../static/images/test/scstm_09.png',
+            icon: '../static/images/header/icon_exhibit.png',
             href: '/exhibit/survey',
             title: '常设展览',
             className: 'exhibit'
           },
           {
-            icon: '../static/images/test/scstm_11.png',
+            icon: '../static/images/header/icon_patch.png',
             href: '/patch/patch_info',
             title: '临展信息',
             className: 'patch'
           },
           {
-            icon: '../static/images/test/scstm_13.png',
+            icon: '../static/images/header/icon_edu.png',
             href: '/edu_activity/all_course',
             title: '教育活动',
             className: 'edu'
           },
           {
-            icon: '../static/images/test/scstm_15.png',
+            icon: '../static/images/header/icon_mkx.png',
             href: '/mkx_school/school_course',
             title: '美科星未来学院',
             className: 'mkx'
@@ -122,10 +122,10 @@
               margin-bottom: 8px;
             }
             .icon-img {
-              width: 32px;
-              background-size: 32px 100%;
+              width: 42px;
+              background-size: 42px 40px !important;
               display: inline-block;
-              height: 32px;
+              height: 40px;
             }
           }
           &:hover {

@@ -271,7 +271,7 @@
                   text-overflow: ellipsis;
                   white-space: nowrap;
                   .info-title {
-                    font-size: 22px;
+                    font-size: 20px;
                     display: block;
                     margin-bottom: 5px;
                   }

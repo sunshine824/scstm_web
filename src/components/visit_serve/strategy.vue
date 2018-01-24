@@ -10,7 +10,7 @@
         <nav-bar :navBar="navBar"
                  @handleClick="handleTypeClick">
         </nav-bar>
-        <visit-road v-if="typeId===1"></visit-road>
+        <visit-road v-if="typeId===1" @toggle="toggleClick" :roadTypes="roadTypes" :showImg="showImg"></visit-road>
         <traffic v-if="typeId===2"></traffic>
       </div>
     </bg>
@@ -69,11 +69,15 @@
           }
         ],
         title: '参观服务',
-        typeId: 1
+        typeId: 1,
+        roadTypes: [],
+        showImg: ''
       }
     },
     created() {
       this.getBanner()
+      this.getTypeList()
+      this.getShowImg('s')
     },
     methods: {
       /**
@@ -87,6 +91,38 @@
       handleTypeClick(typeId) {
         this.typeId = typeId
       },
+
+      /**
+       * 获取参观路线分类
+       */
+      getTypeList() {
+        const url = 'api/visitclass'
+        getAjax(url, {},
+          (res) => {
+            this.roadTypes = res.data
+          }, (err) => {
+            console.log(err)
+          }, this)
+      },
+
+      toggleClick(id) {
+        this.getShowImg(id)
+      },
+
+      /**
+       * 获取参观路线对应id内容
+       * @param id
+       */
+      getShowImg(id) {
+        const url = 'api/visitcontent'
+        getAjax(url, {
+          id: id
+        }, (res) => {
+          this.showImg = res.data.line
+        }, (err) => {
+          console.log(err)
+        }, this)
+      }
     }
   }
 </script>
@@ -95,5 +131,6 @@
     width: 1200px;
     margin: 0 auto;
     padding-top: 50px;
+    padding-bottom: 60px;
   }
 </style>

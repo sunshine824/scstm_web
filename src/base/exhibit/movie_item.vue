@@ -1,6 +1,6 @@
 <template>
   <div class="m-info clearfix">
-    <router-link :to="{path:'/exhibit/theater-detail',query:{id:data.id}}">
+    <router-link :to="{path:'/exhibit/theater-detail',query:{id:data.id}}" class="movie-img">
       <img v-lazy="data.img"/>
     </router-link>
     <div class="m-txt">
@@ -46,14 +46,18 @@
 <style scoped lang="less">
   .m-info {
     margin-bottom: 25px;
-    img {
+    .movie-img{
       width: 340px;
-      height: 460px;
+      overflow: hidden;
       float: left;
       border: 8px solid #fff;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       border-radius: 2px;
+      box-shadow: 0 3px 36px 0 #EDEDED;
+      img {
+        height: 460px;
+      }
     }
     .m-txt {
       float: left;
