@@ -179,6 +179,7 @@
             margin-right: 10px;
             border-radius: 50%;
             transition: all .3s;
+            background: #fff;
             cursor: pointer;
             &:hover {
               background: #d4d4d4;
