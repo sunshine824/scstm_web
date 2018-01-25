@@ -38,7 +38,7 @@
   .m-type {
     margin-bottom: 30px;
     height: 40px;
-    background: #f7f7f7;
+    background: #ececec;
     line-height: 40px;
     border-radius: 6px;
     overflow: hidden;

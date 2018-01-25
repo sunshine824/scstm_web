@@ -7,26 +7,24 @@
       @handleClick="getBanner"/>
     <bg>
       <div class="calendar-con">
-        <div class="calendar-date">
-          <div class="calendar-box">
-            <ul class="weeks clearfix">
-              <li v-for="(item,index) in weeks"
-                  :key="index">
+        <div class="calendar-date clearfix">
+          <calendar ref="calendar" @toggle="toggleClick"></calendar>
+          <div class="act-info">
+            <h2 class="title">{{currentDate}}活动</h2>
+            <p class="intr">可以查询近7天场馆活动内容，以便大家合理安排参观时间</p>
+            <div class="btns">
+              <div v-for="(item,index) in actMonth"
+                   :class="{active:current===index}"
+                   :key="index" class="btn" @click="toggleMonth(index)">
                 {{item}}
-              </li>
-            </ul>
-            <ul class="date clearfix">
-              <li v-for="(item,index) in calendarDate"
-                  :key="index"
-                  :style="index===0 ? {marginLeft : count*74 + 'px'} : 0"
-                  :class="{active:index===current}"
-                  @click="toggleClick(index,item)">
-                {{item.slice(-2) | filterDate}}
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
-          <p @click="nextMonth">下个月</p>
-          <p @click="nowMonth">本月</p>
+        </div>
+        <div class="calendar-list">
+          <nav-bar :navBar="navBar"
+                   @handleClick="handleTypeClick">
+          </nav-bar>
         </div>
       </div>
     </bg>
@@ -36,13 +34,17 @@
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
   import Bg from '@/base/bg'
+  import NavBar from '@/base/navBar'
   import moment from 'moment'
+  import Calendar from '@/base/visit_serve/calendar'
 
   export default {
     mixins: [getBannerMixin],
     components: {
       Banner,
-      Bg
+      Bg,
+      Calendar,
+      NavBar
     },
     data() {
       return {
@@ -74,21 +76,19 @@
           }
         ],
         title: '参观服务',
-        calendarDate: [],
-        weeks: ['日', '一', '二', '三', '四', '五', '六'],
-        current: parseInt(moment().format('DD')) - 1,
-        count: 0
+        actMonth: ['本月活动', '下月活动'],
+        current: 0,
+        navBar: [
+          {title: '教育活动', id: 1},
+          {title: '美科星未来学院', id: 2},
+          {title: '影院剧场', id: 3},
+          {title: '临时展览', id: 4},
+        ],
+        currentDate: moment().format('YYYY年M月')
       }
     },
     created() {
       this.getBanner()
-      this.getCalendarDate(0)
-    },
-    filters: {
-      //去0
-      filterDate(str) {
-        return str.replace(/\b(0+)/gi, "")
-      }
     },
     methods: {
       /**
@@ -98,44 +98,22 @@
       getBanner() {
         this.getBannerData({id: '', url: 'api/consulbanner'})
       },
-
-      /**
-       * 获取月份日期
-       * @param count
-       */
-      getCalendarDate(count) {
-        this.calendarDate = []
-        const start = moment()
-          .startOf('month')
-          .add('months', count)
-          .format('YYYY-MM-DD')
-        const end = moment()
-          .endOf('month')
-          .add('months', count)
-          .format('YYYY-MM-DD')
-
-        this.count = moment(start).format("E")
-
-        for (let i = 1; i < parseInt(end.slice(-2)); i++) {
-          const date = moment(start).add(i, 'day').format('YYYY-MM-DD')
-          this.calendarDate.push(date)
-        }
-        this.calendarDate.unshift(start)
-      },
-
-      toggleClick(index, date) {
-        console.log(date)
-        this.current = index
-      },
-
       nextMonth() {
-        this.current = 0
-        this.getCalendarDate(1)
+        this.$refs.calendar.nextMonth()
       },
-
       nowMonth() {
-        this.current = parseInt(moment().format('DD')) - 1
-        this.getCalendarDate(0)
+        this.$refs.calendar.nowMonth()
+      },
+      toggleMonth(index) {
+        this.current = index
+        this.currentDate = index === 0 ? moment().format('YYYY年M月') : moment().add('months', 1).format('YYYY年M月')
+        index === 0 ? this.nowMonth() : this.nextMonth()
+      },
+      toggleClick(date) {
+        console.log(parseInt(moment(date).format('X')) + 12 * 60 * 60)
+      },
+      handleTypeClick(type) {
+        console.log(type)
       }
     }
   }
@@ -145,53 +123,51 @@
     width: 1200px;
     margin: 0 auto;
     padding-top: 50px;
+    padding-bottom: 60px;
     .calendar-date {
       width: 100%;
       padding: 26px 42px 26px 26px;
       background: #fff;
       box-shadow: 0 3px 36px 0 #EDEDED;
-      .calendar-box {
-        width: 540px;
-        border-right: 1px solid #e2e2e2;
-        .weeks {
-          width: 100%;
-          li {
-            float: left;
-            width: 64px;
-            height: 58px;
-            text-align: center;
-            line-height: 58px;
-            color: #a2abb4;
-            font-size: 16px;
-            margin-right: 10px;
-          }
+      .act-info {
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 50px;
+        .title {
+          font-size: 28px;
+          color: #121c2a;
+          padding: 5px 0 10px 0;
         }
-        .date {
-          width: 100%;
-          li {
-            width: 64px;
-            height: 64px;
-            float: left;
+        .intr {
+          font-size: 14px;
+          color: #616775;
+        }
+        .btns {
+          width: 380px;
+          height: 60px;
+          border: 1px solid #26baf1;
+          margin-top: 25px;
+          border-radius: 4px;
+          overflow: hidden;
+          .btn {
+            width: 50%;
+            height: 60px;
             text-align: center;
-            line-height: 64px;
-            font-size: 18px;
-            color: #6c7797;
-            margin-right: 10px;
-            border-radius: 50%;
-            transition: all .3s;
-            background: #fff;
+            line-height: 60px;
+            font-size: 16px;
             cursor: pointer;
-            &:hover {
-              background: #d4d4d4;
-              color: #fff;
-            }
-            &.active {
-              background: #08ba5f;
-              color: #fff;
-            }
+            color: #1b2534;
+            float: left;
+          }
+          .active {
+            background: #0eb2ef;
+            color: #fff;
           }
         }
       }
+    }
+    .calendar-list {
+      margin-top: 50px;
     }
   }
 </style>
