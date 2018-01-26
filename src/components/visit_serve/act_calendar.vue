@@ -181,7 +181,6 @@
           type: this.type,
           time: this.time
         }, (res) => {
-          console.log(res)
           this.listData = res.data
         }, (err) => {
           console.log(err)

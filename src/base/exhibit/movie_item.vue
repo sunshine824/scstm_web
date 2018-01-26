@@ -49,15 +49,15 @@
     .movie-img{
       width: 340px;
       overflow: hidden;
+      height: 460px;
       float: left;
       border: 8px solid #fff;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       border-radius: 2px;
       box-shadow: 0 3px 36px 0 #EDEDED;
-      img {
-        height: 460px;
-      }
+      text-align: center;
+      line-height: 460px;
     }
     .m-txt {
       float: left;

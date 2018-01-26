@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
 Vue.use(VueLazyLoad,{
-  loading: require('../static/images/loading3.gif'),
+  loading: require('../static/images/loading.png'),
 })
 
 //loading进度条加载

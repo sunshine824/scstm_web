@@ -1,6 +1,6 @@
 <template>
   <div class="m-item clearfix">
-    <router-link :to="{path:'/mkx_school/mkx_detail',query:{id:data.id}}">
+    <router-link :to="{path:'/mkx_school/mkx_detail',query:{id:data.id}}" class="mkx-img">
       <img v-lazy="data.img"/>
     </router-link>
     <div class="m-txt">
@@ -50,10 +50,13 @@
     margin-bottom: 25px;
     background: #fff;
     box-shadow: 0 3px 36px 0 #EDEDED;
-    img {
+    .mkx-img{
       width: 450px;
       height: 320px;
+      overflow: hidden;
       float: left;
+      text-align: center;
+      line-height: 320px;
     }
     .m-txt {
       float: left;

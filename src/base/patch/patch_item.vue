@@ -53,10 +53,10 @@
     .course-img{
       width: 450px;
       float: left;
+      height: 320px;
+      line-height: 320px;
+      text-align: center;
       overflow: hidden;
-      img{
-        height: 320px;
-      }
     }
     .m-txt {
       float: left;

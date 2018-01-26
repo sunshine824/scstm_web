@@ -52,11 +52,11 @@
     box-shadow: 0 3px 36px 0 #EDEDED;
     .edu-img{
       width: 450px;
+      height: 320px;
       overflow: hidden;
       float: left;
-      img{
-        height: 320px;
-      }
+      text-align: center;
+      line-height: 320px;
     }
     .m-txt {
       float: left;
