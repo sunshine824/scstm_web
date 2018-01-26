@@ -9,7 +9,7 @@
       <ul class="type_list clearfix">
         <li v-for="(item,index) in typeList"
             :key="index">
-          <router-link :to="{path:'/exhibit/type-detail',query:{id:item.id}}">
+          <router-link :to="{path:'/exhibit/type-detail',query:{id:item.id}}" class="works-img">
             <img v-lazy="item.img"/>
           </router-link>
         </li>
@@ -106,8 +106,11 @@
           overflow: hidden;
           margin-right: 20px;
           margin-bottom: 20px;
-          img {
+          .works-img{
             width: 100%;
+            height: 290px;
+            text-align: center;
+            line-height: 290px;
           }
           &:nth-child(3n) {
             margin-right: 0;

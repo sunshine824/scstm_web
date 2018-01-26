@@ -74,12 +74,12 @@
             title: '参观服务',
             className: 'visit'
           },
-          {
+          /*{
             icon: '../static/images/test/scstm_06.png',
             href: '/friends',
             title: '科学朋友圈',
             className: 'friends'
-          },
+          },*/
         ],
         title: '首页'
       }

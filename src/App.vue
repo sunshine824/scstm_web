@@ -19,6 +19,10 @@
                 :number="foot.data.number"/>
       </div>
     </div>
+
+    <transition name="fade" mode="out-in">
+      <loading :isloading="loading"></loading>
+    </transition>
   </div>
 </template>
 
@@ -28,6 +32,8 @@
   import IndNav from '@/base/Head/ind_nav'
   import Guide from '@/base/Foot/guide'
   import Footer from '@/base/Foot/footer'
+  import Loading from '@/base/loading'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: 'app',
@@ -36,17 +42,26 @@
       IndNav,
       Guide,
       Footer,
+      Loading
     },
     data() {
       return {
         logo: '',
         foot: '',
-        pathname: ''
+        pathname: '',
       }
     },
     created() {
       this.getLogoData()
       this.getFootInfoData()
+    },
+    mounted(){
+      this.loading
+    },
+    computed:{
+      ...mapGetters([
+        'loading'
+      ])
     },
     methods: {
       /**
@@ -87,6 +102,14 @@
 
 <style lang="less">
   @import "./public/css/base.css";
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 20s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 
   .layout {
     width: 1200px;
