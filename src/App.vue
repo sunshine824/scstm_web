@@ -20,9 +20,7 @@
       </div>
     </div>
 
-    <transition name="fade" mode="out-in">
-      <loading :isloading="loading"></loading>
-    </transition>
+    <loading :isloading="loading"></loading>
   </div>
 </template>
 
@@ -54,9 +52,6 @@
     created() {
       this.getLogoData()
       this.getFootInfoData()
-    },
-    mounted(){
-      this.loading
     },
     computed:{
       ...mapGetters([
