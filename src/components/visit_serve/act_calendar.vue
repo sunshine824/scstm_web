@@ -25,6 +25,37 @@
           <nav-bar :navBar="navBar"
                    @handleClick="handleTypeClick">
           </nav-bar>
+          <p class="total">所有活动 （共10个活动）</p>
+          <div class="activity-con" v-if="listData.data">
+            <div class="activity_list">
+              <edu-item v-if="type===1"
+                        v-for="(item,index) in listData.data"
+                        :key="index"
+                        :data="item">
+              </edu-item>
+              <mkx-item v-if="type===2"
+                        v-for="(item,index) in listData.data"
+                        :key="index"
+                        :data="item">
+              </mkx-item>
+              <movie-item v-if="type===3"
+                          v-for="(item,index) in listData.data"
+                          :key="index"
+                          :data="item">
+              </movie-item>
+              <patch-item v-if="type===4"
+                          v-for="(item,index) in listData.data"
+                          :key="index"
+                          :data="item">
+              </patch-item>
+            </div>
+            <Pagination
+              :total="listData.total*10"
+              :page="page"
+              @handleChange="handlePage">
+            </Pagination>
+          </div>
+          <div v-if="listData.length===0">暂无数据</div>
         </div>
       </div>
     </bg>
@@ -33,10 +64,16 @@
 <script type="text/ecmascript-6">
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
+  import {getAjax} from '@/public/js/config'
   import Bg from '@/base/bg'
   import NavBar from '@/base/navBar'
   import moment from 'moment'
   import Calendar from '@/base/visit_serve/calendar'
+  import EduItem from '@/base/edu/edu_item'
+  import MkxItem from '@/base/mkx/mkx_item'
+  import MovieItem from '@/base/exhibit/movie_item'
+  import PatchItem from '@/base/patch/patch_item'
+  import Pagination from '@/base/pagination'
 
   export default {
     mixins: [getBannerMixin],
@@ -44,7 +81,12 @@
       Banner,
       Bg,
       Calendar,
-      NavBar
+      NavBar,
+      EduItem,
+      MkxItem,
+      MovieItem,
+      PatchItem,
+      Pagination
     },
     data() {
       return {
@@ -84,11 +126,16 @@
           {title: '影院剧场', id: 3},
           {title: '临时展览', id: 4},
         ],
-        currentDate: moment().format('YYYY年M月')
+        currentDate: moment().format('YYYY年M月'),
+        type: 1,
+        page: 1,
+        time: '',
+        listData: []
       }
     },
     created() {
       this.getBanner()
+      this.getActivityList()
     },
     methods: {
       /**
@@ -96,24 +143,49 @@
        * @param id  分类id
        */
       getBanner() {
-        this.getBannerData({id: '', url: 'api/consulbanner'})
+        this.getBannerData({id: '', url: 'api/Calendarbanner'})
       },
       nextMonth() {
+        this.currentDate = moment().add('months', 1).format('YYYY年M月')
         this.$refs.calendar.nextMonth()
       },
       nowMonth() {
+        this.currentDate = moment().format('YYYY年M月')
         this.$refs.calendar.nowMonth()
       },
       toggleMonth(index) {
         this.current = index
-        this.currentDate = index === 0 ? moment().format('YYYY年M月') : moment().add('months', 1).format('YYYY年M月')
         index === 0 ? this.nowMonth() : this.nextMonth()
       },
       toggleClick(date) {
-        console.log(parseInt(moment(date).format('X')) + 12 * 60 * 60)
+        this.time = parseInt(moment(date).format('X')) + 12 * 60 * 60
+        this.getActivityList()
       },
       handleTypeClick(type) {
-        console.log(type)
+        this.type = type
+        this.page = 1
+        this.getActivityList()
+      },
+      handlePage(page) {
+        this.page = page
+        this.getActivityList()
+      },
+
+      /**
+       * 获取列表数据
+       */
+      getActivityList() {
+        const url = 'api/Calendarlists'
+        getAjax(url, {
+          page: this.page,
+          type: this.type,
+          time: this.time
+        }, (res) => {
+          console.log(res)
+          this.listData = res.data
+        }, (err) => {
+          console.log(err)
+        }, this)
       }
     }
   }
@@ -168,6 +240,14 @@
     }
     .calendar-list {
       margin-top: 50px;
+      .total {
+        font-size: 24px;
+        color: #333333;
+        margin-top: 30px;
+      }
+      .activity_list {
+        margin-top: 30px;
+      }
     }
   }
 </style>
