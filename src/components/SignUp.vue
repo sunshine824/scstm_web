@@ -55,7 +55,7 @@
         </div>
         <div class="lyz-right">
           <p v-if="!isShowImg" class="input-btn" @click="getImgCode()">获取图片验证码</p>
-          <img v-if="isShowImg" :src="serveUrl+'/api/captcha/'+phone.value+'/'+Date.parse(new Date())"/>
+          <img v-if="isShowImg" :src="imgCaptcha"/>
         </div>
       </div>
       <div class="form-group clearfix">
@@ -126,6 +126,11 @@
         count: 120,
         isCount: false,
         timer: null
+      }
+    },
+    computed:{
+      imgCaptcha(){
+        return serveUrl+'/api/captcha/'+this.phone.value+'/'+Date.parse(new Date())
       }
     },
     methods: {
