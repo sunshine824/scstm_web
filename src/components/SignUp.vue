@@ -43,7 +43,7 @@
       <div class="form-group clearfix">
         <div class="lyz-left">
           <input type="text"
-                 placeholder="请输入图片验证码"
+                 placeholder="图片验证码"
                  class="captcha"
                  name="captcha"
                  v-model="imgCode.value"
@@ -53,15 +53,15 @@
             {{imgCode.error}}
           </label>
         </div>
-        <div class="lyz-right">
-          <p v-if="!isShowImg" class="input-btn" @click="getImgCode()">获取图片验证码</p>
+        <div class="lyz-right" @click="getImgCode()">
+          <p v-if="!isShowImg" class="input-btn">获取图片验证码</p>
           <img v-if="isShowImg" :src="imgCaptcha"/>
         </div>
       </div>
       <div class="form-group clearfix">
         <div class="lyz-left">
           <input type="text"
-                 placeholder="请输入手机验证码"
+                 placeholder="手机验证码"
                  class="tmsg"
                  name="tmsg"
                  v-model="phoneCode.value"
@@ -125,14 +125,15 @@
         serveUrl: serveUrl,
         count: 120,
         isCount: false,
-        timer: null
+        timer: null,
+        imgCaptcha: ''
       }
     },
-    computed:{
-      imgCaptcha(){
-        return serveUrl+'/api/captcha/'+this.phone.value+'/'+Date.parse(new Date())
+    /*computed: {
+      imgCaptcha() {
+        return serveUrl + '/api/captcha/' + this.phone.value + '/' + Date.parse(new Date())
       }
-    },
+    },*/
     methods: {
       /**
        * 手机号验证
@@ -244,11 +245,15 @@
        * 获取图片验证码
        */
       getImgCode() {
+        console.log(1)
         this.verifyPhone()
         if (this.phone.isVerify) {
           this.isShowImg = true
+          this.imgCaptcha = serveUrl + '/api/captcha/' + this.phone.value + '/' + Date.parse(new Date());
         }
       },
+
+
       /**
        * 发送手机验证码
        */
@@ -328,7 +333,7 @@
 </script>
 <style scoped lang="less">
   .sign-box {
-    width: 400px;
+    width: 420px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -401,7 +406,7 @@
     }
     .lyz-left {
       float: left;
-      width: 55%;
+      width: 58%;
       position: relative;
       input {
         width: 100%;
@@ -410,7 +415,7 @@
     }
     .lyz-right {
       float: right;
-      width: 40%;
+      width: 38%;
       height: 44px;
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
