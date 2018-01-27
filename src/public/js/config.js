@@ -1,4 +1,4 @@
-export const serveUrl = 'http://10.0.1.86:8080'
+export const serveUrl = 'http://www.kjg.com:8080'
 
 export function getAjax(url, params, resolveBack, rejectErr, _this) {
   //_this.$http.defaults.headers.common['Authorization'] = localStorage.getItem('token');

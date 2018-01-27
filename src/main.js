@@ -17,6 +17,8 @@ Vue.use(VueLazyLoad, {
   loading: require('../static/images/loading.png'),
 })
 
+Vue.use(iView)
+
 //loading进度条加载
 router.beforeEach((to, from, next) => {
   store.dispatch('set_loading_state', true)
