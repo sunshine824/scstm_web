@@ -6,6 +6,7 @@
         <input type="text"
                v-model="phone.value"
                name="phone"
+               @input="verifyPhone()"
                placeholder="请输入手机号"
                class="phone"/>
         <img src="../assets/user2.png"/>
@@ -19,6 +20,7 @@
                v-model="passwd.value"
                placeholder="请输入密码"
                class="passwd"
+               @input="verifyPasswd()"
                name="passwd"
                autocomplete="new-password"/>
         <img src="../assets/pass2.png"/>
@@ -32,6 +34,7 @@
                v-model="passwdCheck.value"
                placeholder="确认密码"
                class="passwdCheck"
+               @input="verifyPasswdCheck()"
                name="passwdCheck"
                autocomplete="new-password"/>
         <img src="../assets/pass2.png"/>
@@ -46,6 +49,7 @@
                  placeholder="图片验证码"
                  class="captcha"
                  name="captcha"
+                 @input="verifyImgCode()"
                  v-model="imgCode.value"
                  autocomplete="new-password"/>
           <label class="error"
@@ -64,11 +68,12 @@
                  placeholder="手机验证码"
                  class="tmsg"
                  name="tmsg"
-                 v-model="phoneCode.value"
+                 @input="verifyPhoneCode()"
+                 v-model="phone_code.value"
                  autocomplete="new-password"/>
           <label class="error"
-                 :class="phoneCode.error ? 'is-visible' : ''">
-            {{phoneCode.error}}
+                 :class="phone_code.error ? 'is-visible' : ''">
+            {{phone_code.error}}
           </label>
         </div>
         <div class="lyz-right">
@@ -116,7 +121,7 @@
           error: '',
           isVerify: false
         },
-        phoneCode: {
+        phone_code: {
           value: '',
           error: '',
           isVerify: false
@@ -129,16 +134,12 @@
         imgCaptcha: ''
       }
     },
-    /*computed: {
-      imgCaptcha() {
-        return serveUrl + '/api/captcha/' + this.phone.value + '/' + Date.parse(new Date())
-      }
-    },*/
     methods: {
       /**
        * 手机号验证
        */
       verifyPhone() {
+        console.log(1)
         if (this.phone.value === '') {
           this.phone.error = '请输入手机号'
           this.phone.isVerify = false
@@ -196,12 +197,12 @@
        * 手机验证码验证
        */
       verifyPhoneCode() {
-        if (this.phoneCode.value === '') {
-          this.phoneCode.error = '请输入手机验证码'
-          this.phoneCode.isVerify = false
+        if (this.phone_code.value === '') {
+          this.phone_code.error = '请输入手机验证码'
+          this.phone_code.isVerify = false
         } else {
-          this.phoneCode.error = ''
-          this.phoneCode.isVerify = true
+          this.phone_code.error = ''
+          this.phone_code.isVerify = true
         }
       },
       /**
@@ -220,7 +221,7 @@
       handleSubmit() {
         this.handleForm()
         if (
-          this.phone.isVerify && this.passwd.isVerify && this.passwdCheck.isVerify && this.imgCode.isVerify && this.phoneCode.isVerify
+          this.phone.isVerify && this.passwd.isVerify && this.passwdCheck.isVerify && this.imgCode.isVerify && this.phone_code.isVerify
         ) {
           this.handleFormAjax()
         }
@@ -232,10 +233,15 @@
         const url = 'api/registr'
         getAjax(url, {
           phone: this.phone.value,
-          phone_code: this.phoneCode.value,
+          phone_code: this.phone_code.value,
           password: this.passwd.value
         }, (res) => {
-          console.log(res)
+          if (res.status === 0) {
+
+          } else {
+            const obj = res.interpret
+            this[Object.keys(obj)[0]].error = res.interpret[Object.keys(obj)[0]]
+          }
         }, (err) => {
           console.log(err)
         }, this)
@@ -245,7 +251,6 @@
        * 获取图片验证码
        */
       getImgCode() {
-        console.log(1)
         this.verifyPhone()
         if (this.phone.isVerify) {
           this.isShowImg = true
@@ -271,7 +276,7 @@
             countNum -= 1;
             if (countNum < 1) {
               this.isCount = false
-              count = 120
+              countNum = 120
               clearInterval(this.timer)
             }
             this.count = countNum
@@ -288,19 +293,21 @@
           code: this.imgCode.value,
           phone: this.phone.value
         }, (res) => {
-          console.log(res)
-          this.isCount = true
-          this.countDown()
+          if (res.status === 0) {
+            this.isCount = true
+            this.countDown()
+          } else {
+            this.imgCode.error = res.interpret
+          }
         }, (err) => {
           console.log(err)
         }, this)
       }
     },
-    watch: {
+    /*watch: {
       phone: {
         deep: true,
         handler(newValue, oldValue) {
-          console.log(123)
           this.verifyPhone()
         }
       },
@@ -312,23 +319,23 @@
       },
       passwdCheck: {
         deep: true,
-        handler() {
+        handler(newValue,oldValue) {
           this.verifyPasswdCheck()
         }
       },
       imgCode: {
         deep: true,
-        handler() {
+        handler(newValue,oldValue) {
           this.verifyImgCode()
         }
       },
-      phoneCode: {
+      phone_code: {
         deep: true,
         handler() {
           this.verifyPhoneCode()
         }
       }
-    }
+    }*/
   }
 </script>
 <style scoped lang="less">
