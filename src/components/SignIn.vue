@@ -32,7 +32,7 @@
 
       <div class="checkbox-wr clearfix">
         <label class="remember">
-          <input type="checkbox" checked class="checkbox"/>
+          <input type="checkbox" ref="checkbox" checked class="checkbox"/>
           <span>记住密码</span>
         </label>
         <router-link to="/forget" class="forget">忘记密码？</router-link>
@@ -129,9 +129,12 @@
           phone: this.phone.value,
           password: this.password.value
         }, (res) => {
-          console.log(res)
           if (res.status === 0) {
-
+            if(this.$refs.checkbox.checked){
+              console.log('记住密码')
+            }else {
+              console.log('不记住密码')
+            }
           } else {
             const obj = res.interpret
             this[Object.keys(obj)[0]].error = res.interpret[Object.keys(obj)[0]]
