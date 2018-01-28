@@ -3,7 +3,7 @@
 
     <router-view name="sign"></router-view>
 
-    <div class="containers" v-if="pathname!=='登录' && pathname!=='注册'">
+    <div class="containers" v-if="pathname!=='登录' && pathname!=='注册' && pathname!=='忘记密码'">
       <div class="head">
         <Header/>
         <ind-nav :logo="logo" :pathname="pathname"/>

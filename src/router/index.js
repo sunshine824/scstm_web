@@ -12,6 +12,9 @@ const SignIn = r => require.ensure([], () => r(require('@/components/SignIn')), 
 //注册
 const SignUp = r => require.ensure([], () => r(require('@/components/SignUp')), 'SignUp');
 
+//忘记密码
+const Forget = r => require.ensure([], () => r(require('@/components/Forget')), 'Forget');
+
 //常设展览
 const Exhibit = r => require.ensure([], () => r(require('@/components/Exhibit')), 'Exhibit');
 const Survey = r => require.ensure([], () => r(require('@/components/exhibit/survey')), 'Survey');
@@ -72,6 +75,14 @@ export default new Router({
       meta: ['注册'],
       components: {
         'sign': SignUp
+      }
+    },
+    {
+      path: '/forget',
+      name: '忘记密码',
+      meta: ['忘记密码'],
+      components: {
+        'sign': Forget
       }
     },
     {

@@ -1,7 +1,7 @@
 <template>
   <sign-bg>
     <div class="sign-box">
-      <p class="sign-title">注册</p>
+      <p class="sign-title">忘记密码</p>
       <div class="form-group clearfix">
         <input type="text"
                v-model="phone.value"
@@ -82,10 +82,10 @@
         </div>
       </div>
       <div class="form-group clearfix" style="margin-top: 40px">
-        <button type="button" class="input-btn" @click="handleSubmit()">注册</button>
+        <button type="button" class="input-btn" @click="handleSubmit()">确认</button>
       </div>
       <p class="tologin">
-        <span>已有账号</span>
+        <span>记起账号</span>
         <router-link to="/signIn">立即登录</router-link>
       </p>
     </div>
@@ -139,7 +139,6 @@
        * 手机号验证
        */
       verifyPhone() {
-        console.log(1)
         if (this.phone.value === '') {
           this.phone.error = '请输入手机号'
           this.phone.isVerify = false
@@ -230,7 +229,7 @@
        * 提交数据
        */
       handleFormAjax() {
-        const url = 'api/registr'
+        const url = 'api/looking'
         getAjax(url, {
           phone: this.phone.value,
           phone_code: this.phone_code.value,
