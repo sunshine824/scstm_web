@@ -53,6 +53,12 @@ const Notice = r => require.ensure([], () => r(require('@/components/visit_serve
 //科学朋友圈
 const Friends = r => require.ensure([], () => r(require('@/components/Friends')), 'Friends');
 
+//个人中心
+const User_center = r => require.ensure([], () => r(require('@/components/User_center')), 'User_center');
+const Setting = r => require.ensure([], () => r(require('@/components/user_center/setting')), 'Setting');
+const My_book = r => require.ensure([], () => r(require('@/components/user_center/my_book')), 'My_book');
+const Manage = r => require.ensure([], () => r(require('@/components/user_center/manage')), 'Manage');
+
 export default new Router({
   routes: [
     {
@@ -151,9 +157,9 @@ export default new Router({
           meta: ['临展信息', '临时展览'],
         },
         {
-          path:'patch-detail',
-          component:Patch_detail,
-          name:'详情',
+          path: 'patch-detail',
+          component: Patch_detail,
+          name: '详情',
           meta: ['临展信息', '临时展览'],
         },
         {
@@ -174,9 +180,9 @@ export default new Router({
           meta: ['教育活动', '全部课程']
         },
         {
-          path:'course_detail',
-          component:Course_detail,
-          name:'详情',
+          path: 'course_detail',
+          component: Course_detail,
+          name: '详情',
           meta: ['教育活动', '全部课程']
         }
       ]
@@ -193,9 +199,9 @@ export default new Router({
           meta: ['美科星未来学院', '学院课程']
         },
         {
-          path:'mkx_detail',
-          component:Mkx_detail,
-          name:'详情',
+          path: 'mkx_detail',
+          component: Mkx_detail,
+          name: '详情',
           meta: ['美科星未来学院', '学院课程']
         }
       ]
@@ -236,13 +242,37 @@ export default new Router({
           meta: ['参观服务', '新闻公告'],
         }
       ]
-
     },
     {
       path: '/friends',
       name: '科学朋友圈',
       component: Friends,
       meta: ['科学朋友圈'],
+    },
+    {
+      path: '/user_center',
+      name: '个人中心',
+      component: User_center,
+      children: [
+        {
+          path: 'setting',
+          name: '个人设置',
+          component: Setting,
+          meta: ['个人中心', '个人设置'],
+        },
+        {
+          path: 'manage',
+          name: '账号管理',
+          component: Manage,
+          meta: ['个人中心', '账号管理'],
+        },
+        {
+          path: 'my_book',
+          name: '我的预约',
+          component: My_book,
+          meta: ['个人中心', '我的预约'],
+        }
+      ]
     }
   ]
 })

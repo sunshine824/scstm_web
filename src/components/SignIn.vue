@@ -143,7 +143,7 @@
               this.$cookie.delete('phone')
               this.$cookie.delete('password')
             }
-            this.$router.push('/user_center')
+            this.$router.push('/user_center/setting')
           } else {
             const obj = res.interpret
             this[Object.keys(obj)[0]].error = res.interpret[Object.keys(obj)[0]]

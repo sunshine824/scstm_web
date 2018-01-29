@@ -17,7 +17,7 @@
       <ul class="sign" v-else>
         <li>
           欢迎：
-          <router-link to="/user_center">{{user_phone}}</router-link>
+          <router-link to="/user_center/setting">{{user_phone}}</router-link>
         </li>
         <li>
           <span class="layout" @click="layout">退出</span>
