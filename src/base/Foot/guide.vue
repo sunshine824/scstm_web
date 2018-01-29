@@ -7,7 +7,7 @@
             :data-wow-delay="(0.2 + 0.15 * index).toFixed(1)+'s'"
             v-for="(item,index) in guides"
             :key="index"
-            :style="{background: 'url('+item.icon+') no-repeat center'}">
+            :style="{background: 'url('+item.icon+') no-repeat center'}"
             :class="item.className">
           <router-link :to="item.href" tag="p">{{item.title}}</router-link>
         </li>
@@ -21,7 +21,7 @@
       return {
         guides: [
           {
-            href: '/',
+            href: '/visit_serve/strategy',
             className: 'traffic',
             title: '交通攻略',
             icon:'../static/images/bg1.jpg'
@@ -33,7 +33,7 @@
             icon:'../static/images/bg2.jpg'
           },
           {
-            href: '/',
+            href: '/exhibit/survey',
             className: 'about',
             title: '关于科技馆',
             icon:'../static/images/bg3.jpg'

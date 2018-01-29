@@ -111,6 +111,9 @@
             </div>
           </div>
         </div>
+        <div class="mask-img">
+          <img src="../assets/home_mask.png"/>
+        </div>
       </div>
     </bg>
   </div>
@@ -170,7 +173,7 @@
         const url = 'api/index'
         getAjax(url, {},
           (res) => {
-          console.log(res)
+            console.log(res)
             this.homeData = res.data
           }, (err) => {
             console.log(err)
@@ -215,7 +218,7 @@
         width: 854px;
         .l-top {
           width: 100%;
-          height:410px;
+          height: 410px;
           position: relative;
           margin-bottom: 26px;
           overflow: hidden;
@@ -228,11 +231,11 @@
               transform: scale3d(1.15, 1.15, 1);
             }
           }
-          .mkx-news{
+          .mkx-news {
             position: absolute;
             width: 362px;
             right: 0;
-            top:0;
+            top: 0;
             bottom: 0;
             background: #24bfd7;
           }
@@ -305,9 +308,9 @@
               transform: scale3d(1.15, 1.15, 1);
             }
           }
-          .edu-news{
+          .edu-news {
             position: absolute;
-            top:0;
+            top: 0;
             left: 0;
             background: #51cbfc;
             bottom: 0;
@@ -438,6 +441,15 @@
               }
             }
           }
+        }
+      }
+      .mask-img{
+        position: absolute;
+        width: 400px;
+        top: 260px;
+        left: 60px;
+        img{
+          width: 100%;
         }
       }
     }
