@@ -8,7 +8,7 @@
       <div class="user-con clearfix">
         <div class="user-head">
           <img
-            :src="img"/>
+            :src="img ? img : defaultImg"/>
           <p class="btn-head" @click="toggleShow">{{img ? '修改头像' : '上传头像'}}</p>
           <my-upload field="img"
                      @crop-success="cropSuccess"
@@ -161,7 +161,8 @@
           isVerify: false
         },
         img: '',
-        isChoose: false //是否选择图片源
+        isChoose: false, //是否选择图片源
+        defaultImg: '../static/images/loading.png'
       }
     },
     created() {

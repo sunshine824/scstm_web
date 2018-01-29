@@ -1,6 +1,6 @@
 <template>
-  <div class="content" v-if="homeData.data">
-    <swiper :banners="homeData.data.banner"></swiper>
+  <div class="content" v-if="homeData">
+    <swiper :banners="homeData.banner"></swiper>
     <bg>
       <div class="wrap clearfix">
         <div class="wrap-left">
@@ -17,7 +17,7 @@
               </div>
               <div class="news-list">
                 <ul>
-                  <li v-for="(item,index) in homeData.data.future" :key="index">
+                  <li v-for="(item,index) in homeData.future" :key="index">
                     <!--<p class="date">
                       <span class="day">30</span>
                       <span class="month">2017.10</span>
@@ -44,7 +44,7 @@
               </div>
               <div class="news-list">
                 <ul>
-                  <li v-for="(item,index) in homeData.data.education" :key="index">
+                  <li v-for="(item,index) in homeData.education" :key="index">
                     <!--<p class="date">
                       <span class="day">30</span>
                       <span class="month">2017.10</span>
@@ -82,12 +82,12 @@
             <p class="t-title">开闭馆时间</p>
             <div class="time-group">
               <p class="time-item">
-                <span class="time">{{homeData.data.time.time_sta}}</span>
+                <span class="time">{{homeData.time.time_sta}}</span>
                 <span class="txt">开始售票</span>
               </p>
               <p class="and">~</p>
               <p class="time-item">
-                <span class="time">{{homeData.data.time.time_end}}</span>
+                <span class="time">{{homeData.time.time_end}}</span>
                 <span class="txt">闭馆时间</span>
               </p>
             </div>
@@ -101,7 +101,7 @@
                 </router-link>
               </div>
               <ul class="clearfix">
-                <li v-for="(item,index) in homeData.data.inform" :key="index">
+                <li v-for="(item,index) in homeData.inform" :key="index">
                   <router-link to="/">
                     {{item.title}}
                   </router-link>
@@ -170,7 +170,8 @@
         const url = 'api/index'
         getAjax(url, {},
           (res) => {
-            this.homeData = res
+          console.log(res)
+            this.homeData = res.data
           }, (err) => {
             console.log(err)
           }, this)

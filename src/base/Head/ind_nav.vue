@@ -69,7 +69,7 @@
             className: 'mkx'
           },
           {
-            icon: '../static/images/test/scstm_11.png',
+            icon: '../static/images/header/icon_serve.png',
             href: '/visit_serve/strategy',
             title: '参观服务',
             className: 'visit'
@@ -122,28 +122,23 @@
               margin-bottom: 8px;
             }
             .icon-img {
-              width: 42px;
-              background-size: 42px 40px !important;
+              width: 50px;
+              background-size: 50px 50px !important;
               display: inline-block;
-              height: 40px;
+              height: 50px;
             }
           }
           &:hover {
-            background: url("../../../static/images/test/scstm_03.png") no-repeat;
+            //background: url("../../../static/images/test/scstm_03.png") no-repeat;
+            //background: #27bdfa;
             a {
-              color: #fff;
-              .home {
-                background: url("../../../static/images/test/guide.png") !important;
-              }
+              color: #2db1f2;
             }
           }
           &.active {
-            background: url("../../../static/images/test/scstm_03.png") no-repeat;
+            //background: #27bdfa;
             a {
-              color: #fff;
-              .home {
-                background: url("../../../static/images/test/guide.png") !important;
-              }
+              color: #2db1f2;
             }
           }
         }

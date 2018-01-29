@@ -5,7 +5,10 @@
         <li class="wow fadeInUp"
             data-wow-duration="2.5s"
             :data-wow-delay="(0.2 + 0.15 * index).toFixed(1)+'s'"
-            v-for="(item,index) in guides" :key="index" :class="item.className">
+            v-for="(item,index) in guides"
+            :key="index"
+            :style="{background: 'url('+item.icon+') no-repeat center'}">
+            :class="item.className">
           <router-link :to="item.href" tag="p">{{item.title}}</router-link>
         </li>
       </ul>
@@ -20,17 +23,20 @@
           {
             href: '/',
             className: 'traffic',
-            title: '交通攻略'
+            title: '交通攻略',
+            icon:'../static/images/bg1.jpg'
           },
           {
             href: '/',
             className: 'volunter',
-            title: '志愿者招募'
+            title: '志愿者招募',
+            icon:'../static/images/bg2.jpg'
           },
           {
             href: '/',
             className: 'about',
-            title: '关于科技馆'
+            title: '关于科技馆',
+            icon:'../static/images/bg3.jpg'
           }
         ]
       }
@@ -51,7 +57,7 @@
         vertical-align: middle;
         text-align: center;
         margin-right: 38px;
-        background: url("../../../static/images/test/guide.png") no-repeat;
+        //background: url("../../../static/images/test/guide.png") no-repeat;
         &:last-child {
           margin-right: 0;
         }
