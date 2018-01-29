@@ -94,7 +94,7 @@
         const url = 'api/out'
         getAjax(url, {},
           (res) => {
-            localStorage.setItem('islogin', '')
+            localStorage.removeItem('login')
             localStorage.removeItem('token')
             window.location.href = '/'
           }, (err) => {

@@ -4,7 +4,7 @@
       <p class="notice">
         当瞬时在关人数达到5700人时，我馆将采取限流措施，请予理解配合
       </p>
-      <ul class="sign" v-if="!islogin">
+      <ul class="sign" v-if="!user_phone">
         <li>
           <router-link to="/signIn">登录</router-link>
         </li>
@@ -17,7 +17,7 @@
       <ul class="sign" v-else>
         <li>
           欢迎：
-          <router-link to="/user_center">xxx</router-link>
+          <router-link to="/user_center">{{user_phone}}</router-link>
         </li>
         <li>
           <span class="layout" @click="layout">退出</span>
@@ -32,8 +32,8 @@
       return {}
     },
     computed: {
-      islogin() {
-        return localStorage.getItem('islogin')
+      user_phone() {
+        return localStorage.getItem('login')
       }
     },
     mounted(){
