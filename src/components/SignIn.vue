@@ -32,7 +32,7 @@
 
       <div class="checkbox-wr clearfix">
         <label class="remember">
-          <input type="checkbox" ref="checkbox" checked class="checkbox"/>
+          <input type="checkbox" ref="checkbox" class="checkbox"/>
           <span>记住密码</span>
         </label>
         <router-link to="/forget" class="forget">忘记密码？</router-link>
@@ -69,6 +69,10 @@
           isVerify: false
         },
       }
+    },
+    mounted(){
+      this.phone.value=this.$cookie.get('phone')
+      this.password.value=this.$cookie.get('password')
     },
     methods: {
       /**
@@ -130,10 +134,12 @@
           password: this.password.value
         }, (res) => {
           if (res.status === 0) {
-            if(this.$refs.checkbox.checked){
-              console.log('记住密码')
-            }else {
-              console.log('不记住密码')
+            if (this.$refs.checkbox.checked) {
+              this.$cookie.set('phone', this.phone.value, 7)
+              this.$cookie.set('password', this.password.value, 7)
+            } else {
+              this.$cookie.delete('phone')
+              this.$cookie.delete('password')
             }
           } else {
             const obj = res.interpret
@@ -263,21 +269,21 @@
     }
   }
 
-  .checkbox-wr{
+  .checkbox-wr {
     width: 100%;
     margin: 20px 0 15px;
-    .remember{
+    .remember {
       position: relative;
       float: left;
       margin-right: 10px;
       cursor: pointer;
-      span{
+      span {
         font-size: 14px;
         color: #c8c8c8;
         font-weight: 400;
       }
     }
-    .forget{
+    .forget {
       float: right;
       font-size: 14px;
       color: #b4b4b4;

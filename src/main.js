@@ -7,6 +7,7 @@ import router from './router'
 import store from './store'
 import iView from 'iview'
 import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 
 import 'iview/dist/styles/iview.css';
 
@@ -18,6 +19,7 @@ Vue.use(VueLazyLoad, {
 })
 
 Vue.use(iView)
+Vue.use(VueCookie)
 
 //loading进度条加载
 router.beforeEach((to, from, next) => {
@@ -27,9 +29,7 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach(route => {
-  setTimeout(() => {
-    store.dispatch('set_loading_state', false)
-  },3000)
+  store.dispatch('set_loading_state', false)
   iView.LoadingBar.finish();
 });
 
