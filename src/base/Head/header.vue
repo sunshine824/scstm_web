@@ -4,7 +4,7 @@
       <p class="notice">
         当瞬时在关人数达到5700人时，我馆将采取限流措施，请予理解配合
       </p>
-      <ul class="sign">
+      <ul class="sign" v-if="!islogin">
         <li>
           <router-link to="/signIn">登录</router-link>
         </li>
@@ -14,6 +14,15 @@
         </li>
         <li>|</li>
       </ul>
+      <ul class="sign" v-else>
+        <li>
+          欢迎：
+          <router-link to="/user_center">xxx</router-link>
+        </li>
+        <li>
+          <span class="layout" @click="layout">退出</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -21,6 +30,19 @@
   export default {
     data() {
       return {}
+    },
+    computed: {
+      islogin() {
+        return localStorage.getItem('islogin')
+      }
+    },
+    mounted(){
+      console.log(localStorage.getItem('islogin'))
+    },
+    methods: {
+      layout() {
+        this.$emit('layout')
+      }
     }
   }
 </script>
@@ -45,9 +67,15 @@
           line-height: 40px;
           margin-left: 10px;
           vertical-align: middle;
+          .layout {
+            cursor: pointer;
+            &:hover {
+              color: #279ee4;
+            }
+          }
           a {
             color: #666;
-            &:hover{
+            &:hover {
               color: #279ee4;
             }
           }

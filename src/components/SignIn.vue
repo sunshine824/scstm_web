@@ -32,7 +32,7 @@
 
       <div class="checkbox-wr clearfix">
         <label class="remember">
-          <input type="checkbox" ref="checkbox" class="checkbox"/>
+          <input type="checkbox" ref="checkbox" checked class="checkbox"/>
           <span>记住密码</span>
         </label>
         <router-link to="/forget" class="forget">忘记密码？</router-link>
@@ -70,9 +70,9 @@
         },
       }
     },
-    mounted(){
-      this.phone.value=this.$cookie.get('phone')
-      this.password.value=this.$cookie.get('password')
+    mounted() {
+      this.phone.value = this.$cookie.get('phone')
+      this.password.value = this.$cookie.get('password')
     },
     methods: {
       /**
@@ -134,6 +134,8 @@
           password: this.password.value
         }, (res) => {
           if (res.status === 0) {
+            localStorage.setItem('token', res.data)
+            localStorage.setItem('islogin', true)
             if (this.$refs.checkbox.checked) {
               this.$cookie.set('phone', this.phone.value, 7)
               this.$cookie.set('password', this.password.value, 7)
@@ -141,6 +143,7 @@
               this.$cookie.delete('phone')
               this.$cookie.delete('password')
             }
+            this.$router.push('/user_center')
           } else {
             const obj = res.interpret
             this[Object.keys(obj)[0]].error = res.interpret[Object.keys(obj)[0]]

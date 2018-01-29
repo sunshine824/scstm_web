@@ -5,7 +5,7 @@
 
     <div class="containers" v-if="pathname!=='登录' && pathname!=='注册' && pathname!=='忘记密码'">
       <div class="head">
-        <Header/>
+        <Header @layout="handleLayout"/>
         <ind-nav :logo="logo" :pathname="pathname"/>
       </div>
 
@@ -53,7 +53,7 @@
       this.getLogoData()
       this.getFootInfoData()
     },
-    computed:{
+    computed: {
       ...mapGetters([
         'loading'
       ])
@@ -82,6 +82,21 @@
           (res) => {
             //console.log(res)
             this.foot = res
+          }, (err) => {
+            console.log(err)
+          }, this)
+      },
+
+      /**
+       * 退出
+       */
+      handleLayout() {
+        const url = 'api/out'
+        getAjax(url, {},
+          (res) => {
+            localStorage.setItem('islogin', '')
+            localStorage.removeItem('token')
+            window.location.href = '/'
           }, (err) => {
             console.log(err)
           }, this)

@@ -236,7 +236,7 @@
           password: this.password.value
         }, (res) => {
           if (res.status === 0) {
-
+            this.$router.push('/signIn')
           } else {
             const obj = res.interpret
             this[Object.keys(obj)[0]].error = res.interpret[Object.keys(obj)[0]]
