@@ -238,7 +238,6 @@
           born: this.born,
           img: this.isChoose ? this.img : '',
         }, (res) => {
-          console.log(res)
           if (res.status === 0) {
             this.isChoose = false
           } else {
@@ -257,7 +256,6 @@
         const url = 'api/user'
         getAjax(url, {},
           (res) => {
-          console.log(res)
             this.born = res.data.born
             this.card.value = res.data.card
             this.email.value = res.data.email

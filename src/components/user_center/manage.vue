@@ -160,7 +160,6 @@
           password1: this.password1.value,
           password2: this.password2.value,
         }, (res) => {
-          console.log(res)
           if (res.status === 0) {
             localStorage.removeItem('login')
             localStorage.removeItem('token')
