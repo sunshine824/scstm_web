@@ -49,6 +49,7 @@ const Act_calendar = r => require.ensure([], () => r(require('@/components/visit
 const SE = r => require.ensure([], () => r(require('@/components/visit_serve/SE')), 'SE');
 const Consult = r => require.ensure([], () => r(require('@/components/visit_serve/consult')), 'Consult');
 const Notice = r => require.ensure([], () => r(require('@/components/visit_serve/notice')), 'Notice');
+const News_detail = r => require.ensure([], () => r(require('@/components/visit_serve/news_detail')), 'News_detail');
 
 //科学朋友圈
 const Friends = r => require.ensure([], () => r(require('@/components/Friends')), 'Friends');
@@ -240,6 +241,12 @@ export default new Router({
           name: '新闻公告',
           component: Notice,
           meta: ['参观服务', '新闻公告'],
+        },
+        {
+          path: 'news-detail',
+          name: '新闻详情',
+          component: News_detail,
+          meta: ['参观服务', '新闻公告']
         }
       ]
     },

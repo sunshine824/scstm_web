@@ -5,7 +5,7 @@
       <div class="wrap clearfix">
         <div class="wrap-left">
           <div class="l-top">
-            <img src="../assets/home_03.png"/>
+            <img src="../assets/mkx_bg.jpg"/>
             <div class="news mkx-news">
               <div class="title clearfix">
                 <h2>美科星学院</h2>
@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="l-bottom">
-            <img src="../assets/home_03.png"/>
+            <img src="../assets/edu_bg.jpg"/>
             <div class="news edu-news">
               <div class="title clearfix">
                 <h2>教育活动</h2>

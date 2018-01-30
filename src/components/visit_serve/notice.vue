@@ -7,13 +7,16 @@
       @handleClick="getBanner"/>
     <bg>
       <div class="flow-con clearfix">
+        <nav-bar :navBar="navBar"
+                 @handleClick="handleTypeClick">
+        </nav-bar>
         <div class="notice-list">
-          <p class="title">新闻公告</p>
+          <!--<p class="title">新闻公告</p>-->
           <ul class="clearfix lists-con">
-            <notice-item v-if="noticeData.data"
+            <news-item v-if="noticeData.data"
                          v-for="(item,index) in noticeData.data"
                          :key="index" :data="item">
-            </notice-item>
+            </news-item>
             <li v-if="!noticeData.data">暂无数据</li>
           </ul>
           <Pagination
@@ -43,7 +46,7 @@
   import NavBar from '@/base/navBar'
   import Bg from '@/base/bg'
   import {getAjax} from '@/public/js/config'
-  import NoticeItem from '@/base/patch/notice_item'
+  import NewsItem from '@/base/visit_serve/news_item'
   import SideItem from '@/base/patch/side_item'
   import Pagination from '@/base/pagination'
 
@@ -53,13 +56,17 @@
       NavBar,
       Banner,
       Bg,
-      NoticeItem,
+      NewsItem,
       SideItem,
       Pagination,
     },
     data() {
       return {
         title: '参观服务',
+        navBar: [
+          {title: '新闻', id: 1},
+          {title: '公告', id: 2},
+        ],
         navs: [
           {
             href: '/visit_serve/strategy',
@@ -90,7 +97,8 @@
         page: 1,
         clas: 1,
         noticeData: '',
-        patchData: ''
+        patchData: '',
+        typeId: 1
       }
     },
     created() {
@@ -112,6 +120,10 @@
         this.getNoticeList()
       },
 
+      handleTypeClick(typeId) {
+        this.typeId = typeId
+        this.getNoticeList()
+      },
 
       /**
        * 获取流动科技馆列表
@@ -119,7 +131,8 @@
       getNoticeList() {
         const url = 'api/informlists'
         getAjax(url, {
-          page: this.page
+          page: this.page,
+          type: this.typeId
         }, (res) => {
           this.noticeData = res.data
         }, (err) => {
@@ -158,7 +171,7 @@
         -webkit-border-radius: 2px;
         -moz-border-radius: 2px;
         border-radius: 2px;
-        .title{
+        .title {
           font-size: 22px;
           color: #333;
           margin-bottom: 20px;
@@ -177,7 +190,6 @@
         -moz-border-radius: 2px;
         border-radius: 2px;
         padding: 32px 38px;
-        margin-top: 50px;
         box-shadow: 0 3px 36px 0 #EDEDED;
         .title {
           font-size: 18px;
