@@ -39,7 +39,7 @@
         navBar: [
           {title: '参观路线', id: 1},
           {title: '交通信息', id: 2},
-          {title: '购票', id: 3, href: 'https://www.baidu.com'},
+          {title: '购票', id: 3, href: ''},
         ],
         navs: [
           {
@@ -78,6 +78,7 @@
       this.getBanner()
       this.getTypeList()
       this.getShowImg('s')
+      this.getTicketHref()
     },
     methods: {
       /**
@@ -119,6 +120,16 @@
           id: id
         }, (res) => {
           this.showImg = res.data.line
+        }, (err) => {
+          console.log(err)
+        }, this)
+      },
+
+      //获取购票链接
+      getTicketHref() {
+        const url = 'api/ticket'
+        getAjax(url, {}, (res) => {
+          this.navBar[2].href = res.data.ticket
         }, (err) => {
           console.log(err)
         }, this)

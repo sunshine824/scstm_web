@@ -118,7 +118,6 @@
           type: 1
         }, (res) => {
           this.hotList = res.data
-          console.log(res)
         }, (err) => {
           console.log(err)
         }, this)
