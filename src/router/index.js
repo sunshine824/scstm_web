@@ -31,6 +31,7 @@ const Patch_exhibt = r => require.ensure([], () => r(require('@/components/Patch
 const Patch_info = r => require.ensure([], () => r(require('@/components/patch_exhibit/patch_info')), 'Patch_info');
 const Patch_detail = r => require.ensure([], () => r(require('@/components/patch_exhibit/patch_detail')), 'Patch_detail');
 const Flow_science = r => require.ensure([], () => r(require('@/components/patch_exhibit/flow_science')), 'Flow_science');
+const Flow_detail = r => require.ensure([], () => r(require('@/components/patch_exhibit/flow_detail')), 'Flow_detail');
 
 //教育活动
 const Edu_activity = r => require.ensure([], () => r(require('@/components/Edu_activity')), 'Edu_activity');
@@ -49,7 +50,7 @@ const Act_calendar = r => require.ensure([], () => r(require('@/components/visit
 const SE = r => require.ensure([], () => r(require('@/components/visit_serve/SE')), 'SE');
 const Consult = r => require.ensure([], () => r(require('@/components/visit_serve/consult')), 'Consult');
 const Notice = r => require.ensure([], () => r(require('@/components/visit_serve/notice')), 'Notice');
-const News_detail = r => require.ensure([], () => r(require('@/components/visit_serve/news_detail')), 'News_detail');
+const Detail = r => require.ensure([], () => r(require('@/components/visit_serve/detail')), 'Detail');
 
 //科学朋友圈
 const Friends = r => require.ensure([], () => r(require('@/components/Friends')), 'Friends');
@@ -167,7 +168,13 @@ export default new Router({
           path: 'flow_science',
           component: Flow_science,
           meta: ['临展信息', '流动科技馆']
-        }
+        },
+        {
+          path: 'flow-detail',
+          component: Flow_detail,
+          name: '流动详情',
+          meta: ['临展信息', '流动科技馆'],
+        },
       ]
     },
     {
@@ -243,9 +250,9 @@ export default new Router({
           meta: ['参观服务', '新闻公告'],
         },
         {
-          path: 'news-detail',
+          path: 'detail',
           name: '新闻详情',
-          component: News_detail,
+          component: Detail,
           meta: ['参观服务', '新闻公告']
         }
       ]

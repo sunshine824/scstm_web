@@ -15,7 +15,8 @@
           <ul class="clearfix lists-con">
             <news-item v-if="noticeData.data"
                          v-for="(item,index) in noticeData.data"
-                         :key="index" :data="item">
+                         :key="index" :data="item"
+                        :typeId="typeId">
             </news-item>
             <li v-if="!noticeData.data">暂无数据</li>
           </ul>

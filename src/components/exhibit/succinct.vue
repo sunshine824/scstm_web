@@ -7,10 +7,12 @@
       @handleClick="getBanner"/>
     <div class="type-con">
       <ul class="type_list clearfix">
-        <li v-for="(item,index) in typeList"
-            :key="index">
-          <router-link :to="{path:'/exhibit/type-detail',query:{id:item.id}}" class="works-img">
+        <li v-for="(item,index) in typeList" :key="index">
+          <div class="works-img">
             <img v-lazy="item.img"/>
+          </div>
+          <router-link :to="{path:'/exhibit/type-detail',query:{id:item.id}}" class="link-btn">
+            飞行类
           </router-link>
         </li>
       </ul>
@@ -101,18 +103,57 @@
         padding-bottom: 60px;
         li {
           float: left;
-          width: 385px;
-          height: 290px;
+          width: 290px;
+          height: 210px;
           overflow: hidden;
-          margin-right: 20px;
-          margin-bottom: 20px;
+          margin-right: 13px;
+          margin-bottom: 13px;
+          position: relative;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
           .works-img{
             width: 100%;
-            height: 290px;
+            height: 210px;
             text-align: center;
-            line-height: 290px;
+            img{
+              width: 100%;
+              min-height: 210px;
+              -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+              transition: opacity 0.35s, transform 0.35s;
+              -webkit-transform: scale(1.12);
+              transform: scale(1.12);
+            }
           }
-          &:nth-child(3n) {
+          .link-btn{
+            position: absolute;
+            width: 150px;
+            height: 40px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            text-align: center;
+            line-height: 40px;
+            left: 50%;
+            top:50%;
+            margin-left: -75px;
+            margin-top: -20px;
+            border:1px solid #fff;
+            background: rgba(255,255,255,.3);
+            color: #fff;
+            font-size: 16px;
+            &:hover{
+              background: rgba(0,0,0,.3);
+            }
+          }
+          &:hover{
+            img{
+              background: rgba(0,0,0,.8);
+              -webkit-transform: scale(1);
+              transform: scale(1);
+            }
+          }
+          &:nth-of-type(4n){
             margin-right: 0;
           }
         }

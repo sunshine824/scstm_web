@@ -4,7 +4,7 @@
       <span class="day">{{dateStr.slice(-2)}}</span>
       <span class="month">{{dateStr.slice(0, -3)}}</span>
     </p>
-    <router-link :to="{path:'/visit_serve/news-detail',query:{id:data.id}}" class="info">
+    <router-link :to="{path:'/visit_serve/detail',query:{id:data.id,typeId:typeId}}" class="info">
       <span class="info-title">{{data.title}}</span>
       <span class="intr">{{data.introduce}}</span>
     </router-link>
@@ -18,6 +18,10 @@
       data: {
         type: Object,
         default: ""
+      },
+      typeId: {
+        type: Number,
+        default: ''
       }
     },
     data() {

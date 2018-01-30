@@ -19,12 +19,13 @@
         </div>
         <div class="news-lists">
           <div class="news-head clearfix">
-            <h2 class="news-title">热门新闻</h2>
+            <h2 class="news-title">{{$route.query.typeId === 1 ? '热门新闻' : '热门公告'}}</h2>
             <router-link to="/visit_serve/notice" class="more">更多</router-link>
           </div>
           <ul class="lists-con clearfix">
             <li v-for="(item,index) in hotList.data">
-              <router-link :to="{path:'/visit_serve/news-detail',query:{id:item.id}}" class="n-title">
+              <router-link :to="{path:'/visit_serve/detail',query:{id:item.id,typeId:$route.query.typeId}}"
+                           class="n-title">
                 {{item.title}}
               </router-link>
               <span class="n-time">{{item.addtime}}</span>
@@ -115,7 +116,7 @@
       getHotList() {
         const url = 'api/informlistsright'
         getAjax(url, {
-          type: 1
+          type: this.$route.query.typeId
         }, (res) => {
           this.hotList = res.data
         }, (err) => {

@@ -52,7 +52,8 @@
 <style scoped lang="less">
   .bottom-nav {
     width: 100%;
-    background: #3fcdfd;
+    background: url("../../../static/images/guide_bg.png") no-repeat;
+    background-size: cover;
     .bottom-nav-con {
       padding: 50px 0;
       text-align: center;

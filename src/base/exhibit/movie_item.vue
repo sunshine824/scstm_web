@@ -58,6 +58,9 @@
       box-shadow: 0 3px 36px 0 #EDEDED;
       text-align: center;
       line-height: 460px;
+      img{
+        width: 100%;
+      }
     }
     .m-txt {
       float: left;
