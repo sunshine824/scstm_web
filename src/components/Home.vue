@@ -9,7 +9,7 @@
             <div class="news mkx-news">
               <div class="title clearfix">
                 <h2>美科星学院</h2>
-                <router-link to='/'>
+                <router-link to='/mkx_school/school_course'>
                 <span>
                   <Icon type="ios-arrow-right"></Icon>
                 </span>
@@ -36,10 +36,10 @@
             <div class="news edu-news">
               <div class="title clearfix">
                 <h2>教育活动</h2>
-                <router-link to='/'>
-                <span>
-                  <Icon type="ios-arrow-right"></Icon>
-                </span>
+                <router-link to='/edu_activity/all_course'>
+                  <span>
+                    <Icon type="ios-arrow-right"></Icon>
+                  </span>
                 </router-link>
               </div>
               <div class="news-list">
@@ -89,17 +89,32 @@
               </p>
             </div>
             <div class="notice">
-              <div class="title clearfix">
-                <h2>公告</h2>
-                <router-link to='/'>
-                <span>
-                  <Icon type="ios-arrow-right"></Icon>
-                </span>
+              <div class="n-title clearfix">
+                <div class="tab-btn">
+                  <h2 v-for="(item,index) in tabs"
+                      :key="index"
+                      :class="{active:current===index}"
+                      @click="toggle(index)">
+                    {{item}}
+                  </h2>
+                </div>
+                <router-link to='/visit_serve/notice'>
+                  <span>
+                    <Icon type="ios-arrow-right"></Icon>
+                  </span>
                 </router-link>
               </div>
-              <ul class="clearfix" v-if="!homeData.inform.length">
+              <ul class="clearfix" v-if="current===0">
                 <li v-for="(item,index) in homeData.inform" :key="index">
-                  <router-link to="/">
+                  <router-link :to="{path:'/visit_serve/detail',query:{id:item.id,typeId:2}}">
+                    {{item.title}}
+                  </router-link>
+                  <span>{{item.addtime}}</span>
+                </li>
+              </ul>
+              <ul class="clearfix" v-if="current===1">
+                <li v-for="(item,index) in homeData.news" :key="index">
+                  <router-link :to="{path:'/visit_serve/detail',query:{id:item.id,typeId:1}}">
                     {{item.title}}
                   </router-link>
                   <span>{{item.addtime}}</span>
@@ -153,7 +168,9 @@
             title: '场馆导览',
             intr: '随时随地，为您提供身临其境的游览体验'
           },
-        ]
+        ],
+        tabs: ['公告', '新闻'],
+        current: 0
       }
     },
     created() {
@@ -172,6 +189,10 @@
           }, (err) => {
             console.log(err)
           }, this)
+      },
+
+      toggle(index) {
+        this.current = index
       }
     }
   }
@@ -201,6 +222,8 @@
           line-height: 26px;
           text-align: center;
           margin-top: 6px;
+          position: relative;
+          z-index: 10;
         }
         h2 {
           float: left;
@@ -414,6 +437,40 @@
             }
           }
           .notice {
+            .n-title {
+              padding-top: 30px;
+              .tab-btn {
+                float: left;
+                font-size: 24px;
+                color: #fff;
+                h2 {
+                  float: left;
+                  margin-right: 20px;
+                  cursor: pointer;
+                  color: #5f5f5f;
+                  &:hover {
+                    color: #fff;
+                  }
+                  &.active {
+                    color: #fff;
+                  }
+                }
+              }
+              a {
+                float: right;
+                color: #fff;
+                width: 26px;
+                height: 26px;
+                border-radius: 4px;
+                border: 1px solid #fff;
+                font-size: 18px;
+                line-height: 26px;
+                text-align: center;
+                margin-top: 6px;
+                position: relative;
+                z-index: 10;
+              }
+            }
             ul {
               margin-top: 5px;
               li {
@@ -441,12 +498,12 @@
           }
         }
       }
-      .mask-img{
+      .mask-img {
         position: absolute;
         width: 400px;
         top: 260px;
         left: 60px;
-        img{
+        img {
           width: 100%;
         }
       }
@@ -454,34 +511,74 @@
   }
 
   @-moz-keyframes swinging {
-    0%{-webkit-transform:scale(1);}
-    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
-    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
-    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
-    100%{-webkit-transform:scale(1) rotate(0);}
+    0% {
+      -webkit-transform: scale(1);
+    }
+    10%, 20% {
+      -webkit-transform: scale(0.9) rotate(-10deg);
+    }
+    30%, 50%, 70%, 90% {
+      -webkit-transform: scale(1.2) rotate(10deg);
+    }
+    40%, 60%, 80% {
+      -webkit-transform: scale(1.2) rotate(-10deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotate(0);
+    }
   }
 
   @-o-keyframes swinging {
-    0%{-webkit-transform:scale(1);}
-    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
-    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
-    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
-    100%{-webkit-transform:scale(1) rotate(0);}
+    0% {
+      -webkit-transform: scale(1);
+    }
+    10%, 20% {
+      -webkit-transform: scale(0.9) rotate(-10deg);
+    }
+    30%, 50%, 70%, 90% {
+      -webkit-transform: scale(1.2) rotate(10deg);
+    }
+    40%, 60%, 80% {
+      -webkit-transform: scale(1.2) rotate(-10deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotate(0);
+    }
   }
 
   @-webkit-keyframes swinging {
-    0%{-webkit-transform:scale(1);}
-    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
-    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
-    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
-    100%{-webkit-transform:scale(1) rotate(0);}
+    0% {
+      -webkit-transform: scale(1);
+    }
+    10%, 20% {
+      -webkit-transform: scale(0.9) rotate(-10deg);
+    }
+    30%, 50%, 70%, 90% {
+      -webkit-transform: scale(1.2) rotate(10deg);
+    }
+    40%, 60%, 80% {
+      -webkit-transform: scale(1.2) rotate(-10deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotate(0);
+    }
   }
 
   @keyframes swinging {
-    0%{-webkit-transform:scale(1);}
-    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
-    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
-    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
-    100%{-webkit-transform:scale(1) rotate(0);}
+    0% {
+      -webkit-transform: scale(1);
+    }
+    10%, 20% {
+      -webkit-transform: scale(0.9) rotate(-10deg);
+    }
+    30%, 50%, 70%, 90% {
+      -webkit-transform: scale(1.2) rotate(10deg);
+    }
+    40%, 60%, 80% {
+      -webkit-transform: scale(1.2) rotate(-10deg);
+    }
+    100% {
+      -webkit-transform: scale(1) rotate(0);
+    }
   }
 </style>

@@ -5,7 +5,10 @@
       <span class="month">{{dateStr.slice(0, -3)}}</span>
     </p>
     <router-link :to="{path:'/visit_serve/detail',query:{id:data.id,typeId:typeId}}" class="info">
-      <span class="info-title">{{data.title}}</span>
+      <div class="a-title">
+        <span class="info-title">{{data.title}}</span>
+        <img src="../../assets/hot.png" class="icon-type"/>
+      </div>
       <span class="intr">{{data.introduce}}</span>
     </router-link>
   </li>
@@ -64,14 +67,22 @@
         vertical-align: middle;
         color: #fff;
         width: 645px;
-        .info-title {
-          font-size: 22px;
-          display: block;
-          margin-bottom: 5px;
-          color: #333;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+        .a-title{
+          position: relative;
+          .info-title {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-right: 5px;
+          }
+          .icon-type{
+            width: 60px;
+            position: absolute;
+            top:-10px;
+          }
         }
         .intr {
           font-size: 15px;
