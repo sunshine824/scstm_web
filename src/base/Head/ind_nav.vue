@@ -126,19 +126,31 @@
               background-size: 50px 50px !important;
               display: inline-block;
               height: 50px;
+              -webkit-transition: -webkit-transform 0.35s;
+              transition: transform 0.3s;
+              -webkit-transform: translate3d(0,6px,0);
+              transform: translate3d(0,6px,0);
             }
           }
           &:hover {
             //background: url("../../../static/images/test/scstm_03.png") no-repeat;
             //background: #27bdfa;
             a {
-              color: #2db1f2;
+              color: #0f6c9a;
+              .icon-img{
+                 -webkit-transform: translate3d(0,-2px,0);
+                transform: translate3d(0,-2px,0);
+              }
             }
           }
           &.active {
             //background: #27bdfa;
             a {
-              color: #2db1f2;
+              color: #0f6c9a;
+              .icon-img{
+                -webkit-transform: translate3d(0,-2px,0);
+                transform: translate3d(0,-2px,0);
+              }
             }
           }
         }

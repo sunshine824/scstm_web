@@ -1,6 +1,6 @@
 <template>
-  <div class="content" v-if="homeData">
-    <swiper :banners="homeData.banner"></swiper>
+  <div class="content">
+    <swiper v-if="homeData.banner.length" :banners="homeData.banner"></swiper>
     <bg>
       <div class="wrap clearfix">
         <div class="wrap-left">
@@ -16,7 +16,7 @@
                 </router-link>
               </div>
               <div class="news-list">
-                <ul>
+                <ul v-if="homeData.future.length">
                   <li v-for="(item,index) in homeData.future" :key="index">
                     <!--<p class="date">
                       <span class="day">30</span>
@@ -43,7 +43,7 @@
                 </router-link>
               </div>
               <div class="news-list">
-                <ul>
+                <ul v-if="homeData.education.length">
                   <li v-for="(item,index) in homeData.education" :key="index">
                     <!--<p class="date">
                       <span class="day">30</span>
@@ -67,9 +67,6 @@
                   <div class="bg">
                     <img :src="item.rotateBg"/>
                   </div>
-                  <div class="ico">
-                    <img :src="item.icon"/>
-                  </div>
                   <div class="cont">
                     <h3>{{item.title}}</h3>
                     <p>{{item.intr}}</p>
@@ -80,7 +77,7 @@
           </div>
           <div class="r-bottom">
             <p class="t-title">开闭馆时间</p>
-            <div class="time-group">
+            <div class="time-group" v-if="homeData.time">
               <p class="time-item">
                 <span class="time">{{homeData.time.time_sta}}</span>
                 <span class="txt">开始售票</span>
@@ -100,7 +97,7 @@
                 </span>
                 </router-link>
               </div>
-              <ul class="clearfix">
+              <ul class="clearfix" v-if="!homeData.inform.length">
                 <li v-for="(item,index) in homeData.inform" :key="index">
                   <router-link to="/">
                     {{item.title}}
@@ -136,25 +133,22 @@
         homeData: [],
         gudies: [
           {
-            bg: 'http://img.dpm.org.cn/Public/static/themes/image/home_block1_box3_bg1.jpg',
-            rotateBg: 'http://img.dpm.org.cn/Uploads/Picture/2016/11/23/s5835a34f91d4b.png',
-            icon: 'http://img.dpm.org.cn/Uploads/Picture/2017/01/10/s587455ac6f6fd.png',
+            bg: '../static/images/guide_bg1.png',
+            rotateBg: '../static/images/guide_item1.png',
             href: '/',
             title: '在线预约',
             intr: '贴心的票务服务，让您省时省力更省心'
           },
           {
-            bg: 'http://img.dpm.org.cn/Public/static/themes/image/home_block1_box3_bg2.jpg',
-            rotateBg: 'http://img.dpm.org.cn/Uploads/Picture/2016/11/23/s5835a37a3ba85.png',
-            icon: 'http://img.dpm.org.cn/Uploads/Picture/2017/01/10/s587455ac6f6fd.png',
+            bg: '../static/images/guide_bg2.png',
+            rotateBg: '../static/images/guide_item2.png',
             href: '/',
             title: '参观服务',
             intr: '从科技馆开始，感受宇宙魅力'
           },
           {
-            bg: 'http://img.dpm.org.cn/Public/static/themes/image/home_block1_box3_bg3.jpg',
-            rotateBg: 'http://img.dpm.org.cn/Uploads/Picture/2016/11/23/s5835a3934e72b.png',
-            icon: 'http://img.dpm.org.cn/Uploads/Picture/2017/01/10/s587455ac6f6fd.png',
+            bg: '../static/images/guide_bg3.png',
+            rotateBg: '../static/images/guide_item3.png',
             href: '/',
             title: '在线预约',
             intr: '随时随地，为您提供身临其境的游览体验'
@@ -237,7 +231,8 @@
             right: 0;
             top: 0;
             bottom: 0;
-            background: #24bfd7;
+            background: url("../../static/images/mkx_bg.png") no-repeat;
+            background-size: cover;
           }
         }
         .news {
@@ -312,7 +307,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            background: #51cbfc;
+            background: url("../../static/images/edu_bg.png") no-repeat;
+            background-size: cover;
             bottom: 0;
             width: 362px;
           }
@@ -332,14 +328,15 @@
               height: 300px;
               position: relative;
               overflow: hidden;
+              background-size: cover !important;
               .bg {
                 position: absolute;
-                left: 50%;
-                top: 50%;
+                left: 62px;
+                bottom: 60px;
                 margin-top: -126px;
-                width: 240px;
-                height: 252px;
+                width: 140px;
                 img {
+                  width: 100%;
                   animation: swinging 30s linear 0s infinite;
                 }
               }
@@ -358,13 +355,13 @@
                 color: #fff;
                 position: relative;
                 z-index: 2;
-                text-align: center;
+                text-align: left;
                 h3 {
                   font-size: 22px;
                   line-height: 1.2;
                   color: #fff;
-                  margin-top: 20px;
-                  margin-bottom: 18px;
+                  margin-top: 25px;
+                  margin-bottom: 15px;
                 }
                 p {
                   line-height: 22px;
@@ -380,7 +377,8 @@
           height: 520px;
           margin-bottom: 26px;
           padding: 30px 40px 20px 40px;
-          background: #51cbfc;
+          background: url("../../static/images/notice_bg.png") no-repeat;
+          background-size: cover;
           .t-title {
             font-size: 24px;
             color: #fff;
@@ -456,42 +454,34 @@
   }
 
   @-moz-keyframes swinging {
-    0% {
-      transform: rotate(0);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
+    0%{-webkit-transform:scale(1);}
+    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
+    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
+    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
+    100%{-webkit-transform:scale(1) rotate(0);}
   }
 
   @-o-keyframes swinging {
-    0% {
-      transform: rotate(0);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
+    0%{-webkit-transform:scale(1);}
+    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
+    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
+    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
+    100%{-webkit-transform:scale(1) rotate(0);}
   }
 
   @-webkit-keyframes swinging {
-    0% {
-      transform: rotate(0);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
+    0%{-webkit-transform:scale(1);}
+    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
+    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
+    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
+    100%{-webkit-transform:scale(1) rotate(0);}
   }
 
   @keyframes swinging {
-    0% {
-      transform: rotate(0);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
+    0%{-webkit-transform:scale(1);}
+    10%,20%{-webkit-transform:scale(0.9) rotate(-10deg);}
+    30%,50%,70%,90%{-webkit-transform:scale(1.2) rotate(10deg);}
+    40%,60%,80%{-webkit-transform:scale(1.2) rotate(-10deg);}
+    100%{-webkit-transform:scale(1) rotate(0);}
   }
 </style>
