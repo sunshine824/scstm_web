@@ -150,7 +150,7 @@
             bg: '../static/images/guide_bg3.png',
             rotateBg: '../static/images/guide_item3.png',
             href: '/',
-            title: '在线预约',
+            title: '场馆导览',
             intr: '随时随地，为您提供身临其境的游览体验'
           },
         ]

@@ -7,9 +7,12 @@
             :data-wow-delay="(0.2 + 0.15 * index).toFixed(1)+'s'"
             v-for="(item,index) in guides"
             :key="index"
-            :style="{background: 'url('+item.icon+') no-repeat center'}"
             :class="item.className">
-          <router-link :to="item.href" tag="p">{{item.title}}</router-link>
+          <img :src="item.icon"/>
+          <div class="guide-btn">
+            <router-link :to="item.href" tag="p" class="ch_title">{{item.ch_title}}</router-link>
+            <router-link :to="item.href" tag="p" class="en_title">{{item.en_title}}</router-link>
+          </div>
         </li>
       </ul>
     </div>
@@ -23,20 +26,23 @@
           {
             href: '/visit_serve/strategy',
             className: 'traffic',
-            title: '交通攻略',
-            icon:'../static/images/bg1.jpg'
+            ch_title: '交通攻略',
+            en_title:'Traffic Strategy',
+            icon: '../static/images/bg1.jpg'
           },
           {
             href: '/',
             className: 'volunter',
-            title: '志愿者招募',
-            icon:'../static/images/bg2.jpg'
+            ch_title: '志愿者招募',
+            en_title:'Volunteers Needed',
+            icon: '../static/images/bg2.jpg'
           },
           {
             href: '/exhibit/survey',
             className: 'about',
-            title: '关于科技馆',
-            icon:'../static/images/bg3.jpg'
+            ch_title: '关于科技馆',
+            en_title:'Science Museum',
+            icon: '../static/images/bg3.jpg'
           }
         ]
       }
@@ -52,29 +58,46 @@
       text-align: center;
       li {
         width: 370px;
-        height: 230px;
+        height: 180px;
         display: inline-block;
         vertical-align: middle;
         text-align: center;
         margin-right: 38px;
+        position: relative;
+        overflow: hidden;
         //background: url("../../../static/images/test/guide.png") no-repeat;
         &:last-child {
           margin-right: 0;
         }
-        p {
-          width: 238px;
-          height: 54px;
-          border: 1px solid rgba(255, 255, 255, .6);
-          background-color: rgba(255, 255, 255, .3);
+        img{
+          width: 100%;
+          min-height: 180px;
+          -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+          transition: opacity 0.35s, transform 0.35s;
+          -webkit-transform: scale(1.12);
+          transform: scale(1.12);
+        }
+        .guide-btn {
+          position: absolute;
+          top:56px;
           color: #fff;
-          font-size: 20px;
-          text-align: center;
-          line-height: 54px;
-          -webkit-border-radius: 4px;
-          -moz-border-radius: 4px;
-          border-radius: 4px;
-          margin: 87px auto 0 auto;
-          cursor: pointer;
+          width: 100%;
+          .ch_title{
+            font-size: 25px;
+            cursor: pointer;
+          }
+          .en_title{
+            font-size: 18px;
+            color: rgba(255,255,255,.8);
+            cursor: pointer;
+          }
+        }
+        &:hover{
+          img{
+            background: rgba(0,0,0,.8);
+            -webkit-transform: scale(1);
+             transform: scale(1);
+          }
         }
       }
     }
