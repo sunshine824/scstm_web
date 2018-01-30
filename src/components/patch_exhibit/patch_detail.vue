@@ -29,7 +29,7 @@
         </div>
         <div class="movie-clips clearfix">
           <p class="title">片花 / 剧照</p>
-          <clips-roll :data="patchDetail.data.show_img"></clips-roll>
+          <clips-roll v-if="patchDetail.data.show_img" :data="patchDetail.data.show_img"></clips-roll>
         </div>
       </div>
     </bg>
