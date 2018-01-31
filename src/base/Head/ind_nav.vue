@@ -131,6 +131,8 @@
               -webkit-transform: translate3d(0,6px,0) scale(1);
               transform: translate3d(0,6px,0) scale(1);
               margin-bottom: 5px;
+              backface-visibility: hidden;
+              -webkit-backface-visibility: hidden;
             }
           }
           &:hover {

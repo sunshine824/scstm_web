@@ -137,7 +137,6 @@
           page: this.page,
           floor_id: this.type
         }, (res) => {
-          console.log(res)
           this.floorList = res.data
           this.set_loading_state(false)
         }, (err) => {
