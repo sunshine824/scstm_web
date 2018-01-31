@@ -11,7 +11,7 @@
                  @handleClick="handleTypeClick">
         </nav-bar>
         <div class="guide-img">
-          <img :src="floorList.floor_img"/>
+          <img v-lazy="floorList.floor_img"/>
         </div>
         <ul class="guide-list clearfix">
           <guide-item
@@ -175,6 +175,8 @@
         -moz-border-radius: 4px;
         border-radius: 4px;
         overflow: hidden;
+        text-align: center;
+        line-height: 450px;
         img {
           width: 100%;
           transform: scale(1);
