@@ -32,7 +32,7 @@
   .ivu-page {
     padding-top: 60px;
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 40px;
     .ivu-page-item-active {
       background-color: #28bbff;
       border-color: #28bbff;

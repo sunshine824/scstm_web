@@ -19,7 +19,7 @@
           </mkx-item>
           <p v-if="courseList.length===0">暂无数据</p>
         </div>
-        <Pagination v-if="courseList"
+        <Pagination v-if="courseList.total"
                     :total="courseList.total*10"
                     :page="page"
                     @handleChange="handlePage">
@@ -153,6 +153,7 @@
   .activity {
     width: 100%;
     padding-top: 50px;
+    padding-bottom: 60px;
     .act-con {
       width: 1200px;
       margin: 0 auto;

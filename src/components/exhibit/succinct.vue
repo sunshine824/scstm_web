@@ -124,6 +124,8 @@
               transition: opacity 0.35s, transform 0.35s;
               -webkit-transform: scale(1.12);
               transform: scale(1.12);
+              backface-visibility: hidden;
+              -webkit-backface-visibility: hidden;
             }
           }
           .link-btn{

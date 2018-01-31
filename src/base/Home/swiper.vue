@@ -4,8 +4,9 @@
 
       <swiper-slide
         v-for="(item,index) in banners"
-        :key="index"
-        :style="{background: 'url('+item.banner+') no-repeat center'}">
+        :key="index">
+        <a target="_blank" :href="item.url" class="bg-img"
+           :style="{background: 'url('+item.banner+') no-repeat center'}"></a>
         <!-- <h2 class="ani top" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.2s">
            让科学流行起来</h2>
          <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1.5s" swiper-animate-delay="0.4s">
@@ -123,6 +124,12 @@
   }
 
   .swiper-slide {
+    .bg-img {
+      width: 100%;
+      height: 850px;
+      display: block;
+    }
+
     h2 {
       font-size: 45px;
       color: #fff;

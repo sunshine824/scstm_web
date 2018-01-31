@@ -14,6 +14,7 @@
   </ul>
 </template>
 <script type="text/ecmascript-6">
+
   export default {
     props: {
       navBar: {
@@ -27,6 +28,7 @@
       }
     },
     methods: {
+
       handleClick(index, id) {
         this.current = index
         this.$emit('handleClick', id)
@@ -51,7 +53,7 @@
       color: #555555;
       text-align: center;
       border-right: 1px solid #fff;
-      a{
+      a {
         color: #555555;
         display: block;
       }
@@ -62,7 +64,7 @@
         background-image: -ms-linear-gradient(135deg, #00d0fb, #00acf6);
         background-image: linear-gradient(135deg, #00d0fb, #00acf6);
         color: #fff;
-        a{
+        a {
           color: #fff;
         }
       }

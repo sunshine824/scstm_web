@@ -149,8 +149,8 @@
             a {
               color: #0f6c9a;
               .icon-img{
-                -webkit-transform: translate3d(0,-2px,0) scale(1.12);
-                transform: translate3d(0,-2px,0) scale(1.12);
+                -webkit-transform: translate3d(0,-2px,0) scale(1.2);
+                transform: translate3d(0,-2px,0) scale(1.2);
               }
             }
           }

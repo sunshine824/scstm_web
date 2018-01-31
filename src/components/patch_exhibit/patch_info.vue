@@ -112,6 +112,7 @@
 <style scoped lang="less">
   .patch-list {
     padding-top: 50px;
+    padding-bottom: 60px;
     .info-con {
       width: 1200px;
       margin: 0 auto;

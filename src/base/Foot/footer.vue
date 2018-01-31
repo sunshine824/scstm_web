@@ -11,12 +11,12 @@
     <div class="agreement">
       <div class="item">
         <p class="title">四川科技馆</p>
-        <router-link to="/">服务协议</router-link>
+        <router-link to="/" style="cursor: not-allowed">服务协议</router-link>
       </div>
       <div class="item">
         <p class="title">游客服务</p>
-        <router-link to="/">新闻公告</router-link>
-        <router-link to="/">反馈建议</router-link>
+        <router-link to="/visit_serve/notice">新闻公告</router-link>
+        <router-link to="/" style="cursor: not-allowed">反馈建议</router-link>
       </div>
       <div class="item" style="width: 250px">
         <p class="title" style="margin-bottom: 15px;">相关链接</p>

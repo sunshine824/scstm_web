@@ -39,6 +39,7 @@
   import GuideItem from '@/base/exhibit/guide_item'
   import Pagination from '@/base/pagination'
   import Bg from '@/base/bg'
+  import {mapActions} from 'vuex'
 
   export default {
     mixins: [getBannerMixin],
@@ -96,6 +97,9 @@
       this.getFloorList()
     },
     methods: {
+      ...mapActions([
+        'set_loading_state'
+      ]),
       /**
        * 获取楼层导览banner
        * @param id  分类id
@@ -109,6 +113,7 @@
        * @param typeId
        */
       handleTypeClick(typeId) {
+        this.set_loading_state(true)
         this.type = typeId
         this.page = 1
         this.getFloorList()
@@ -133,6 +138,7 @@
           floor_id: this.type
         }, (res) => {
           this.floorList = res.data
+          this.set_loading_state(false)
         }, (err) => {
           console.log(err)
         }, this)
@@ -141,14 +147,14 @@
       /**
        * 获取楼层名称
        */
-      getFloorName(){
+      getFloorName() {
         const url = 'api/floors'
         getAjax(url, {},
           (res) => {
-          this.navBar = res.data
-        }, (err) => {
-          console.log(err)
-        }, this)
+            this.navBar = res.data
+          }, (err) => {
+            console.log(err)
+          }, this)
       }
     }
   }
@@ -170,6 +176,7 @@
         overflow: hidden;
         img {
           width: 100%;
+          transform: scale(1);
         }
       }
       .guide-list {

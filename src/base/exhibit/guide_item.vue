@@ -1,7 +1,7 @@
 <template>
   <li>
     <div class="item-img">
-      <img :src="data.img"/>
+      <img v-lazy="data.img"/>
       <div class="mask" v-if="data.is_c===1">
         <div class="mask-con">
           <p class="mask-txt">
@@ -49,6 +49,11 @@
         img {
           width: 100%;
           min-height: 257px;
+          transition: opacity 0.35s, transform 0.35s;
+          -webkit-transform: scale(1.12);
+          transform: scale(1.12);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         .mask {
           position: absolute;
@@ -89,6 +94,14 @@
           &:hover {
             opacity: 1;
           }
+        }
+        &:hover{
+          img{
+            background: rgba(0,0,0,.8);
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+
         }
       }
       .txt {
