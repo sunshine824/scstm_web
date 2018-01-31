@@ -117,13 +117,13 @@
             width: 100%;
             height: 210px;
             text-align: center;
+            line-height: 210px;
             img{
               width: 100%;
-              min-height: 210px;
               -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
               transition: opacity 0.35s, transform 0.35s;
-              -webkit-transform: scale(1.12);
-              transform: scale(1.12);
+              -webkit-transform: scale(1.15);
+              transform: scale(1.15);
               backface-visibility: hidden;
               -webkit-backface-visibility: hidden;
             }
@@ -144,9 +144,8 @@
           }
           &:hover{
             img{
-              background: rgba(0,0,0,.8);
-              -webkit-transform: scale(1);
-              transform: scale(1);
+              -webkit-transform: scale(1.03);
+              transform: scale(1.03);
             }
           }
           &:nth-of-type(4n){

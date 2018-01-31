@@ -4,7 +4,7 @@
     <bg>
       <div class="wrap clearfix">
         <div class="wrap-left">
-          <div class="l-top">
+          <div class="l-top wow fadeInUp" data-wow-duration="3s" data-wow-delay=".2s">
             <img src="../assets/mkx_bg.jpg"/>
             <div class="news mkx-news">
               <div class="title clearfix">
@@ -31,7 +31,7 @@
               </div>
             </div>
           </div>
-          <div class="l-bottom">
+          <div class="l-bottom wow fadeInUp" data-wow-duration="3s" data-wow-delay=".3s">
             <img src="../assets/edu_bg.jpg"/>
             <div class="news edu-news">
               <div class="title clearfix">
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="wrap-right">
-          <div class="r-top">
+          <div class="r-top wow fadeInUp"  data-wow-duration="3s" data-wow-delay=".2s">
             <ul class="clearfix">
               <li v-for="(item,index) in gudies" :key="index" :style="{background:'url('+item.bg+')'}">
                 <router-link :to="item.href">
@@ -75,7 +75,7 @@
               </li>
             </ul>
           </div>
-          <div class="r-bottom">
+          <div class="r-bottom wow fadeInUp" data-wow-duration="3s" data-wow-delay=".3s">
             <p class="t-title">开闭馆时间</p>
             <div class="time-group" v-if="homeData.time">
               <p class="time-item">
@@ -123,7 +123,7 @@
             </div>
           </div>
         </div>
-        <div class="mask-img">
+        <div class="mask-img wow fadeInUp"  data-wow-duration="3s" data-wow-delay=".6s">
           <img src="../assets/home_mask.png"/>
         </div>
       </div>

@@ -44,11 +44,12 @@
       .item-img {
         width: 385px;
         height: 257px;
+        text-align: center;
+        line-height: 257px;
         overflow: hidden;
         position: relative;
         img {
           width: 100%;
-          min-height: 257px;
         }
         .mask {
           position: absolute;

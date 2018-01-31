@@ -128,6 +128,7 @@
 <style lang="less">
   .movie-list {
     padding-top: 50px;
+    padding-bottom: 60px;
     .list-con {
       width: 1200px;
       margin: 0 auto;

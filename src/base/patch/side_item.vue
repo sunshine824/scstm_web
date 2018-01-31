@@ -1,6 +1,6 @@
 <template>
   <li class="exhibit-item">
-    <router-link :to="{path:'/patch/patch-detail',query:{id:data.id}}">
+    <router-link :to="{path:'/patch/patch-detail',query:{id:data.id}}" class="item-img">
       <img v-lazy="data.img"/>
     </router-link>
     <div class="m-txt">
@@ -44,10 +44,16 @@
     margin-top: 15px;
     padding-bottom: 5px;
     border-bottom: 1px dashed #d4d4d4;
-    img {
+    .item-img{
       width: 300px;
       height: 200px;
+      text-align: center;
       border-radius: 4px;
+      line-height: 200px;
+      overflow: hidden;
+    }
+    img {
+      width: 100%;
     }
     .m-txt {
       margin-top: 20px;

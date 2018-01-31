@@ -7,7 +7,7 @@
       @handleClick="getBanner"/>
     <bg class="su-detail">
       <div class="detail-con">
-        <p class="title">{{succinctDetail.classname}}<span></span></p>
+        <p class="title" v-if="succinctDetail.data">{{succinctDetail.classname}}<span></span></p>
         <ul class="detail-list clearfix">
           <succinct-item
             v-for="(item,index) in succinctDetail.data"
@@ -17,7 +17,7 @@
           <p v-if="!succinctDetail.data">暂无数据</p>
         </ul>
         <Pagination
-          v-if="succinctDetail.data"
+          v-if="succinctDetail.total"
           :total="succinctDetail.total*10"
           :page="page"
           @handleChange="handlePage">
@@ -121,6 +121,7 @@
       width: 1200px;
       margin: 0 auto;
       padding-top: 50px;
+      padding-bottom: 60px;
       .title {
         font-size: 22px;
         color: #666;
