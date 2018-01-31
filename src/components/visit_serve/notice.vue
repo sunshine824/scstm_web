@@ -135,6 +135,7 @@
           page: this.page,
           type: this.typeId
         }, (res) => {
+          console.log(res.data)
           this.noticeData = res.data
         }, (err) => {
           console.log(err)

@@ -22,6 +22,7 @@
           <p v-if="!floorList.data">暂无数据</p>
         </ul>
         <Pagination
+          v-if="floorList.total"
           :total="floorList.total*10"
           :page="page"
           @handleChange="handlePage">
@@ -54,7 +55,7 @@
           {
             href: '/exhibit/survey',
             title: '展馆概况',
-            id: ''
+            id: 5
           },
           {
             href: '/exhibit/guide',
@@ -64,7 +65,7 @@
           {
             href: '/exhibit/round',
             title: '全景环游',
-            id: ''
+            id: 4
           },
           {
             href: '/exhibit/theater',

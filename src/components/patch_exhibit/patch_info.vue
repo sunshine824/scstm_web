@@ -18,7 +18,7 @@
           </patch-item>
           <p v-if="patchData.length===0">暂无数据</p>
         </div>
-        <Pagination v-if="patchData"
+        <Pagination v-if="patchData.total"
                     :total="patchData.total*10"
                     :page="page"
                     @handleChange="handlePage">

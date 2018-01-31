@@ -515,13 +515,13 @@
       -webkit-transform: scale(1);
     }
     10%, 20% {
-      -webkit-transform: scale(0.9) rotate(-10deg);
+      -webkit-transform: scale(0.9) rotate(-20deg);
     }
     30%, 50%, 70%, 90% {
-      -webkit-transform: scale(1.2) rotate(10deg);
+      -webkit-transform: scale(1.2) rotate(20deg);
     }
     40%, 60%, 80% {
-      -webkit-transform: scale(1.2) rotate(-10deg);
+      -webkit-transform: scale(1.2) rotate(-20deg);
     }
     100% {
       -webkit-transform: scale(1) rotate(0);
@@ -533,13 +533,13 @@
       -webkit-transform: scale(1);
     }
     10%, 20% {
-      -webkit-transform: scale(0.9) rotate(-10deg);
+      -webkit-transform: scale(0.9) rotate(-20deg);
     }
     30%, 50%, 70%, 90% {
-      -webkit-transform: scale(1.2) rotate(10deg);
+      -webkit-transform: scale(1.2) rotate(20deg);
     }
     40%, 60%, 80% {
-      -webkit-transform: scale(1.2) rotate(-10deg);
+      -webkit-transform: scale(1.2) rotate(-20deg);
     }
     100% {
       -webkit-transform: scale(1) rotate(0);
@@ -551,13 +551,13 @@
       -webkit-transform: scale(1);
     }
     10%, 20% {
-      -webkit-transform: scale(0.9) rotate(-10deg);
+      -webkit-transform: scale(0.9) rotate(-20deg);
     }
     30%, 50%, 70%, 90% {
-      -webkit-transform: scale(1.2) rotate(10deg);
+      -webkit-transform: scale(1.2) rotate(20deg);
     }
     40%, 60%, 80% {
-      -webkit-transform: scale(1.2) rotate(-10deg);
+      -webkit-transform: scale(1.2) rotate(-20deg);
     }
     100% {
       -webkit-transform: scale(1) rotate(0);
@@ -569,13 +569,13 @@
       -webkit-transform: scale(1);
     }
     10%, 20% {
-      -webkit-transform: scale(0.9) rotate(-10deg);
+      -webkit-transform: scale(0.9) rotate(-20deg);
     }
     30%, 50%, 70%, 90% {
-      -webkit-transform: scale(1.2) rotate(10deg);
+      -webkit-transform: scale(1.2) rotate(20deg);
     }
     40%, 60%, 80% {
-      -webkit-transform: scale(1.2) rotate(-10deg);
+      -webkit-transform: scale(1.2) rotate(-20deg);
     }
     100% {
       -webkit-transform: scale(1) rotate(0);

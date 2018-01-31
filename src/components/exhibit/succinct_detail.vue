@@ -2,8 +2,9 @@
   <div class="su_detail-con">
     <banner
       :navs="navs"
-      banner="http://www.kjgadmin.com:8080/Public/uploads/banner/5a63025d31854.jpg"
-      :title="title"/>
+      :banner="banner"
+      :title="title"
+      @handleClick="getBanner"/>
     <bg>
       <div class="ty_detail">
         <p class="title">{{content.title}}<span></span></p>
@@ -31,7 +32,7 @@
           {
             href: '/exhibit/survey',
             title: '展馆概况',
-            id: ''
+            id: 5
           },
           {
             href: '/exhibit/guide',
@@ -41,7 +42,7 @@
           {
             href: '/exhibit/round',
             title: '全景环游',
-            id: ''
+            id: 4
           },
           {
             href: '/exhibit/theater',
@@ -59,9 +60,17 @@
       }
     },
     created() {
+      this.getBanner()
       this.getArticleText()
     },
     methods: {
+      /**
+       * 获取藏品精粹banner
+       * @param id  分类id
+       */
+      getBanner(id = 3) {
+        this.getBannerData({id: id, url: 'api/oftenbanner'})
+      },
       getArticleText() {
         const url = 'api/collectiondeta'
         getAjax(url, {

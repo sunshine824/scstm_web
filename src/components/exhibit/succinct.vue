@@ -12,7 +12,7 @@
             <img v-lazy="item.img"/>
           </div>
           <router-link :to="{path:'/exhibit/type-detail',query:{id:item.id}}" class="link-btn">
-            飞行类
+            {{item.classname}}
           </router-link>
         </li>
       </ul>
@@ -35,7 +35,7 @@
           {
             href: '/exhibit/survey',
             title: '展馆概况',
-            id: ''
+            id: 5
           },
           {
             href: '/exhibit/guide',
@@ -45,7 +45,7 @@
           {
             href: '/exhibit/round',
             title: '全景环游',
-            id: ''
+            id: 4
           },
           {
             href: '/exhibit/theater',
@@ -82,6 +82,7 @@
         const url = 'api/collectionclass'
         getAjax(url, {},
           (res) => {
+          console.log(res)
             this.typeList = res.data
           }, (err) => {
             console.log(err)
@@ -129,22 +130,15 @@
             position: absolute;
             width: 150px;
             height: 40px;
-            -webkit-border-radius: 6px;
-            -moz-border-radius: 6px;
-            border-radius: 6px;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
             text-align: center;
             line-height: 40px;
-            left: 50%;
-            top:50%;
-            margin-left: -75px;
-            margin-top: -20px;
-            border:1px solid #fff;
-            background: rgba(255,255,255,.3);
+            left: 0;
+            top:20px;
+            background-image: linear-gradient(-131deg, #0097E3 -16%, #3BD9D0 100%);
             color: #fff;
             font-size: 16px;
-            &:hover{
-              background: rgba(0,0,0,.3);
-            }
           }
           &:hover{
             img{

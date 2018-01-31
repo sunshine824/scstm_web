@@ -128,8 +128,9 @@
               height: 50px;
               -webkit-transition: -webkit-transform 0.35s;
               transition: transform 0.3s;
-              -webkit-transform: translate3d(0,6px,0);
-              transform: translate3d(0,6px,0);
+              -webkit-transform: translate3d(0,6px,0) scale(1);
+              transform: translate3d(0,6px,0) scale(1);
+              margin-bottom: 5px;
             }
           }
           &:hover {
@@ -138,8 +139,8 @@
             a {
               color: #0f6c9a;
               .icon-img{
-                 -webkit-transform: translate3d(0,-2px,0);
-                transform: translate3d(0,-2px,0);
+                 -webkit-transform: translate3d(0,-2px,0) scale(1.2);
+                transform: translate3d(0,-2px,0) scale(1.2);
               }
             }
           }
@@ -148,8 +149,8 @@
             a {
               color: #0f6c9a;
               .icon-img{
-                -webkit-transform: translate3d(0,-2px,0);
-                transform: translate3d(0,-2px,0);
+                -webkit-transform: translate3d(0,-2px,0) scale(1.12);
+                transform: translate3d(0,-2px,0) scale(1.12);
               }
             }
           }

@@ -7,7 +7,9 @@
     <router-link :to="{path:'/visit_serve/detail',query:{id:data.id,typeId:typeId}}" class="info">
       <div class="a-title">
         <span class="info-title">{{data.title}}</span>
-        <img src="../../assets/hot.png" class="icon-type"/>
+        <img src="../../assets/top.png" v-if="data.up===1" class="icon-type"/>
+        <img src="../../assets/hot.png" v-if="data.hot===1" class="icon-type"/>
+        <img src="../../assets/new.png" v-if="data.new===1" class="icon-type"/>
       </div>
       <span class="intr">{{data.introduce}}</span>
     </router-link>
@@ -77,11 +79,14 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             margin-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
           }
           .icon-type{
             width: 60px;
-            position: absolute;
-            top:-10px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -2px;
           }
         }
         .intr {

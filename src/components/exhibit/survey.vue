@@ -3,7 +3,8 @@
     <banner
       :navs="navs"
       :banner="banner"
-      :title="title"/>
+      :title="title"
+      @handleClick="getBanner"/>
     <div class="item">
       <p class="title">全新科技馆<span></span></p>
       <div class="text-info">
@@ -18,11 +19,13 @@
 <script type="text/ecmascript-6">
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
+  import Bg from '@/base/bg'
 
   export default {
     mixins: [getBannerMixin],
-    components:{
-      Banner
+    components: {
+      Banner,
+      Bg
     },
     data() {
       return {
@@ -30,7 +33,7 @@
           {
             href: '/exhibit/survey',
             title: '展馆概况',
-            id: ''
+            id: 5
           },
           {
             href: '/exhibit/guide',
@@ -40,7 +43,7 @@
           {
             href: '/exhibit/round',
             title: '全景环游',
-            id: ''
+            id: 4
           },
           {
             href: '/exhibit/theater',
@@ -54,22 +57,33 @@
           }
         ],
         title: '常设展览',
-        banner:'http://www.kjgadmin.com:8080/Public/uploads/banner/5a60485261a51.jpg'
       }
+    },
+    created() {
+      this.getBanner()
+    },
+    methods: {
+      /**
+       * 获取楼层导览banner
+       * @param id  分类id
+       */
+      getBanner(id = 5) {
+        this.getBannerData({id: id, url: 'api/oftenbanner'})
+      },
     }
   }
 </script>
 <style lang="less">
-  .survey-con{
-    .item{
+  .survey-con {
+    .item {
       margin-top: 50px;
-      .title{
+      .title {
         font-size: 20px;
         color: #666;
         text-align: center;
         margin-bottom: 25px;
-        span{
-          width:80px;
+        span {
+          width: 80px;
           height: 4px;
           display: block;
           margin: 10px auto;
@@ -83,9 +97,9 @@
           border-radius: 10px;
         }
       }
-      .text-info{
+      .text-info {
         text-align: center;
-        .txt{
+        .txt {
           font-size: 14px;
           line-height: 25px;
         }

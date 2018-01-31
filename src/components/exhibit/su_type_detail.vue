@@ -2,8 +2,9 @@
   <div class="su_type-con">
     <banner
       :navs="navs"
-      banner="http://www.kjgadmin.com:8080/Public/uploads/banner/5a63025d31854.jpg"
-      :title="title"/>
+      :banner="banner"
+      :title="title"
+      @handleClick="getBanner"/>
     <bg class="su-detail">
       <div class="detail-con">
         <p class="title">{{succinctDetail.classname}}<span></span></p>
@@ -47,7 +48,7 @@
           {
             href: '/exhibit/survey',
             title: '展馆概况',
-            id: ''
+            id: 5
           },
           {
             href: '/exhibit/guide',
@@ -57,7 +58,7 @@
           {
             href: '/exhibit/round',
             title: '全景环游',
-            id: ''
+            id: 4
           },
           {
             href: '/exhibit/theater',
@@ -77,8 +78,16 @@
     },
     created() {
       this.getExhibitList()
+      this.getBanner()
     },
     methods: {
+      /**
+       * 获取藏品精粹banner
+       * @param id  分类id
+       */
+      getBanner(id = 3) {
+        this.getBannerData({id: id, url: 'api/oftenbanner'})
+      },
       /**
        * 获取分类列表
        */
@@ -88,6 +97,7 @@
           clas: parseInt(this.$route.query.id),
           page: this.page
         }, (res) => {
+          console.log(res)
           this.succinctDetail = res.data
         }, (err) => {
           console.log(err)
