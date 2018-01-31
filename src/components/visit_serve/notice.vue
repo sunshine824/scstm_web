@@ -21,7 +21,7 @@
             <li v-if="!noticeData.data">暂无数据</li>
           </ul>
           <Pagination
-            v-if="noticeData.data"
+            v-if="noticeData.total"
             :total="noticeData.total*10"
             :page="page"
             @handleChange="handlePage">

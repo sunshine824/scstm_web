@@ -37,7 +37,6 @@
       margin-right: 20px;
       margin-bottom: 20px;
       float: left;
-      cursor: pointer;
       &:nth-child(3n) {
         margin-right: 0;
       }
