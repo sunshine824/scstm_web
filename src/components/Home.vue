@@ -49,7 +49,7 @@
                       <span class="day">30</span>
                       <span class="month">2017.10</span>
                     </p>-->
-                    <router-link to="/" class="info">
+                    <router-link :to="{path:'/edu_activity/course_detail',query:{id:item.id}}" class="info">
                       <span class="info-title">{{item.title}}</span>
                       <span class="intr">{{item.introduce}}</span>
                     </router-link>
@@ -123,7 +123,7 @@
             </div>
           </div>
         </div>
-        <div class="mask-img wow fadeInUp"  data-wow-duration="3s" data-wow-delay=".6s">
+        <div class="mask-img wow fadeInUp"  data-wow-duration="3s" data-wow-delay=".8s">
           <img src="../assets/home_mask.png"/>
         </div>
       </div>
@@ -265,7 +265,7 @@
             padding-top: 10px;
             ul {
               li {
-                padding: 10px 0 15px 0;
+                padding: 15px 0 20px 0;
                 border-bottom: 1px dashed rgba(255, 255, 255, .8);
                 color: #fff;
                 .date {
@@ -292,12 +292,12 @@
                   text-overflow: ellipsis;
                   white-space: nowrap;
                   .info-title {
-                    font-size: 20px;
+                    font-size: 17px;
                     display: block;
                     margin-bottom: 5px;
                   }
                   .intr {
-                    font-size: 15px;
+                    font-size: 14px;
                     color: rgba(255, 255, 255, .9);
                   }
                 }
@@ -482,7 +482,7 @@
                 }
                 a {
                   color: #fff;
-                  font-size: 14px;
+                  font-size: 17px;
                   width: 330px;
                   display: inline-block;
                   overflow: hidden;

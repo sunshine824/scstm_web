@@ -87,7 +87,7 @@
           },
         ],
         title: '账号设置',
-        banner: 'http://www.kjgadmin.com:8080/Public/uploads/banner/5a6e9d4e99191.jpg',
+        banner: 'http://www.kjgadmin.com:8080/Public/uploads/banner/5a7032ef81143.jpg',
         password1: {
           value: '',
           error: '',
