@@ -190,7 +190,7 @@ export default new Router({
         {
           path: 'course_detail',
           component: Course_detail,
-          name: '详情',
+          name: '教育详情',
           meta: ['教育活动', '全部课程']
         }
       ]
@@ -209,7 +209,7 @@ export default new Router({
         {
           path: 'mkx_detail',
           component: Mkx_detail,
-          name: '详情',
+          name: '美科星详情',
           meta: ['美科星未来学院', '学院课程']
         }
       ]

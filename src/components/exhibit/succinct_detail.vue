@@ -90,6 +90,14 @@
     width: 1200px;
     margin: 0 auto;
     padding-bottom: 60px;
+    .art{
+      p{
+        background: none !important;
+      }
+      span{
+        background: none !important;
+      }
+    }
     .title {
       font-size: 22px;
       color: #666;
