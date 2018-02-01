@@ -184,7 +184,6 @@
         const url = 'api/index'
         getAjax(url, {},
           (res) => {
-            console.log(res)
             this.homeData = res.data
           }, (err) => {
             console.log(err)

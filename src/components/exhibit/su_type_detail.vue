@@ -97,7 +97,6 @@
           clas: parseInt(this.$route.query.id),
           page: this.page
         }, (res) => {
-          console.log(res)
           this.succinctDetail = res.data
         }, (err) => {
           console.log(err)
@@ -109,7 +108,7 @@
        */
       handlePage(page) {
         this.page = page
-        this.getTheaterData()
+        this.getExhibitList()
       },
     }
   }

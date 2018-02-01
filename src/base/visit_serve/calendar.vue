@@ -47,13 +47,14 @@
       getCalendarDate(count) {
         this.calendarDate = []
         const start = moment()
+          .add(count, 'months')
           .startOf('month')
-          .add('months', count)
           .format('YYYY-MM-DD')
         const end = moment()
+          .add(count, 'months')
           .endOf('month')
-          .add('months', count)
           .format('YYYY-MM-DD')
+
 
         this.count = moment(start).format("E")
 

@@ -146,7 +146,7 @@
         this.getBannerData({id: '', url: 'api/Calendarbanner'})
       },
       nextMonth() {
-        this.currentDate = moment().add('months', 1).format('YYYY年M月')
+        this.currentDate = moment().add(1, 'months').format('YYYY年M月')
         this.$refs.calendar.nextMonth()
       },
       nowMonth() {

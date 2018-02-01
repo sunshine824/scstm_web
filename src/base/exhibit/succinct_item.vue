@@ -84,6 +84,7 @@
               cursor: pointer;
               a {
                 color: #fff;
+                display: block;
               }
             }
           }
