@@ -33,7 +33,7 @@
             <!--<p class="btn-book">立即预定</p>-->
           </div>
         </div>
-        <div class="movie-clips clearfix">
+        <div class="movie-clips clearfix" v-if="mkxDetail.data.content">
           <p class="title">活动内容</p>
           <div class="act-content" v-html="mkxDetail.data.content">
 
