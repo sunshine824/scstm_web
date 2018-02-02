@@ -157,14 +157,14 @@
           {
             bg: '../static/images/guide_bg2.png',
             rotateBg: '../static/images/guide_item2.png',
-            href: '/',
+            href: '/visit_serve/strategy',
             title: '参观服务',
             intr: '从科技馆开始，感受宇宙魅力'
           },
           {
             bg: '../static/images/guide_bg3.png',
             rotateBg: '../static/images/guide_item3.png',
-            href: '/',
+            href: '/exhibit/guide',
             title: '场馆导览',
             intr: '随时随地，为您提供身临其境的游览体验'
           },

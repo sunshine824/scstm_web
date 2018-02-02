@@ -79,7 +79,7 @@
        * 手机号验证
        */
       verifyPhone() {
-        if (this.phone.value === '') {
+        if (this.phone.value === null || this.phone.value === '' || this.phone.value === undefined) {
           this.phone.error = '请输入手机号'
           this.phone.isVerify = false
         } else if (!/^1[0-9]{10}$/.test(this.phone.value)) {
@@ -94,7 +94,7 @@
        * 密码验证
        */
       verifyPasswd() {
-        if (this.password.value === '') {
+        if (this.password.value === null || this.password.value === '' || this.password.value === undefined) {
           this.password.error = '请输入密码'
           this.password.isVerify = false
         } else if (this.password.value.length < 6) {

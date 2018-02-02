@@ -105,6 +105,7 @@
   import Bg from '@/base/bg'
   import {getAjax} from '@/public/js/config'
   import myUpload from 'vue-image-crop-upload'
+  import {mapActions} from 'vuex'
 
   export default {
     components: {
@@ -147,7 +148,7 @@
         email: {
           value: '',
           error: '',
-          isVerify: false
+          isVerify: true
         },
         school: {
           value: '',
@@ -158,7 +159,7 @@
         card: {
           value: '',
           error: '',
-          isVerify: false
+          isVerify: true
         },
         img: '',
         isChoose: false, //是否选择图片源
@@ -169,6 +170,9 @@
       this.backInfo()
     },
     methods: {
+      ...mapActions([
+        'set_loading_state'
+      ]),
       /**
        * 验证邮箱
        */
@@ -230,6 +234,7 @@
         ) {
           return
         }
+        this.set_loading_state(true)
         const url = 'api/eduser'
         getAjax(url, {
           name: this.name.value,
@@ -238,8 +243,10 @@
           scholl: this.school.value,
           born: this.born,
           img: this.isChoose ? this.img : '',
+          card: this.card.value
         }, (res) => {
           if (res.status === 0) {
+            this.set_loading_state(false)
             this.isChoose = false
           } else {
             const obj = res.interpret
@@ -257,6 +264,7 @@
         const url = 'api/user'
         getAjax(url, {},
           (res) => {
+            console.log(res)
             this.born = res.data.born
             this.card.value = res.data.card
             this.email.value = res.data.email
