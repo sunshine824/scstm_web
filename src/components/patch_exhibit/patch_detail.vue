@@ -88,28 +88,30 @@
 </script>
 <style scoped lang="less">
   .movie-detail {
-    position: relative;
-    z-index: 1000;
     width: 1200px;
-    margin: -400px auto 0 auto;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 60px;
     .m-info {
       .de-img{
-        width: 340px;
+        width: 450px;
+        height: 320px;
         float: left;
         overflow: hidden;
         border: 8px solid #fff;
         -webkit-border-radius: 2px;
         -moz-border-radius: 2px;
         border-radius: 2px;
+        box-shadow: 0 3px 36px 0 #EDEDED;
         img {
-          height: 460px;
+          width: 100%;
         }
       }
       .m-txt {
         float: left;
         margin-top: 40px;
         margin-left: 40px;
-        width: 810px;
+        width: 710px;
         text-align: justify;
         .m-title {
           font-size: 30px;
@@ -146,7 +148,7 @@
           }
         }
         .m-time {
-          color: #fff;
+          color: #596781;
           font-size: 16px;
           margin-bottom: 10px;
           .time {
@@ -158,7 +160,7 @@
         }
         .intr {
           font-size: 16px;
-          color: #fff;
+          color: #596781;
           line-height: 28px;
           margin-top: 10px;
           margin-bottom: 30px;

@@ -161,7 +161,7 @@ export default new Router({
         {
           path: 'patch-detail',
           component: Patch_detail,
-          name: '详情',
+          name: '临展详情',
           meta: ['临展信息', '临时展览'],
         },
         {
