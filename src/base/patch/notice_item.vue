@@ -25,11 +25,10 @@
       return {}
     },
     created() {
-
     },
     computed: {
       dateStr() {
-        return moment(this.data.addTime).format('YYYY.MM.DD')
+        return moment.unix(this.data.addtime).format('YYYY.MM.DD')
       }
     }
   }

@@ -91,6 +91,12 @@
     margin: 0 auto;
     padding-bottom: 60px;
     .art{
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 4px;
+      width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 3px 36px 0 #EDEDED;
       p{
         background: none !important;
       }

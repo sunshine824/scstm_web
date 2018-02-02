@@ -37,7 +37,7 @@
     },
     computed: {
       dateStr() {
-        return moment(this.data.addTime).format('YYYY.MM.DD')
+        return moment(this.data.addtime).format('YYYY.MM.DD')
       }
     }
   }

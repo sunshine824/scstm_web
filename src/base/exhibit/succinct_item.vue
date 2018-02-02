@@ -38,6 +38,7 @@
       margin-bottom: 20px;
       float: left;
       cursor: pointer;
+      box-shadow: 0 3px 36px 0 #EDEDED;
       &:nth-child(3n) {
         margin-right: 0;
       }

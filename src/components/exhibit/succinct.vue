@@ -115,6 +115,7 @@
           -webkit-border-radius: 4px;
           -moz-border-radius: 4px;
           border-radius: 4px;
+          box-shadow: 0 3px 36px 0 #EDEDED;
           .works-img {
             width: 100%;
             height: 210px;

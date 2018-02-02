@@ -22,8 +22,8 @@
       width: 100%;
     }
     .txt{
-      font-size: 16px;
-      color: #596781;
+      font-size: 20px;
+      color: #d2d2d2;
       padding-top: 20px;
       padding-bottom: 30px;
     }
