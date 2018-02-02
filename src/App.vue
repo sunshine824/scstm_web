@@ -113,6 +113,11 @@
 <style lang="less">
   @import "./public/css/base.css";
 
+  img[lazy=loading]{
+    width: 202px !important;
+    height: 144px !important;
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity 20s;
   }

@@ -1,7 +1,9 @@
 <template>
   <div class="sign-bg">
     <div class="logo clearfix">
-      <img src="../assets/scstm-logo.png"/>
+      <router-link to="/">
+        <img src="../assets/scstm-logo.png"/>
+      </router-link>
     </div>
     <div class="sign-con">
       <slot></slot>
