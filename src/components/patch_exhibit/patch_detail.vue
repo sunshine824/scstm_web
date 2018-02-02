@@ -115,7 +115,7 @@
         text-align: justify;
         .m-title {
           font-size: 30px;
-          color: #fff;
+          color: #333;
           margin-bottom: 15px;
           .mold {
             font-size: 14px;
