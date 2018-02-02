@@ -36,9 +36,6 @@
         return localStorage.getItem('login')
       }
     },
-    mounted(){
-      console.log(localStorage.getItem('islogin'))
-    },
     methods: {
       layout() {
         this.$emit('layout')

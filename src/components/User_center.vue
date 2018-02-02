@@ -124,10 +124,11 @@
           height: 44px;
           line-height: 44px;
           background-color: #3c97ee;
+          background-image: linear-gradient(135deg, #00d0fb, #00acf6);
           color: #fff;
           overflow: hidden;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 15px;
           text-align: center;
           -webkit-border-radius: 4px;
           -moz-border-radius: 4px;

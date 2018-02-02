@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="form-group clearfix" style="margin-top: 40px">
-            <button type="button" class="input-btn" @click="handleSubmit()">确认</button>
+            <button type="button" class="input-btn" @click="handleSubmit()">{{load ? '加载中...' : '确认'}}</button>
           </div>
         </div>
       </div>
@@ -102,7 +102,8 @@
           value: '',
           error: '',
           isVerify: false
-        }
+        },
+        load: false
       }
     },
     methods: {
@@ -155,6 +156,7 @@
         if (!this.password1.isVerify || !this.password2.isVerify || !this.passwdCheck.isVerify) {
           return
         }
+        this.load = true
         const url = 'api/editpwd'
         getAjax(url, {
           password1: this.password1.value,
@@ -166,6 +168,7 @@
             this.$cookie.delete('phone')
             this.$cookie.delete('password')
             this.$router.push('/signIn')
+            this.load = false
           } else {
             const obj = res.interpret
             this[Object.keys(obj)[0]].error = res.interpret[Object.keys(obj)[0]]

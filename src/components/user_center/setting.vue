@@ -93,7 +93,7 @@
             </div>
           </div>
           <div class="form-group clearfix" style="margin-top: 40px">
-            <button type="button" class="input-btn" @click="handleSubmit()">确认</button>
+            <button type="button" class="input-btn" @click="handleSubmit()">{{load ? '加载中...' : '确认'}}</button>
           </div>
         </div>
       </div>
@@ -163,7 +163,8 @@
         },
         img: '',
         isChoose: false, //是否选择图片源
-        defaultImg: '../static/images/loading.png'
+        defaultImg: '../static/images/loading.png',
+        load: false
       }
     },
     created() {
@@ -234,6 +235,7 @@
         ) {
           return
         }
+        this.load = true
         this.set_loading_state(true)
         const url = 'api/eduser'
         getAjax(url, {
@@ -248,6 +250,7 @@
           if (res.status === 0) {
             this.set_loading_state(false)
             this.isChoose = false
+            this.load = false
           } else {
             const obj = res.interpret
             this[Object.keys(obj)[0]].error = res.interpret[Object.keys(obj)[0]]
