@@ -12,7 +12,7 @@
         </nav-bar>
         <visit-road v-if="typeId===1 && roadTypes.length" @toggle="toggleClick" :roadTypes="roadTypes" :showImg="showImg"></visit-road>
         <traffic v-if="typeId===2"></traffic>
-        <no-data v-if="!roadTypes.length"></no-data>
+        <no-data v-if="typeId===1 && !roadTypes.length"></no-data>
       </div>
     </bg>
   </div>
