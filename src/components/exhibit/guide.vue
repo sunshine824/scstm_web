@@ -13,13 +13,13 @@
         <div class="guide-img">
           <img v-lazy="floorList.floor_img"/>
         </div>
+
         <ul class="guide-list clearfix">
-          <guide-item
-            v-for="(item,index) in floorList.data"
-            :key="index"
-            :data="item">
-          </guide-item>
-          <p v-if="!floorList.data">暂无数据</p>
+           <guide-item
+             v-for="(item,index) in floorList.data"
+             :key="index"
+             :data="item">
+           </guide-item>
         </ul>
         <Pagination
           v-if="floorList.total"
@@ -27,6 +27,9 @@
           :page="page"
           @handleChange="handlePage">
         </Pagination>
+
+        <no-data v-if="!floorList.data"></no-data>
+
       </div>
     </bg>
   </div>
@@ -39,6 +42,7 @@
   import GuideItem from '@/base/exhibit/guide_item'
   import Pagination from '@/base/pagination'
   import Bg from '@/base/bg'
+  import NoData from '@/base/no-data'
   import {mapActions} from 'vuex'
 
   export default {
@@ -48,7 +52,8 @@
       NavBar,
       GuideItem,
       Pagination,
-      Bg
+      Bg,
+      NoData
     },
     data() {
       return {

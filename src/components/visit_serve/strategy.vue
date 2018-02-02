@@ -10,8 +10,9 @@
         <nav-bar :navBar="navBar"
                  @handleClick="handleTypeClick">
         </nav-bar>
-        <visit-road v-if="typeId===1" @toggle="toggleClick" :roadTypes="roadTypes" :showImg="showImg"></visit-road>
+        <visit-road v-if="typeId===1 && roadTypes.length" @toggle="toggleClick" :roadTypes="roadTypes" :showImg="showImg"></visit-road>
         <traffic v-if="typeId===2"></traffic>
+        <no-data v-if="!roadTypes.length"></no-data>
       </div>
     </bg>
   </div>
@@ -24,6 +25,7 @@
   import Bg from '@/base/bg'
   import Traffic from '@/base/visit_serve/traffic'
   import VisitRoad from '@/base/visit_serve/visit_road'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -32,7 +34,8 @@
       Banner,
       Bg,
       Traffic,
-      VisitRoad
+      VisitRoad,
+      NoData
     },
     data() {
       return {

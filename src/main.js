@@ -16,7 +16,7 @@ Vue.prototype.$http = axios
 
 Vue.use(VueLazyLoad, {
   loading: require('../static/images/loading.png'),
-  throttleWait:400
+  throttleWait:200
 })
 
 Vue.use(iView)

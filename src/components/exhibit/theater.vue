@@ -11,19 +11,20 @@
                  @handleClick="handleTypeClick">
         </nav-bar>
         <div class="lists">
-          <movie-item v-if="theaterData"
+          <movie-item v-if="theaterData.data"
                       v-for="(item,index) in theaterData.data"
                       :key="index"
                       :data="item">
           </movie-item>
-          <p v-if="theaterData.length===0">暂无数据</p>
         </div>
         <Pagination
-          v-if="theaterData"
+          v-if="theaterData.total"
           :total="theaterData.total*10"
           :page="page"
           @handleChange="handlePage">
         </Pagination>
+
+        <no-data v-if="!theaterData.data"></no-data>
       </div>
     </bg>
   </div>
@@ -36,6 +37,7 @@
   import NavBar from '@/base/navBar'
   import {getAjax} from '@/public/js/config'
   import Bg from '@/base/bg'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -44,7 +46,8 @@
       Pagination,
       NavBar,
       Banner,
-      Bg
+      Bg,
+      NoData
     },
     data() {
       return {

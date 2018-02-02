@@ -6,7 +6,9 @@
       :title="title"
       @handleClick="getBanner"/>
     <bg>
-
+      <div class="se-con">
+        <expect></expect>
+      </div>
     </bg>
   </div>
 </template>
@@ -14,12 +16,14 @@
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
   import Bg from '@/base/bg'
+  import Expect from '@/base/expect'
 
   export default {
     mixins: [getBannerMixin],
     components: {
       Banner,
       Bg,
+      Expect
     },
     data(){
       return{
@@ -67,3 +71,11 @@
     }
   }
 </script>
+<style lang="less">
+  .se-con{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+</style>

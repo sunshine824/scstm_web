@@ -16,7 +16,6 @@
                          v-for="(item,index) in flowList.data"
                          :key="index" :data="item">
             </notice-item>
-            <li v-if="!flowList.data">暂无数据</li>
           </ul>
           <Pagination
             v-if="flowList.data"
@@ -24,6 +23,7 @@
             :page="page"
             @handleChange="handlePage">
           </Pagination>
+          <no-data v-if="!flowList.data"></no-data>
         </div>
         <div class="now-exhibit">
           <p class="title">正在展览</p>
@@ -48,6 +48,7 @@
   import NoticeItem from '@/base/patch/notice_item'
   import SideItem from '@/base/patch/side_item'
   import Pagination from '@/base/pagination'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -58,6 +59,7 @@
       NoticeItem,
       SideItem,
       Pagination,
+      NoData
     },
     data() {
       return {

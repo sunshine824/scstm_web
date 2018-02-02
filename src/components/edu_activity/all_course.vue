@@ -14,18 +14,18 @@
           <type-list :type_list="act_status" title="活动状态" :isCheckBox="false" @toggle="handleStatus"></type-list>
         </div>
         <div class="lists">
-          <edu-item v-if="courseList"
+          <edu-item v-if="courseList.data"
                       v-for="(item,index) in courseList.data"
                       :key="index"
                       :data="item">
           </edu-item>
-          <p v-if="courseList.length===0">暂无数据</p>
         </div>
         <Pagination v-if="courseList.total"
                     :total="courseList.total*10"
                     :page="page"
                     @handleChange="handlePage">
         </Pagination>
+        <no-data v-if="!courseList.data"></no-data>
       </div>
     </bg>
   </div>
@@ -38,6 +38,7 @@
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
   import Bg from '@/base/bg'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -46,7 +47,8 @@
       EduItem,
       Banner,
       Pagination,
-      Bg
+      Bg,
+      NoData
     },
     data() {
       return {

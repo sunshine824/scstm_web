@@ -18,7 +18,6 @@
                          :key="index" :data="item"
                         :typeId="typeId">
             </news-item>
-            <li v-if="!noticeData.data">暂无数据</li>
           </ul>
           <Pagination
             v-if="noticeData.total"
@@ -26,6 +25,7 @@
             :page="page"
             @handleChange="handlePage">
           </Pagination>
+          <no-data v-if="!noticeData.data"></no-data>
         </div>
         <div class="now-exhibit">
           <p class="title">正在展览</p>
@@ -50,6 +50,7 @@
   import NewsItem from '@/base/visit_serve/news_item'
   import SideItem from '@/base/patch/side_item'
   import Pagination from '@/base/pagination'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -60,6 +61,7 @@
       NewsItem,
       SideItem,
       Pagination,
+      NoData
     },
     data() {
       return {

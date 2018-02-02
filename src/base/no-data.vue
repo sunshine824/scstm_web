@@ -1,7 +1,7 @@
 <template>
-  <div class="expect">
+  <div class="on-data">
     <img :src="icon"/>
-    <p class="txt">敬请期待</p>
+    <p class="txt">暂无数据</p>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -14,7 +14,7 @@
   }
 </script>
 <style lang="less">
-  .expect {
+  .on-data {
     width: 202px;
     text-align: center;
     margin: 0 auto;

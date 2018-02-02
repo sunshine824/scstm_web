@@ -16,13 +16,13 @@
                       :key="index"
                       :data="item">
           </patch-item>
-          <p v-if="patchData.length===0">暂无数据</p>
         </div>
         <Pagination v-if="patchData.total"
                     :total="patchData.total*10"
                     :page="page"
                     @handleChange="handlePage">
         </Pagination>
+        <no-data v-if="!patchData.data"></no-data>
       </div>
     </bg>
   </div>
@@ -35,6 +35,7 @@
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
   import Bg from '@/base/bg'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -43,7 +44,8 @@
       PatchItem,
       Pagination,
       Banner,
-      Bg
+      Bg,
+      NoData
     },
     data() {
       return {

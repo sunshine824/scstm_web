@@ -14,7 +14,6 @@
             :key="index"
             :data="item">
           </succinct-item>
-          <p v-if="!succinctDetail.data">暂无数据</p>
         </ul>
         <Pagination
           v-if="succinctDetail.total"
@@ -22,6 +21,8 @@
           :page="page"
           @handleChange="handlePage">
         </Pagination>
+
+        <no-data v-if="!succinctDetail.data"></no-data>
       </div>
     </bg>
   </div>
@@ -33,6 +34,7 @@
   import SuccinctItem from '@/base/exhibit/succinct_item'
   import Pagination from '@/base/pagination'
   import Bg from '@/base/bg'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -40,7 +42,8 @@
       Banner,
       SuccinctItem,
       Pagination,
-      Bg
+      Bg,
+      NoData
     },
     data() {
       return {

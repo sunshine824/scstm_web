@@ -7,7 +7,7 @@
       @handleClick="getBanner"/>
     <div class="type-con">
       <ul class="type_list clearfix">
-        <li v-for="(item,index) in typeList" :key="index">
+        <li v-for="(item,index) in typeList.data" :key="index">
           <div class="works-img">
             <img v-lazy="item.img"/>
           </div>
@@ -16,6 +16,7 @@
           </router-link>
         </li>
       </ul>
+      <no-data v-if="typeList.status===2"></no-data>
     </div>
   </div>
 </template>
@@ -23,11 +24,13 @@
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
   import {getAjax} from '@/public/js/config'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
     components: {
-      Banner
+      Banner,
+      NoData
     },
     data() {
       return {
@@ -82,7 +85,7 @@
         const url = 'api/collectionclass'
         getAjax(url, {},
           (res) => {
-            this.typeList = res.data
+            this.typeList = res
           }, (err) => {
             console.log(err)
           }, this)
@@ -112,12 +115,12 @@
           -webkit-border-radius: 4px;
           -moz-border-radius: 4px;
           border-radius: 4px;
-          .works-img{
+          .works-img {
             width: 100%;
             height: 210px;
             text-align: center;
             line-height: 210px;
-            img{
+            img {
               width: 100%;
               -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
               transition: opacity 0.35s, transform 0.35s;
@@ -127,7 +130,7 @@
               -webkit-backface-visibility: hidden;
             }
           }
-          .link-btn{
+          .link-btn {
             position: absolute;
             width: 150px;
             height: 40px;
@@ -136,18 +139,18 @@
             text-align: center;
             line-height: 40px;
             left: 0;
-            top:20px;
+            top: 20px;
             background-image: linear-gradient(-131deg, #0097E3 -16%, #3BD9D0 100%);
             color: #fff;
             font-size: 16px;
           }
-          &:hover{
-            img{
+          &:hover {
+            img {
               -webkit-transform: scale(1.03);
               transform: scale(1.03);
             }
           }
-          &:nth-of-type(4n){
+          &:nth-of-type(4n) {
             margin-right: 0;
           }
         }

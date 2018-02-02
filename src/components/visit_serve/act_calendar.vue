@@ -55,7 +55,7 @@
               @handleChange="handlePage">
             </Pagination>
           </div>
-          <div v-if="listData.length===0">暂无数据</div>
+          <no-data v-if="listData.length===0">暂无数据</no-data>
         </div>
       </div>
     </bg>
@@ -74,6 +74,7 @@
   import MovieItem from '@/base/exhibit/movie_item'
   import PatchItem from '@/base/patch/patch_item'
   import Pagination from '@/base/pagination'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
@@ -86,7 +87,8 @@
       MkxItem,
       MovieItem,
       PatchItem,
-      Pagination
+      Pagination,
+      NoData
     },
     data() {
       return {
