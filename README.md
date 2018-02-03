@@ -1,6 +1,6 @@
 # scstm_web
 
-> '四川科技馆'
+> '四川科技馆web'
 
 ## Build Setup
 
