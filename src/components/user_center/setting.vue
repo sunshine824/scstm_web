@@ -267,7 +267,6 @@
         const url = 'api/user'
         getAjax(url, {},
           (res) => {
-            console.log(res)
             this.born = res.data.born
             this.card.value = res.data.card
             this.email.value = res.data.email

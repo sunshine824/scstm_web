@@ -46,10 +46,7 @@
           spaceBetween: 5,
           speed: 600,
           effect: 'fade',
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false
-          },
+
           loop: true,
           pagination: {
             el: '.swiper-pagination',
@@ -148,13 +145,13 @@
   }
 
   .swiper-pagination {
-    bottom: 30px !important;
-    z-index: 100;
+    bottom: 24px !important;
+    z-index: 100 !important;
     &:after {
       content: '';
       position: absolute;
       border: 1px dashed rgba(255, 255, 255, .3);
-      bottom: 35px;
+      bottom: 41px;
       width: 100%;
       left: 0;
       z-index: -1;
