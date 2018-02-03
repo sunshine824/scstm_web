@@ -60,6 +60,7 @@
       line-height: 460px;
       img{
         width: 100%;
+        height: 462px;
       }
     }
     .m-txt {
