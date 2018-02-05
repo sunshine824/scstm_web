@@ -46,7 +46,10 @@
           spaceBetween: 5,
           speed: 600,
           effect: 'fade',
-
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+          },
           loop: true,
           pagination: {
             el: '.swiper-pagination',
