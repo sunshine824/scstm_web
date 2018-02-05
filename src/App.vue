@@ -98,7 +98,11 @@
             localStorage.removeItem('token')
             window.location.href = '/'
           }, (err) => {
-            console.log(err)
+            if (err.status === 401) {
+              localStorage.removeItem('login')
+              localStorage.removeItem('token')
+              window.location.href = '/'
+            }
           }, this)
       }
     },
@@ -113,7 +117,7 @@
 <style lang="less">
   @import "./public/css/base.css";
 
-  img[lazy=loading]{
+  img[lazy=loading] {
     width: 202px !important;
     height: 144px !important;
   }
