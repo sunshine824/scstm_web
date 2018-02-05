@@ -4,7 +4,7 @@
       <p class="notice">
         当瞬时在关人数达到5700人时，我馆将采取限流措施，请予理解配合
       </p>
-      <ul class="sign" v-if="!user_phone">
+      <ul class="sign" v-if="!token">
         <li>
           <router-link to="/signIn">登录</router-link>
         </li>
@@ -34,6 +34,9 @@
     computed: {
       user_phone() {
         return localStorage.getItem('login')
+      },
+      token(){
+        return localStorage.getItem('token')
       }
     },
     methods: {
