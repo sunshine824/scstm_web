@@ -265,7 +265,7 @@
             padding-top: 10px;
             ul {
               li {
-                padding: 15px 0 20px 0;
+                padding: 15px 0 16px 0;
                 border-bottom: 1px dashed rgba(255, 255, 255, .8);
                 color: #fff;
                 .date {
@@ -287,7 +287,7 @@
                   display: inline-block;
                   vertical-align: bottom;
                   color: #fff;
-                  width: 250px;
+                  width: 278px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
@@ -295,6 +295,9 @@
                     font-size: 17px;
                     display: block;
                     margin-bottom: 5px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                   }
                   .intr {
                     font-size: 14px;

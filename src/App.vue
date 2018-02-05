@@ -144,7 +144,7 @@
     }
     .ivu-select-input {
       font-size: 14px;
-      height: 38px;
+      height: 32px;
       text-align: center;
       color: #bbbec4;
     }

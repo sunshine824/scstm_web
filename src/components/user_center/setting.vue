@@ -13,8 +13,8 @@
           <my-upload field="img"
                      @crop-success="cropSuccess"
                      v-model="show"
-                     :width="230"
-                     :height="230"
+                     :width="200"
+                     :height="200"
                      :noCircle="true"
                      :noRotate="false"
                      img-format="png"></my-upload>
@@ -106,12 +106,14 @@
   import {getAjax} from '@/public/js/config'
   import myUpload from 'vue-image-crop-upload'
   import {mapActions} from 'vuex'
+  import {DatePicker} from 'iview'
 
   export default {
     components: {
       Banner,
       Bg,
-      myUpload
+      myUpload,
+      DatePicker
     },
     data() {
       return {
@@ -242,7 +244,7 @@
           name: this.name.value,
           nickname: this.nickname.value,
           email: this.email.value,
-          scholl: this.school.value,
+          school: this.school.value,
           born: this.born,
           img: this.isChoose ? this.img : '',
           card: this.card.value
@@ -275,7 +277,9 @@
             this.nickname.value = res.data.nickname
             this.school.value = res.data.school
           }, (error) => {
-            console.log(error)
+            if (error.status === 401) {
+              this.$router.push('/signIn')
+            }
           }, this)
       }
     }
