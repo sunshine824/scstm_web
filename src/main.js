@@ -19,7 +19,6 @@ Vue.use(VueLazyLoad, {
   throttleWait:200
 })
 
-Vue.use(iView)
 Vue.use(VueCookie)
 
 //loading进度条加载

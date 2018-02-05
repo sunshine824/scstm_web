@@ -142,6 +142,7 @@
       font-size: 14px;
       height: 38px;
       text-align: center;
+      color: #bbbec4;
     }
     .ivu-select-arrow {
       color: rgba(255, 255, 255, .9);

@@ -134,7 +134,7 @@
           },
         ],
         title: '账号设置',
-        banner: 'http://www.kjgadmin.com:8080/Public/uploads/banner/5a7032ef81143.jpg',
+        banner: '../static/images/user.jpg',
         nickname: {
           value: '',
           error: '',

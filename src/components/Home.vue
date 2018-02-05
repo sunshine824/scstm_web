@@ -253,7 +253,7 @@
             right: 0;
             top: 0;
             bottom: 0;
-            background: url("../../static/images/mkx_bg.png") no-repeat;
+            background: url("../assets/mkx_bg.png") no-repeat;
             background-size: cover;
           }
         }
@@ -329,7 +329,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background: url("../../static/images/edu_bg.png") no-repeat;
+            background: url("../assets/edu_bg.png") no-repeat;
             background-size: cover;
             bottom: 0;
             width: 362px;
@@ -399,7 +399,7 @@
           height: 520px;
           margin-bottom: 26px;
           padding: 30px 40px 20px 40px;
-          background: url("../../static/images/notice_bg.png") no-repeat;
+          background: url("../assets/notice_bg.png") no-repeat;
           background-size: cover;
           .t-title {
             font-size: 24px;

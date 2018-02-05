@@ -107,7 +107,7 @@
     }
   }
 </script>
-<style scoped lang="less">
+<style lang="less">
   .footer {
     background-color: #2b3340;
     color: #5e7482;
@@ -173,6 +173,22 @@
         }
         &:last-child {
           margin-right: 0;
+        }
+        .ivu-select-dropdown{
+          max-height:126px;
+          .ivu-select-dropdown-list{
+            .ivu-select-item-selected{
+              a{
+                color: #fff;
+              }
+            }
+            .ivu-select-item{
+              padding: 0;
+              a{
+                padding: 7px;
+              }
+            }
+          }
         }
       }
     }
