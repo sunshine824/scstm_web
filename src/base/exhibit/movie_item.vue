@@ -81,12 +81,12 @@
         }
         .mold {
           font-size: 14px;
-          background-image: -webkit-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: -moz-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: -o-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: -ms-linear-gradient(135deg, #00d0fb, #00acf6);
-          background-image: linear-gradient(135deg, #00d0fb, #00acf6);
-          width: 46px;
+          background-image: -webkit-linear-gradient(-131deg, #0097E3 -16%, #3BD9D0 100%);
+          background-image: -moz-linear-gradient(-131deg, #0097E3 -16%, #3BD9D0 100%);
+          background-image: -o-linear-gradient(-131deg, #0097E3 -16%, #3BD9D0 100%);
+          background-image: -ms-linear-gradient(-131deg, #0097E3 -16%, #3BD9D0 100%);
+          background-image: linear-gradient(-131deg, #0097E3 -16%, #3BD9D0 100%);
+          padding: 0 15px;
           height: 25px;
           margin-left: 10px;
           display: inline-block;

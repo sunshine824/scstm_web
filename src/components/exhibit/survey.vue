@@ -5,27 +5,26 @@
       :banner="banner"
       :title="title"
       @handleClick="getBanner"/>
-    <div class="item">
+    <bg class="item">
       <p class="title">全新科技馆<span></span></p>
       <div class="text-info">
-        <p class="txt">
-          四川科技馆位于成都市中心天府广场北侧，处于成都市中央商务区中的文化博览区地标位置。占地面积60000平方米，建筑面积41800平方米。<br/>
-          四川科技馆由原四川省展览馆改建而成，于2006年11月2日正式建成开馆，是一座多学科、多角度、全方位大型综合科普场馆，馆内常设展场面积2.5万平方米。经过近10年运行，于2016年6月18日正式闭馆改造。
-        </p>
+        <no-data></no-data>
       </div>
-    </div>
+    </bg>
   </div>
 </template>
 <script type="text/ecmascript-6">
   import Banner from '@/base/banner'
   import {getBannerMixin} from '@/public/js/mixin'
   import Bg from '@/base/bg'
+  import NoData from '@/base/no-data'
 
   export default {
     mixins: [getBannerMixin],
     components: {
       Banner,
-      Bg
+      Bg,
+      NoData
     },
     data() {
       return {
@@ -76,12 +75,13 @@
 <style lang="less">
   .survey-con {
     .item {
-      margin-top: 50px;
+      padding-top: 50px;
+      padding-bottom: 60px;
       .title {
         font-size: 20px;
         color: #666;
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom: 35px;
         span {
           width: 80px;
           height: 4px;
